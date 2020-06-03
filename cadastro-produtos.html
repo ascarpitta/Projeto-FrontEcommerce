@@ -1,0 +1,226 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Vendas Calebe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .sub:hover {
+            width: 100px;
+            height: 30px;
+            padding: 5px 5px 5px 5px;
+            background-color: #E0AFA0;
+        }
+
+        nav ul li {
+            font-size: 14px;
+            padding: 10px 25px 5px 25px;
+            display: inline;
+            list-style: none;
+            position: relative;
+        }
+
+        nav li ul {
+            display: none;
+            position: absolute;
+        }
+
+        nav li:hover ul {
+            display: block;
+            width: 20px;
+        }
+
+        nav li ul li {
+            border: 1px solid #c0c0c0;
+            display: block;
+            width: 90px;
+            float: none;
+            background-color: #c4c4c4;
+        }
+    </style>
+</head>
+
+<body style="background: #F4F3EE;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background: #E0AFA0;">
+                <ul class="navbar-nav mr-auto">
+                    <li>
+                        <b><img class="card-img-top" src="lateral-menu.png" alt="menu" style="width: 2rem"> </b>
+                        <ul>
+                            <li class="sub"> <a href="lojas.html"> Categorias </a> </li>
+                            <li class="sub"> <a href="cadastro-produtos.html"> Vender</a> </li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="navbar-brand" href="index.html"> <img src="logo.png" alt="logo" height="80" width="80"> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> </button>
+
+                    <div class="container" style="width: 55rem;">
+                        <input class="form-control mr-sm-2" type="search" id="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
+                        <button type="submit" onclick="busca()">&#128269</button>
+                    </div>
+
+                <div class="card" style="width: 4rem;">
+                    <a href="carrinho.html"> <img class="card-img-top" src="carrinho.png" alt="Card image cap"> </a>
+                </div>
+                <div class="card" style="width: 4rem;">
+                    <a href="index.html"> <img class="card-img-top" src="desejo.jpg" alt="desejo" height="37" width="37"> </a>
+                </div>
+                <ul class="navbar-nav mr-auto">
+                    <li>
+                        <b><img class="card-img-top" src="usuario.png" alt="usuario" style="width: 2rem"> </b>
+                        <ul>
+                            <li class="sub"> <a href="login-usuario.html"> Entrar </a> </li>
+                            <li class="sub"> <a href="perfil-usuario.html"> Perfil</a> </li>
+                            <li class="sub"> <a href="index.html" onclick="sair()"> Sair</a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="row justify-content-center">
+        <h2 class="text-primary">Cadastrar Produtos</h2>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <form class="needs-validation" novalidate id="cadproduto">
+            <div class="container" style="background: #E0AFA0">
+                <div style="width: 40rem;">
+                    <div>
+                        <label for="inputName" class="font-weight-bold">Nome do produto</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+                        <div class="invalid-feedback">
+                            Por favor, informe um Nome válido.
+                        </div>
+                        <label for="inputMarca" class="font-weight-bold">Marca do produto</label>
+                        <input type="text" class="form-control" id="marca" name="marca" placeholder="Renner, Editora Abril ..." required>
+                        <div class="invalid-feedback">
+                            Por favor, informe uma Marca válida.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="inputCateg" class="font-weight-bold">Categoria</label>
+                        <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Livro, roupa ..." required>
+                        <div class="invalid-feedback">
+                            Por favor, informe uma categoria válida.
+                        </div>
+                        <label for="inputDescricao" class="font-weight-bold">Descrição</label>
+                        <input type="text" class="form-control" name="descricao" id="descricao" required>
+                        <div class="invalid-feedback">
+                            Por favor, informe uma Descrição válida.
+                        </div>
+                    </div>
+                    <label for="inputPreco" class="font-weight-bold">Preço do produto</label>
+                    <input type="number" class="form-control" name="preco" id="preco" step="0.01" min="0.01" placeholder="R$ - utilize ponto (.)" required>
+                    <div class="invalid-feedback">
+                        Por favor, informe um valor válido.
+                    </div>
+                    <div>
+                        <label for="inputQntd" class="font-weight-bold">Quantidade</label>
+                        <select id="quantidade" class="form-control" name="quantidade" required>
+                            <option selected>Selecione</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, informe uma categoria válida.
+                        </div>
+                    </div>
+                    <label for="inputFrete" class="font-weight-bold">Frete do produto</label>
+                    <input type="number" class="form-control" name="frete" id="frete" step="0.01" min="0.01" required placeholder="R$ - utilize ponto (.)">
+                    <div class="invalid-feedback">
+                        Por favor, informe um frete válido.
+                    </div>
+                    <br>
+                    <label for="exampleFormControlFile1" class="font-weight-bold">Coloque uma imagem no seu anuncio</label>
+                    <input type="file" class="form-control-file" id="inputImag">
+                    <div class="invalid-feedback">
+                        Por favor, insira uma imagem do seu produto.
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="cadProduto()">Cadastrar Produto</button>
+                </div>
+            </div>
+        </form>
+
+        <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="Scripts/cad-produto.js" charset="utf-8"></script>
+        <script type="text/javascript" src="Scripts/busca.js" charset="utf-8"></script>
+        <script>
+            // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Pega todos os formulários e aplica estilos de validação personalizados.
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Faz um loop nos formularios e evita o envio
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+    <hr>
+    <footer class="section footer-classic context-dark bg-image" style=" background: #E0AFA0;">
+        <div class="container">
+            <div class="row row-30">
+                <div class="col-md-4 col-xl-5">
+                    <div class="pr-xl-4">
+                        <a class="brand" href="index.html"><img class="brand-logo-light" src="mackenzie.png" alt="" width="130" height="55"></a>
+                        <p> Somos um ecommerce de compra e venda de utilidades diversas, para atender as necessidades solicitadas.  </p>
+                        <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contatos</h5>
+                    <dl class="contact-list">
+                        <dt>E-mail:</dt>
+                        <dd><a href="mailto:#">vendascalebe@gmail.com</a></dd>
+                    </dl>
+                    <dl class="contact-list">
+                        <dt>Telefones:</dt>
+                        <dd>(11)9876-5432 <span>ou</span> (15)1234-5678</dd>
+                    </dl>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                    <h5>Links</h5>
+                    <ul class="nav-list">
+                        <li><a href="sobre-nos.html">Sobre nós</a></li>
+                        <li><a href="politica-seguranca.html">Politicas de segurança</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
