@@ -1,35 +1,35 @@
 ﻿<style >
 .sub:hover {
-    width: 100px;
-    height: 30px;
-    padding: 5px 5px 5px 5px;
-    background-color: #E0AFA0;
+  width: 100px;
+  height: 30px;
+  padding: 5px 5px 5px 5px;
+  background-color: #E0AFA0;
 }
 
 nav ul li {
-    font-size: 14px;
-    padding: 10px 25px 5px 25px;
-    display: inline;
-    list-style: none;
-    position: relative;
+  font-size: 14px;
+  padding: 10px 25px 5px 25px;
+  display: inline;
+  list-style: none;
+  position: relative;
 }
 
 nav li ul {
-    display: none;
-    position: absolute;
+  display: none;
+  position: absolute;
 }
 
 nav li:hover ul {
-    display: block;
-    width: 20px;
+  display: block;
+  width: 20px;
 }
 
 nav li ul li {
-    border: 1px solid #c0c0c0;
-    display: block;
-    width: 90px;
-    float: none;
-    background-color: #c4c4c4;
+  border: 1px solid #c0c0c0;
+  display: block;
+  width: 90px;
+  float: none;
+ background-color: #c4c4c4;
 }
 
 </style >
