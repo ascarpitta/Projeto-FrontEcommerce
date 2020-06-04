@@ -1,6 +1,10 @@
 ﻿//CdnPath=http://ajax.aspnetcdn.com/ajax/4.5.1/1/MenuStandards.js
-if (!window.Sys) { window.Sys = {}; }
-if (!Sys.WebForms) { Sys.WebForms = {}; }
+if (!window.Sys) {
+    window.Sys = {};
+}
+if (!Sys.WebForms) {
+    Sys.WebForms = {};
+}
 Sys.WebForms.Menu = function(options) {
     this.items = [];
     this.depth = options.depth || 1;
@@ -85,7 +89,11 @@ Sys.WebForms.Menu = function(options) {
     }
 };
 Sys.WebForms.Menu.prototype = {
-    blur: function() { if (this.container) this.container.blur(); },
+    blur: function () {
+        if (this.container) {
+            this.container.blur();
+        }
+    },
     collapse: function() {
         this.each(function(menuItem) {
             menuItem.hover(false);
@@ -105,7 +113,11 @@ Sys.WebForms.Menu.prototype = {
         }
     },
     firstChild: function() { return this.items[0]; },
-    focus: function() { if (this.container) this.container.focus(); },
+    focus: function () {
+        if (this.container) {
+            this.container.focus();
+        }
+    },
     get_displayed: function() { return this.element.style.display !== 'none'; },
     get_focused: function() {
         if (this.container) {
@@ -354,7 +366,9 @@ Sys.WebForms.MenuItem.prototype = {
     navigateParent: function() {
         var parentMenu = this.parentMenu,
             horizontal = this.container.orientation === 'horizontal';
-        if (!parentMenu) return;
+        if (!parentMenu) {
+            return;
+        }
         if (horizontal && this.childMenu && parentMenu.isRoot()) {
             this.navigateChild();
             return;
@@ -397,7 +411,11 @@ Sys.WebForms.MenuItem.prototype = {
             this.container.navigateTo(previousMenuItem);
         }
     },
-    setTabIndex: function(index) { if (this._anchor) this._anchor.tabIndex = index; }
+    setTabIndex: function (index) {
+        if (this._anchor) {
+            this._anchor.tabIndex = index;
+        }
+    }
 };
 Sys.WebForms.MenuItem._onmouseout = function(e) {
     var menuItem = Sys.WebForms.Menu._elementObjectMapper.getMappedObject(this);

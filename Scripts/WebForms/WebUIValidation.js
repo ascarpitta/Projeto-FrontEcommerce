@@ -106,7 +106,9 @@ function ValidatorGetValueRecursive(control)
     var i, val;
     for (i = 0; i<control.childNodes.length; i++) {
         val = ValidatorGetValueRecursive(control.childNodes[i]);
-        if (val != "") return val;
+        if (val != "") {
+            return val;
+        }
     }
     return "";
 }
@@ -314,18 +316,21 @@ function ValidatorConvert(op, dataType, val) {
     var num, cleanInput, m, exp;
     if (dataType == "Integer") {
         exp = /^\s*[-\+]?\d+\s*$/;
-        if (op.match(exp) == null)
+        if (op.match(exp) == null) {
             return null;
+        }
         num = parseInt(op, 10);
         return (isNaN(num) ? null : num);
     }
     else if(dataType == "Double") {
         exp = new RegExp("^\\s*([-\\+])?(\\d*)\\" + val.decimalchar + "?(\\d*)\\s*$");
         m = op.match(exp);
-        if (m == null)
+        if (m == null) {
             return null;
-        if (m[2].length == 0 && m[3].length == 0)
+        }
+        if (m[2].length == 0 && m[3].length == 0) {
             return null;
+        }
         cleanInput = (m[1] != null ? m[1] : "") + (m[2].length>0 ? m[2] : "0") + (m[3].length>0 ? "." + m[3] : "");
         num = parseFloat(cleanInput);
         return (isNaN(num) ? null : num);
@@ -345,10 +350,12 @@ function ValidatorConvert(op, dataType, val) {
                         + (hasDigits ? "\\" + val.decimalchar + "?(\\d{0," + val.digits + "})" : "")
                         + "\\s*$");
         m = op.match(exp);
-        if (m == null)
+        if (m == null) {
             return null;
-        if (m[2].length == 0 && hasDigits && m[5].length == 0)
+        }
+        if (m[2].length == 0 && hasDigits && m[5].length == 0) {
             return null;
+        }
         cleanInput = (m[1] != null ? m[1] : "") + m[2].replace(new RegExp("(\\" + val.groupchar + ")", "g"), "") + ((hasDigits && m[5].length > 0) ? "." + m[5] : "");
         num = parseFloat(cleanInput);
         return (isNaN(num) ? null : num);
@@ -395,10 +402,12 @@ function ValidatorConvert(op, dataType, val) {
 function ValidatorCompare(operand1, operand2, operator, val) {
     var dataType = val.type;
     var op1, op2;
-    if ((op1 = ValidatorConvert(operand1, dataType, val)) == null)
+    if ((op1 = ValidatorConvert(operand1, dataType, val)) == null) {
         return false;
-    if (operator == "DataTypeCheck")
+    }
+    if (operator == "DataTypeCheck") {
         return true;
+    }
     if ((op2 = ValidatorConvert(operand2, dataType, val)) == null)
         return true;
     switch (operator) {
@@ -418,8 +427,9 @@ function ValidatorCompare(operand1, operand2, operator, val) {
 }
 function CompareValidatorEvaluateIsValid(val) {
     var value = ValidatorGetValue(val.controltovalidate);
-    if (ValidatorTrim(value).length == 0)
+    if (ValidatorTrim(value).length == 0) {
         return true;
+    }
     var compareTo = "";
     if ((typeof(val.controltocompare) != "string") ||
         (typeof(document.getElementById(val.controltocompare)) == "undefined") ||
@@ -454,8 +464,9 @@ function CustomValidatorEvaluateIsValid(val) {
 }
 function RegularExpressionValidatorEvaluateIsValid(val) {
     var value = ValidatorGetValue(val.controltovalidate);
-    if (ValidatorTrim(value).length == 0)
+    if (ValidatorTrim(value).length == 0) {
         return true;
+    }
     var rx = new RegExp(val.validationexpression);
     var matches = rx.exec(value);
     return (matches != null && value == matches[0]);
@@ -469,19 +480,23 @@ function RequiredFieldValidatorEvaluateIsValid(val) {
 }
 function RangeValidatorEvaluateIsValid(val) {
     var value = ValidatorGetValue(val.controltovalidate);
-    if (ValidatorTrim(value).length == 0)
+    if (ValidatorTrim(value).length == 0) {
         return true;
+    }
     return (ValidatorCompare(value, val.minimumvalue, "GreaterThanEqual", val) &&
             ValidatorCompare(value, val.maximumvalue, "LessThanEqual", val));
 }
 function ValidationSummaryOnSubmit(validationGroup) {
-    if (typeof(Page_ValidationSummaries) == "undefined")
+    if (typeof (Page_ValidationSummaries) == "undefined") {
         return;
+    }
     var summary, sums, s;
     var headerSep, first, pre, post, end;
     for (sums = 0; sums < Page_ValidationSummaries.length; sums++) {
         summary = Page_ValidationSummaries[sums];
-        if (!summary) continue;
+        if (!summary) {
+            continue;
+        }
         summary.style.display = "none";
         if (!Page_IsValid && IsValidationGroupMatch(summary, validationGroup)) {
             var i;

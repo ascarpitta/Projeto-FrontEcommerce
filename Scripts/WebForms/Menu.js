@@ -34,7 +34,9 @@ function Menu_Expand(item, horizontalOffset, verticalOffset, hideScrollers) {
         child.rel = tr.id;
         child.x = horizontalOffset;
         child.y = verticalOffset;
-        if (horizontal) child.pos = "bottom";
+        if (horizontal) {
+            child.pos = "bottom";
+        }
         PopOut_Show(child.id, hideScrollers, data);
     }
     Menu_SetRoot(item);
@@ -50,7 +52,9 @@ function Menu_Expand(item, horizontalOffset, verticalOffset, hideScrollers) {
     return child;
 }
 function Menu_FindMenu(item) {
-    if (item && item.menu) return item.menu;
+    if (item && item.menu) {
+        return item.menu;
+    }
     var tr = item.parentNode.parentNode.parentNode.parentNode.parentNode;
     if (!tr.id) {
         tr = tr.parentNode;
@@ -93,7 +97,9 @@ function Menu_FindNext(item) {
     return first;
 }
 function Menu_FindParentContainer(item) {
-    if (item.menu_ParentContainerCache) return item.menu_ParentContainerCache;
+    if (item.menu_ParentContainerCache) {
+        return item.menu_ParentContainerCache;
+    }
     var a = (item.tagName.toLowerCase() == "a") ? item : WebForm_GetElementByTagName(item, "A");
     var menu = Menu_FindMenu(a);
     if (menu) {
@@ -254,7 +260,9 @@ function Menu_HoverDynamic(item) {
         item:
         item.cells[0];
     var data = Menu_GetData(item);
-    if (!data) return;
+    if (!data) {
+        return;
+    }
     var nodeTable = WebForm_GetElementByTagName(node, "table");
     if (data.hoverClass) {
         nodeTable.hoverClass = data.hoverClass;
@@ -293,7 +301,9 @@ function Menu_HoverRoot(item) {
 function Menu_HoverStatic(item) {
     var node = Menu_HoverRoot(item);
     var data = Menu_GetData(item);
-    if (!data) return;
+    if (!data) {
+        return;
+    }
     __disappearAfter = data.disappearAfter;
     Menu_Expand(node, data.horizontalOffset, data.verticalOffset); 
 }
@@ -324,7 +334,9 @@ function Menu_Key(item) {
     }
     var key = (event ? event.keyCode : -1);
     var data = Menu_GetData(item);
-    if (!data) return;
+    if (!data) {
+        return;
+    }
     var horizontal = Menu_IsHorizontal(item);
     var a = WebForm_GetElementByTagName(item, "A");
     var nextItem, parentItem, previousItem;
@@ -348,7 +360,9 @@ function Menu_Key(item) {
                 subMenu.style.visibility.toLowerCase() == "hidden") {
                 Menu_Expand(a, data.horizontalOffset, data.verticalOffset, true);
                 event.cancelBubble = true;
-                if (event.stopPropagation) event.stopPropagation();
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                }
                 return;
             }
         }
@@ -360,7 +374,9 @@ function Menu_Key(item) {
             Menu_Focus(nextItem);
             Menu_Expand(nextItem, data.horizontalOffset, data.verticalOffset, true);
             event.cancelBubble = true;
-            if (event.stopPropagation) event.stopPropagation();
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
             return;
         }
     }
@@ -379,7 +395,9 @@ function Menu_Key(item) {
                 Menu_Focus(firstChild);
                 Menu_Expand(firstChild, data.horizontalOffset, data.verticalOffset, true);
                 event.cancelBubble = true;
-                if (event.stopPropagation) event.stopPropagation();
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                }
                 return;
             }
         }
@@ -397,7 +415,9 @@ function Menu_Key(item) {
                     Menu_Focus(nextItem);
                     Menu_Expand(nextItem, data.horizontalOffset, data.verticalOffset, true);
                     event.cancelBubble = true;
-                    if (event.stopPropagation) event.stopPropagation();
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
                     return;
                 }
             }
@@ -415,7 +435,9 @@ function Menu_Key(item) {
                     Menu_Focus(previousItem);
                     Menu_Expand(previousItem, data.horizontalOffset, data.verticalOffset, true);
                     event.cancelBubble = true;
-                    if (event.stopPropagation) event.stopPropagation();
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
                     return;
                 }
             }
@@ -425,14 +447,18 @@ function Menu_Key(item) {
             }
             Menu_ResetSiblings(parentItem);
             event.cancelBubble = true;
-            if (event.stopPropagation) event.stopPropagation();
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
             return;
         }
     }
     if (key == 27) {
         Menu_HideItems();
         event.cancelBubble = true;
-        if (event.stopPropagation) event.stopPropagation();
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        }
         return;
     }
 }
@@ -760,7 +786,9 @@ function PopOut_Position(panel, hideScrollers) {
 }
 function PopOut_Scroll(panel, offsetDelta) {
     var table = WebForm_GetElementByTagName(panel, "TABLE");
-    if (!table) return;
+    if (!table) {
+        return;
+    }
     table.style.position = "relative";
     var tableY = (table.style.top ? parseInt(table.style.top) : 0);
     panel.offset += offsetDelta;

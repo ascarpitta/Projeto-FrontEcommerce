@@ -228,7 +228,9 @@ function WebForm_ExecuteCallback(callbackObject) {
 function WebForm_FillFirstAvailableSlot(array, element) {
     var i;
     for (i = 0; i < array.length; i++) {
-        if (!array[i]) break;
+        if (!array[i]) {
+            break;
+        }
     }
     array[i] = element;
     return i;
@@ -426,7 +428,9 @@ function WebForm_TextBoxKeyHandler(event) {
             if (typeof(target.onchange) != "undefined") {
                 target.onchange();
                 event.cancelBubble = true;
-                if (event.stopPropagation) event.stopPropagation();
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                }
                 return false;
             }
         }

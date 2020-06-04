@@ -68,8 +68,9 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
                 tt = hk[i].outerHTML;
                 continue;
             }
-            if (hk[i].tagName != "BASEFONT" || hk[i].innerHTML.length == 0)
+            if (hk[i].tagName != "BASEFONT" || hk[i].innerHTML.length == 0) {
                 hdm.removeChild(hdm.childNodes[i]);
+            }
         }
         var kids = fd.getElementsByTagName("head")[0].childNodes;
         for (i = 0; i < kids.length; i++)
@@ -81,14 +82,16 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
             switch(tn)
             {
             case "TITLE":
-                if (tt == kids[i].outerHTML)
+                if (tt == kids[i].outerHTML) {
                     continue;
+                }
                 k.innerText = kids[i].text;
                 hdm.insertAdjacentElement("afterbegin", k);
                 continue;
             case "BASEFONT" :
-                if (kids[i].innerHTML.length > 0)
+                if (kids[i].innerHTML.length > 0) {
                     continue;
+                }
                 break;
             default:
                 var o = document.createElement("BODY");
@@ -103,16 +106,18 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
         document.body.id = fd.body.id;
         document.body.mergeAttributes(fd.body);
         var newBodyLoad = fd.body.onload;
-        if ((typeof(newBodyLoad) != "undefined") && (newBodyLoad != null))
+        if ((typeof (newBodyLoad) != "undefined") && (newBodyLoad != null)) {
             document.body.onload = newBodyLoad;
-        else
+        } else {
             document.body.onload = sn._savedOnLoad;
+        }
         var s = "<BODY>" + fd.body.innerHTML + "</BODY>";
         if ((typeof(sn.hif) != "undefined") && (sn.hif != null))
         {
             var hifP = sn.hif.parentElement;
-            if ((typeof(hifP) != "undefined") && (hifP != null))
-                sn.sHif=hifP.removeChild(sn.hif);
+            if ((typeof (hifP) != "undefined") && (hifP != null)) {
+                sn.sHif = hifP.removeChild(sn.hif);
+            }
         }
         document.body.innerHTML = s;
         var sc = document.scripts;
@@ -127,8 +132,9 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
             sn.hifName = "__hifSmartNav" + (new Date()).getTime();
             frames["__hifSmartNav"].name = sn.hifName;
             sn.hifDoc = hif.contentWindow.document;
-            if (sn.ie5)
+            if (sn.ie5) {
                 hif.parentElement.removeChild(hif);
+            }
             window.setTimeout(sn.restoreFocus,0);
         }
         if (typeof(window.onload) == "string")
@@ -144,20 +150,26 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
     };
     window.__smartNav.restoreFocus = function()
     {
-        if (window.__smartNav.inPost == true) return;
+        if (window.__smartNav.inPost == true) {
+            return;
+        }
         var curAe = document.activeElement;
         var sAeId = window.__smartNav.ae;
-        if (((typeof(sAeId) == "undefined") || (sAeId == null)) ||
-            (typeof(curAe) != "undefined") && (curAe != null) && (curAe.id == sAeId || curAe.name == sAeId))
+        if (((typeof (sAeId) == "undefined") || (sAeId == null)) ||
+            (typeof (curAe) != "undefined") && (curAe != null) && (curAe.id == sAeId || curAe.name == sAeId)) {
             return;
+        }
         var ae = document.all(sAeId);
-        if ((typeof(ae) == "undefined") || (ae == null)) return;
+        if ((typeof (ae) == "undefined") || (ae == null)) {
+            return;
+        }
         try { ae.focus(); } catch(e){};
     }
     window.__smartNav.saveHistory = function()
     {
-        if ((typeof(window.__smartNav.hif) != "undefined") && (window.__smartNav.hif != null))
+        if ((typeof (window.__smartNav.hif) != "undefined") && (window.__smartNav.hif != null)) {
             window.__smartNav.hif.removeNode();
+        }
         if ((typeof(window.__smartNav.sHif) != "undefined") && (window.__smartNav.sHif != null)
             && (typeof(document.all[window.__smartNav.siHif]) != "undefined")
             && (document.all[window.__smartNav.siHif] != null)) {
@@ -186,13 +198,18 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
         window.__smartNav.form.__smartNavPostBack.value = 'true';
         document.detachEvent("onstop", sn.stopHif);
         document.attachEvent("onstop", sn.stopHif);
-        try { if (window.event.returnValue == false) return; } catch(e) {}
+        try {
+            if (window.event.returnValue == false) {
+                return;
+            }
+        } catch (e) { }
         sn.inPost = true;
         if ((typeof(document.activeElement) != "undefined") && (document.activeElement != null))
         {
             var ae = document.activeElement.id;
-            if (ae.length == 0)
+            if (ae.length == 0) {
                 ae = document.activeElement.name;
+            }
             sn.ae = ae;
         }
         else
@@ -203,10 +220,12 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
             sn.hif = document.all("__hifSmartNav");
             sn.hifDoc = sn.hif.contentWindow.document;
         }
-        if ((typeof(sn.hifDoc) != "undefined") && (sn.hifDoc != null))
-            try {sn.hifDoc.designMode = "On";} catch(e){};
-        if ((typeof(sn.hif.parentElement) == "undefined") || (sn.hif.parentElement == null))
+        if ((typeof (sn.hifDoc) != "undefined") && (sn.hifDoc != null)) {
+            try { sn.hifDoc.designMode = "On"; } catch (e) { };
+        }
+        if ((typeof (sn.hif.parentElement) == "undefined") || (sn.hif.parentElement == null)) {
             document.body.appendChild(sn.hif);
+        }
         var hif = sn.hif;
         hif.detachEvent("onload", sn.update);
         hif.attachEvent("onload", sn.update);
@@ -233,13 +252,21 @@ if ((typeof(window.__smartNav) == "undefined") || (window.__smartNav == null))
             }
         }
         var snfm = window.__smartNav.form;
-        if ((typeof(snfm) == "undefined") || (snfm == null)) return false;
+        if ((typeof (snfm) == "undefined") || (snfm == null)) {
+            return false;
+        }
         var sft = snfm.target;
-        if (sft.length != 0 && sft.indexOf("__hifSmartNav") != 0) return false;
+        if (sft.length != 0 && sft.indexOf("__hifSmartNav") != 0) {
+            return false;
+        }
         var sfc = snfm.action.split("?")[0];
         var url = window.location.href.split("?")[0];
-        if (url.charAt(url.length-1) != '/' && url.lastIndexOf(sfc) + sfc.length != url.length) return false;
-        if (snfm.__formAttached == true) return true;
+        if (url.charAt(url.length - 1) != '/' && url.lastIndexOf(sfc) + sfc.length != url.length) {
+            return false;
+        }
+        if (snfm.__formAttached == true) {
+            return true;
+        }
         snfm.__formAttached = true;
         snfm.attachEvent("onsubmit", window.__smartNav.init);
         snfm._submit = snfm.submit;
