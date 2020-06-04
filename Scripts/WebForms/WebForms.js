@@ -1,5 +1,5 @@
 //CdnPath=http://ajax.aspnetcdn.com/ajax/4.5.1/1/WebForms.js
-function WebForm_PostBackOptions(eventTarget, eventArgument, validation, validationGroup, actionUrl, trackFocus, clientSubmit) {
+function WebFormPostBackOptions(eventTarget, eventArgument, validation, validationGroup, actionUrl, trackFocus, clientSubmit) {
     this.eventTarget = eventTarget;
     this.eventArgument = eventArgument;
     this.validation = validation;
@@ -8,7 +8,7 @@ function WebForm_PostBackOptions(eventTarget, eventArgument, validation, validat
     this.trackFocus = trackFocus;
     this.clientSubmit = clientSubmit;
 }
-function WebForm_DoPostBackWithOptions(options) {
+function WebFormDoPostBackWithOptions(options) {
     var validationResult = true;
     if (options.validation) {
         if (typeof(Page_ClientValidate) == 'function') {
@@ -45,12 +45,12 @@ function WebForm_DoPostBackWithOptions(options) {
 }
 var __pendingCallbacks = new Array();
 var __synchronousCallBackIndex = -1;
-function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, errorCallback, useAsync) {
+function WebFormDoCallback(eventTarget, eventArgument, eventCallback, context, errorCallback, useAsync) {
     var postData = __theFormPostData +
-                "__CALLBACKID=" + WebForm_EncodeCallback(eventTarget) +
-                "&__CALLBACKPARAM=" + WebForm_EncodeCallback(eventArgument);
+                "__CALLBACKID=" + WebFormEncodeCallback(eventTarget) +
+                "&__CALLBACKPARAM=" + WebFormEncodeCallback(eventArgument);
     if (theForm["__EVENTVALIDATION"]) {
-        postData += "&__EVENTVALIDATION=" + WebForm_EncodeCallback(theForm["__EVENTVALIDATION"].value);
+        postData += "&__EVENTVALIDATION=" + WebFormEncodeCallback(theForm["__EVENTVALIDATION"].value);
     }
     var xmlRequest,e;
     try {
@@ -73,7 +73,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
     callback.context = context;
     callback.errorCallback = errorCallback;
     callback.async = useAsync;
-    var callbackIndex = WebForm_FillFirstAvailableSlot(__pendingCallbacks, callback);
+    var callbackIndex = WebFormFillFirstAvailableSlot(__pendingCallbacks, callback);
     if (!useAsync) {
         if (__synchronousCallBackIndex != -1) {
             __pendingCallbacks[__synchronousCallBackIndex] = null;
@@ -81,7 +81,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
         __synchronousCallBackIndex = callbackIndex;
     }
     if (setRequestHeaderMethodExists) {
-        xmlRequest.onreadystatechange = WebForm_CallbackComplete;
+        xmlRequest.onreadystatechange = WebFormCallbackComplete;
         callback.xmlRequest = xmlRequest;
         // e.g. http:
         var action = theForm.action || document.location.pathname, fragmentIndex = action.indexOf('#');
@@ -173,7 +173,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
         }
     }, 10);
 }
-function WebForm_CallbackComplete() {
+function WebFormCallbackComplete() {
     for (var i = 0; i < __pendingCallbacks.length; i++) {
         callbackObject = __pendingCallbacks[i];
         if (callbackObject && callbackObject.xmlRequest && (callbackObject.xmlRequest.readyState == 4)) {
@@ -186,11 +186,11 @@ function WebForm_CallbackComplete() {
             if (xmlRequestFrame) {
                 xmlRequestFrame.parentNode.removeChild(xmlRequestFrame);
             }
-            WebForm_ExecuteCallback(callbackObject);
+            WebFormExecuteCallback(callbackObject);
         }
     }
 }
-function WebForm_ExecuteCallback(callbackObject) {
+function WebFormExecuteCallback(callbackObject) {
     var response = callbackObject.xmlRequest.responseText;
     if (response.charAt(0) == "s") {
         if ((typeof(callbackObject.eventCallback) != "undefined") && (callbackObject.eventCallback != null)) {
@@ -225,7 +225,7 @@ function WebForm_ExecuteCallback(callbackObject) {
         }
     }
 }
-function WebForm_FillFirstAvailableSlot(array, element) {
+function WebFormFillFirstAvailableSlot(array, element) {
     var i;
     for (i = 0; i < array.length; i++) {
         if (!array[i]) {
@@ -239,7 +239,7 @@ var __nonMSDOMBrowser = (window.navigator.appName.toLowerCase().indexOf('explore
 var __theFormPostData = "";
 var __theFormPostCollection = new Array();
 var __callbackTextTypes = /^(text|password|hidden|search|tel|url|email|number|range|color|datetime|date|month|week|time|datetime-local)$/i;
-function WebForm_InitCallback() {
+function WebFormInitCallback() {
     var formElements = theForm.elements,
         count = formElements.length,
         element;
@@ -250,7 +250,7 @@ function WebForm_InitCallback() {
             var type = element.type;
             if ((__callbackTextTypes.test(type) || ((type == "checkbox" || type == "radio") && element.checked))
                 && (element.id != "__EVENTVALIDATION")) {
-                WebForm_InitCallbackAddField(element.name, element.value);
+                WebFormInitCallbackAddField(element.name, element.value);
             }
         }
         else if (tagName == "select") {
@@ -258,23 +258,23 @@ function WebForm_InitCallback() {
             for (var j = 0; j < selectCount; j++) {
                 var selectChild = element.options[j];
                 if (selectChild.selected == true) {
-                    WebForm_InitCallbackAddField(element.name, element.value);
+                    WebFormInitCallbackAddField(element.name, element.value);
                 }
             }
         }
         else if (tagName == "textarea") {
-            WebForm_InitCallbackAddField(element.name, element.value);
+            WebFormInitCallbackAddField(element.name, element.value);
         }
     }
 }
-function WebForm_InitCallbackAddField(name, value) {
+function WebFormInitCallbackAddField(name, value) {
     var nameValue = new Object();
     nameValue.name = name;
     nameValue.value = value;
     __theFormPostCollection[__theFormPostCollection.length] = nameValue;
-    __theFormPostData += WebForm_EncodeCallback(name) + "=" + WebForm_EncodeCallback(value) + "&";
+    __theFormPostData += WebFormEncodeCallback(name) + "=" + WebFormEncodeCallback(value) + "&";
 }
-function WebForm_EncodeCallback(parameter) {
+function WebFormEncodeCallback(parameter) {
     if (encodeURIComponent) {
         return encodeURIComponent(parameter);
     }
@@ -283,7 +283,7 @@ function WebForm_EncodeCallback(parameter) {
     }
 }
 var __disabledControlArray = new Array();
-function WebForm_ReEnableControls() {
+function WebFormReEnableControls() {
     if (typeof(__enabledControlArray) == 'undefined') {
         return false;
     }
@@ -301,15 +301,15 @@ function WebForm_ReEnableControls() {
             __disabledControlArray[disabledIndex++] = c;
         }
     }
-    setTimeout("WebForm_ReDisableControls()", 0);
+    setTimeout("WebFormReDisableControls()", 0);
     return true;
 }
-function WebForm_ReDisableControls() {
+function WebFormReDisableControls() {
     for (var i = 0; i < __disabledControlArray.length; i++) {
         __disabledControlArray[i].disabled = true;
     }
 }
-function WebForm_SimulateClick(element, event) {
+function WebFormSimulateClick(element, event) {
     var clickEvent;
     if (element) {
         if (element.click) {
@@ -329,7 +329,7 @@ function WebForm_SimulateClick(element, event) {
     }
     return true;
 }
-function WebForm_FireDefaultButton(event, target) {
+function WebFormFireDefaultButton(event, target) {
     if (event.keyCode == 13) {
         var src = event.srcElement || event.target;
         if (src &&
@@ -348,12 +348,12 @@ function WebForm_FireDefaultButton(event, target) {
             defaultButton = document.all[target];
         }
         if (defaultButton) {
-            return WebForm_SimulateClick(defaultButton, event);
+            return WebFormSimulateClick(defaultButton, event);
         } 
     }
     return true;
 }
-function WebForm_GetScrollX() {
+function WebFormGetScrollX() {
     if (__nonMSDOMBrowser) {
         return window.pageXOffset;
     }
@@ -367,7 +367,7 @@ function WebForm_GetScrollX() {
     }
     return 0;
 }
-function WebForm_GetScrollY() {
+function WebFormGetScrollY() {
     if (__nonMSDOMBrowser) {
         return window.pageYOffset;
     }
@@ -381,29 +381,29 @@ function WebForm_GetScrollY() {
     }
     return 0;
 }
-function WebForm_SaveScrollPositionSubmit() {
+function WebFormSaveScrollPositionSubmit() {
     if (__nonMSDOMBrowser) {
         theForm.elements['__SCROLLPOSITIONY'].value = window.pageYOffset;
         theForm.elements['__SCROLLPOSITIONX'].value = window.pageXOffset;
     }
     else {
-        theForm.__SCROLLPOSITIONX.value = WebForm_GetScrollX();
-        theForm.__SCROLLPOSITIONY.value = WebForm_GetScrollY();
+        theForm.__SCROLLPOSITIONX.value = WebFormGetScrollX();
+        theForm.__SCROLLPOSITIONY.value = WebFormGetScrollY();
     }
     if ((typeof(this.oldSubmit) != "undefined") && (this.oldSubmit != null)) {
         return this.oldSubmit();
     }
     return true;
 }
-function WebForm_SaveScrollPositionOnSubmit() {
-    theForm.__SCROLLPOSITIONX.value = WebForm_GetScrollX();
-    theForm.__SCROLLPOSITIONY.value = WebForm_GetScrollY();
+function WebFormSaveScrollPositionOnSubmit() {
+    theForm.__SCROLLPOSITIONX.value = WebFormGetScrollX();
+    theForm.__SCROLLPOSITIONY.value = WebFormGetScrollY();
     if ((typeof(this.oldOnSubmit) != "undefined") && (this.oldOnSubmit != null)) {
         return this.oldOnSubmit();
     }
     return true;
 }
-function WebForm_RestoreScrollPosition() {
+function WebFormRestoreScrollPosition() {
     if (__nonMSDOMBrowser) {
         window.scrollTo(theForm.elements['__SCROLLPOSITIONX'].value, theForm.elements['__SCROLLPOSITIONY'].value);
     }
@@ -415,7 +415,7 @@ function WebForm_RestoreScrollPosition() {
     }
     return true;
 }
-function WebForm_TextBoxKeyHandler(event) {
+function WebFormTextBoxKeyHandler(event) {
     if (event.keyCode == 13) {
         var target;
         if (__nonMSDOMBrowser) {
@@ -437,23 +437,23 @@ function WebForm_TextBoxKeyHandler(event) {
     }
     return true;
 }
-function WebForm_TrimString(value) {
+function WebFormTrimString(value) {
     return value.replace(/^\s+|\s+$/g, '')
 }
 function WebFormAppendToClassName(element, className) {
-    var currentClassName = ' ' + WebForm_TrimString(element.className) + ' ';
-    className = WebForm_TrimString(className);
+    var currentClassName = ' ' + WebFormTrimString(element.className) + ' ';
+    className = WebFormTrimString(className);
     var index = currentClassName.indexOf(' ' + className + ' ');
     if (index === -1) {
         element.className = (element.className === '') ? className : element.className + ' ' + className;
     }
 }
 function WebFormRemoveClassName(element, className) {
-    var currentClassName = ' ' + WebForm_TrimString(element.className) + ' ';
-    className = WebForm_TrimString(className);
+    var currentClassName = ' ' + WebFormTrimString(element.className) + ' ';
+    className = WebFormTrimString(className);
     var index = currentClassName.indexOf(' ' + className + ' ');
     if (index >= 0) {
-        element.className = WebForm_TrimString(currentClassName.substring(0, index) + ' ' +
+        element.className = WebFormTrimString(currentClassName.substring(0, index) + ' ' +
             currentClassName.substring(index + className.length + 1, currentClassName.length));
     }
 }
@@ -541,7 +541,7 @@ function WebFormGetElementPosition(element) {
     }
     return result;
 }
-function WebForm_GetParentByTagName(element, tagName) {
+function WebFormGetParentByTagName(element, tagName) {
     var parent = element.parentNode;
     var upperTagName = tagName.toUpperCase();
     while (parent && (parent.tagName.toUpperCase() != upperTagName)) {

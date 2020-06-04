@@ -15,7 +15,7 @@ function TreeView_HoverNode(data, node) {
     WebFormAppendToClassName(node, data.hoverHyperLinkClass);
 }
 function TreeView_GetNodeText(node) {
-    var trNode = WebForm_GetParentByTagName(node, "TR");
+    var trNode = WebFormGetParentByTagName(node, "TR");
     var outerNodes;
     if (trNode.childNodes[trNode.childNodes.length - 1].getElementsByTagName) {
         outerNodes = trNode.childNodes[trNode.childNodes.length - 1].getElementsByTagName("A");
@@ -40,7 +40,7 @@ function TreeView_PopulateNode(data, index, node, selectNode, selectImageNode, l
     context.lineType = lineType;
     context.index = index;
     context.isChecked = "f";
-    var tr = WebForm_GetParentByTagName(node, "TR");
+    var tr = WebFormGetParentByTagName(node, "TR");
     if (tr) {
         var checkbox = tr.getElementsByTagName("INPUT");
         if (checkbox && (checkbox.length > 0)) {
@@ -71,7 +71,7 @@ function TreeView_ProcessNodeData(result, context) {
         if (__nonMSDOMBrowser) {
             var newDiv = document.createElement("div");
             newDiv.innerHTML = chunk;
-            table = WebForm_GetParentByTagName(treeNode, "TABLE");
+            table = WebFormGetParentByTagName(treeNode, "TABLE");
             newChildren = null;
             if ((typeof(table.nextSibling) == "undefined") || (table.nextSibling == null)) {
                 table.parentNode.insertBefore(newDiv.firstChild, table.nextSibling);
@@ -85,7 +85,7 @@ function TreeView_ProcessNodeData(result, context) {
             newChildren = document.getElementById(treeNode.id + "Nodes");
         }
         else {
-            table = WebForm_GetParentByTagName(treeNode, "TABLE");
+            table = WebFormGetParentByTagName(treeNode, "TABLE");
             table.insertAdjacentHTML("afterEnd", chunk);
             newChildren = document.all[treeNode.id + "Nodes"];
         }
@@ -146,12 +146,12 @@ function TreeView_SelectNode(data, node, nodeId) {
             var selectedNode = document.getElementById(id);
             if ((typeof(selectedNode) != "undefined") && (selectedNode != null)) {
                 WebFormRemoveClassName(selectedNode, data.selectedHyperLinkClass);
-                selectedNode = WebForm_GetParentByTagName(selectedNode, "TD");
+                selectedNode = WebFormGetParentByTagName(selectedNode, "TD");
                 WebFormRemoveClassName(selectedNode, data.selectedClass);
             }
         }
         WebFormAppendToClassName(node, data.selectedHyperLinkClass);
-        node = WebForm_GetParentByTagName(node, "TD");
+        node = WebFormGetParentByTagName(node, "TD");
         WebFormAppendToClassName(node, data.selectedClass)
     }
     data.selectedNodeID.value = nodeId;

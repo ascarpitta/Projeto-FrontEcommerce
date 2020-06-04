@@ -60,7 +60,7 @@ function WebFormCanFocus(element) {
     return (!(element.disabled) &&
             (!(element.type) || element.type.toLowerCase() != "hidden") &&
             WebFormIsFocusableTag(tagName) &&
-            WebForm_IsInVisibleContainer(element)
+            WebFormIsInVisibleContainer(element)
             );
 }
 function WebFormIsFocusableTag(tagName) {
@@ -70,7 +70,7 @@ function WebFormIsFocusableTag(tagName) {
             tagName == "button" ||
             tagName == "a");
 }
-function WebForm_IsInVisibleContainer(ctrl) {
+function WebFormIsInVisibleContainer(ctrl) {
     var current = ctrl;
     while((typeof(current) != "undefined") && (current != null)) {
         if (current.disabled ||
