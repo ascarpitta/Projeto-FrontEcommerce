@@ -11,8 +11,8 @@ function WebFormPostBackOptions(eventTarget, eventArgument, validation, validati
 function WebFormDoPostBackWithOptions(options) {
     var validationResult = true;
     if (options.validation) {
-        if (typeof(Page_ClientValidate) == 'function') {
-            validationResult = Page_ClientValidate(options.validationGroup);
+        if (typeof(PageClientValidate) == 'function') {
+            validationResult = PageClientValidate(options.validationGroup);
         }
     }
     if (validationResult) {

@@ -40,20 +40,20 @@ function WebPart(webPartElement, webPartTitleElement, zone, zoneIndex, allowZone
     webPartElement.__webPart = this;
     if ((typeof(webPartTitleElement) != "undefined") && (webPartTitleElement != null)) {
         webPartTitleElement.style.cursor = "move";
-        webPartTitleElement.attachEvent("onmousedown", WebPart_OnMouseDown);
-        webPartElement.attachEvent("ondragstart", WebPart_OnDragStart);
-        webPartElement.attachEvent("ondrag", WebPart_OnDrag);
-        webPartElement.attachEvent("ondragend", WebPart_OnDragEnd);
+        webPartTitleElement.attachEvent("onmousedown", WebPartOnMouseDown);
+        webPartElement.attachEvent("ondragstart", WebPartOnDragStart);
+        webPartElement.attachEvent("ondrag", WebPartOnDrag);
+        webPartElement.attachEvent("ondragend", WebPartOnDragEnd);
     }
-    this.UpdatePosition = WebPart_UpdatePosition;
-    this.Dispose = WebPart_Dispose;
+    this.UpdatePosition = WebPartUpdatePosition;
+    this.Dispose = WebPartDispose;
 }
-function WebPart_Dispose() {
+function WebPartDispose() {
     this.webPartElement.__webPart = null    
 }
-function WebPart_OnMouseDown() {
+function WebPartOnMouseDown() {
     var currentEvent = window.event;
-    var draggedWebPart = WebPart_GetParentWebPartElement(currentEvent.srcElement);
+    var draggedWebPart = WebPartGetParentWebPartElement(currentEvent.srcElement);
     if ((typeof(draggedWebPart) == "undefined") || (draggedWebPart == null)) {
         return;
     }
@@ -69,7 +69,7 @@ function WebPart_OnMouseDown() {
     currentEvent.returnValue = false;
     currentEvent.cancelBubble = true;
 }
-function WebPart_OnDragStart() {
+function WebPartOnDragStart() {
     var currentEvent = window.event;
     var webPartElement = currentEvent.srcElement;
     if ((typeof(webPartElement.__webPart) == "undefined") || (webPartElement.__webPart == null)) {
@@ -80,13 +80,13 @@ function WebPart_OnDragStart() {
     var dataObject = currentEvent.dataTransfer;
     dataObject.effectAllowed = __wpm.InitiateWebPartDragDrop(webPartElement);
 }
-function WebPart_OnDrag() {
+function WebPartOnDrag() {
     __wpm.ContinueWebPartDragDrop();
 }
-function WebPart_OnDragEnd() {
+function WebPartOnDragEnd() {
     __wpm.CompleteWebPartDragDrop();
 }
-function WebPart_GetParentWebPartElement(containedElement) {
+function WebPartGetParentWebPartElement(containedElement) {
     var elem = containedElement;
     while ((typeof(elem.__webPart) == "undefined") || (elem.__webPart == null)) {
         elem = elem.parentElement;
@@ -96,7 +96,7 @@ function WebPart_GetParentWebPartElement(containedElement) {
     }
     return elem;
 }
-function WebPart_UpdatePosition() {
+function WebPartUpdatePosition() {
     var location = __wpTranslateOffset(0, 0, this.webPartElement, null, false);
     this.middleX = location.x + this.webPartElement.offsetWidth / 2;
     this.middleY = location.y + this.webPartElement.offsetHeight / 2;
@@ -140,22 +140,22 @@ function Zone(zoneElement, zoneIndex, uniqueID, isVertical, allowLayoutChange, h
             }
         }
     }
-    this.AddWebPart = Zone_AddWebPart;
-    this.GetWebPartIndex = Zone_GetWebPartIndex;
-    this.ToggleDropCues = Zone_ToggleDropCues;
-    this.UpdatePosition = Zone_UpdatePosition;
-    this.Dispose = Zone_Dispose;
+    this.AddWebPart = ZoneAddWebPart;
+    this.GetWebPartIndex = ZoneGetWebPartIndex;
+    this.ToggleDropCues = ZoneToggleDropCues;
+    this.UpdatePosition = ZoneUpdatePosition;
+    this.Dispose = ZoneDispose;
     webPartTable.__zone = this;
-    webPartTable.attachEvent("ondragenter", Zone_OnDragEnter);
-    webPartTable.attachEvent("ondrop", Zone_OnDrop);
+    webPartTable.attachEvent("ondragenter", ZoneOnDragEnter);
+    webPartTable.attachEvent("ondrop", ZoneOnDrop);
 }
-function Zone_Dispose() {
+function ZoneDispose() {
     for (var i = 0; i < this.webParts.length; i++) {
         this.webParts[i].Dispose();
     }
     this.webPartTable.__zone = null;
 }
-function Zone_OnDragEnter() {
+function ZoneOnDragEnter() {
     var handled = __wpm.ProcessWebPartDragEnter();
     var currentEvent = window.event;
     if (handled) {
@@ -163,7 +163,7 @@ function Zone_OnDragEnter() {
         currentEvent.cancelBubble = true;
     }
 }
-function Zone_OnDragOver() {
+function ZoneOnDragOver() {
     var handled = __wpm.ProcessWebPartDragOver();
     var currentEvent = window.event;
     if (handled) {
@@ -171,7 +171,7 @@ function Zone_OnDragOver() {
         currentEvent.cancelBubble = true;
     }
 }
-function Zone_OnDrop() {
+function ZoneOnDrop() {
     var handled = __wpm.ProcessWebPartDrop();
     var currentEvent = window.event;
     if (handled) {
@@ -179,7 +179,7 @@ function Zone_OnDrop() {
         currentEvent.cancelBubble = true;
     }
 }
-function Zone_GetParentZoneElement(containedElement) {
+function ZoneGetParentZoneElement(containedElement) {
     var elem = containedElement;
     while ((typeof(elem.__zone) == "undefined") || (elem.__zone == null)) {
         elem = elem.parentElement;
@@ -189,7 +189,7 @@ function Zone_GetParentZoneElement(containedElement) {
     }
     return elem;
 }
-function Zone_AddWebPart(webPartElement, webPartTitleElement, allowZoneChange) {
+function ZoneAddWebPart(webPartElement, webPartTitleElement, allowZoneChange) {
     var webPart = null;
     var zoneIndex = this.webParts.length;
     if (this.allowLayoutChange && __wpm.IsDragDropEnabled()) {
@@ -201,7 +201,7 @@ function Zone_AddWebPart(webPartElement, webPartTitleElement, allowZoneChange) {
     this.webParts[zoneIndex] = webPart;
     return webPart;
 }
-function Zone_ToggleDropCues(show, index, ignoreOutline) {
+function ZoneToggleDropCues(show, index, ignoreOutline) {
     if (ignoreOutline == false) {
         this.webPartTable.style.borderColor = (show ? this.highlightColor : this.savedBorderColor);
     }
@@ -228,7 +228,7 @@ function Zone_ToggleDropCues(show, index, ignoreOutline) {
         dropCue.style.visibility = (show ? "visible" : "hidden");
     }
 }
-function Zone_GetWebPartIndex(location) {
+function ZoneGetWebPartIndex(location) {
     var x = location.x;
     var y = location.y;
     if ((x < this.webPartTableLeft) || (x > this.webPartTableRight) ||
@@ -253,7 +253,7 @@ function Zone_GetWebPartIndex(location) {
     }
     return webPartsCount;
 }
-function Zone_UpdatePosition() {
+function ZoneUpdatePosition() {
     var topLeft = __wpTranslateOffset(0, 0, this.webPartTable, null, false);
     this.webPartTableLeft = topLeft.x;
     this.webPartTableTop = topLeft.y;
@@ -275,10 +275,10 @@ function WebPartMenu(menuLabelElement, menuDropDownElement, menuElement) {
     this.menuDropDownElement = menuDropDownElement;
     this.menuElement = menuElement;
     this.menuLabelElement.__menu = this;
-    this.menuLabelElement.attachEvent('onclick', WebPartMenu_OnClick);
-    this.menuLabelElement.attachEvent('onkeypress', WebPartMenu_OnKeyPress);
-    this.menuLabelElement.attachEvent('onmouseenter', WebPartMenu_OnMouseEnter);
-    this.menuLabelElement.attachEvent('onmouseleave', WebPartMenu_OnMouseLeave);
+    this.menuLabelElement.attachEvent('onclick', WebPartMenuOnClick);
+    this.menuLabelElement.attachEvent('onkeypress', WebPartMenuOnKeyPress);
+    this.menuLabelElement.attachEvent('onmouseenter', WebPartMenuOnMouseEnter);
+    this.menuLabelElement.attachEvent('onmouseleave', WebPartMenuOnMouseLeave);
     if ((typeof(this.menuDropDownElement) != "undefined") && (this.menuDropDownElement != null)) {
         this.menuDropDownElement.__menu = this;
     }
@@ -290,21 +290,21 @@ function WebPartMenu(menuLabelElement, menuDropDownElement, menuElement) {
     this.oldColor = this.menuLabelElement.style.color;
     this.oldTextDecoration = this.menuLabelElement.style.textDecoration;
     this.oldClassName = this.menuLabelElement.className;
-    this.Show = WebPartMenu_Show;
-    this.Hide = WebPartMenu_Hide;
-    this.Hover = WebPartMenu_Hover;
+    this.Show = WebPartMenuShow;
+    this.Hide = WebPartMenuHide;
+    this.Hover = WebPartMenuHover;
     this.Unhover = WebPartMenuUnhover;
-    this.Dispose = WebPartMenu_Dispose;
+    this.Dispose = WebPartMenuDispose;
     var menu = this;
     this.disposeDelegate = function() { menu.Dispose(); };
     window.attachEvent('onunload', this.disposeDelegate);
 }
-function WebPartMenu_Dispose() {
+function WebPartMenuDispose() {
     this.menuLabelElement.__menu = null;
     this.menuDropDownElement.__menu = null;
     window.detachEvent('onunload', this.disposeDelegate);
 }
-function WebPartMenu_Show() {
+function WebPartMenuShow() {
     if ((typeof(__wpm.menu) != "undefined") && (__wpm.menu != null)) {
         __wpm.menu.Hide();
     }
@@ -338,7 +338,7 @@ function WebPartMenu_Show() {
     this.popup.hide();
     this.popup.show(0, this.menuLabelElement.offsetHeight, width, height, this.menuLabelElement);
 }
-function WebPartMenu_Hide() {
+function WebPartMenuHide() {
     if (__wpm.menu == this) {
         __wpm.menu = null;
         if ((typeof(this.popup) != "undefined") && (this.popup != null)) {
@@ -347,7 +347,7 @@ function WebPartMenu_Hide() {
         }
     }
 }
-function WebPartMenu_Hover() {
+function WebPartMenuHover() {
     if (this.labelHoverClassName != "") {
         this.menuLabelElement.className = this.menuLabelElement.className + " " + this.labelHoverClassName;
     }
@@ -364,7 +364,7 @@ function WebPartMenuUnhover() {
         this.menuLabelElement.style.color = this.oldColor;
     }
 }
-function WebPartMenu_OnClick() {
+function WebPartMenuOnClick() {
     var menu = window.event.srcElement.__menu;
     if ((typeof(menu) != "undefined") && (menu != null)) {
         window.event.returnValue = false;
@@ -372,7 +372,7 @@ function WebPartMenu_OnClick() {
         menu.Show();
     }
 }
-function WebPartMenu_OnKeyPress() {
+function WebPartMenuOnKeyPress() {
     if (window.event.keyCode == 13) {
         var menu = window.event.srcElement.__menu;
         if ((typeof(menu) != "undefined") && (menu != null)) {
@@ -382,13 +382,13 @@ function WebPartMenu_OnKeyPress() {
         }
     }
 }
-function WebPartMenu_OnMouseEnter() {
+function WebPartMenuOnMouseEnter() {
     var menu = window.event.srcElement.__menu;
     if ((typeof(menu) != "undefined") && (menu != null)) {
         menu.Hover();
     }
 }
-function WebPartMenu_OnMouseLeave() {
+function WebPartMenuOnMouseLeave() {
     var menu = window.event.srcElement.__menu;
     if ((typeof(menu) != "undefined") && (menu != null)) {
         menu.Unhover();
@@ -400,38 +400,38 @@ function WebPartManager() {
     this.dragState = null;
     this.menu = null;
     this.draggedWebPart = null;
-    this.AddZone = WebPartManager_AddZone;
-    this.IsDragDropEnabled = WebPartManager_IsDragDropEnabled;
-    this.DragDrop = WebPartManager_DragDrop;
-    this.InitiateWebPartDragDrop = WebPartManager_InitiateWebPartDragDrop;
-    this.CompleteWebPartDragDrop = WebPartManager_CompleteWebPartDragDrop;
-    this.ContinueWebPartDragDrop = WebPartManager_ContinueWebPartDragDrop;
-    this.ProcessWebPartDragEnter = WebPartManager_ProcessWebPartDragEnter;
-    this.ProcessWebPartDragOver = WebPartManager_ProcessWebPartDragOver;
-    this.ProcessWebPartDrop = WebPartManager_ProcessWebPartDrop;
-    this.ShowHelp = WebPartManager_ShowHelp;
-    this.ExportWebPart = WebPartManager_ExportWebPart;
-    this.Execute = WebPartManager_Execute;
-    this.SubmitPage = WebPartManager_SubmitPage;
-    this.UpdatePositions = WebPartManager_UpdatePositions;
-    window.attachEvent("onunload", WebPartManager_Dispose);
+    this.AddZone = WebPartManagerAddZone;
+    this.IsDragDropEnabled = WebPartManagerIsDragDropEnabled;
+    this.DragDrop = WebPartManagerDragDrop;
+    this.InitiateWebPartDragDrop = WebPartManagerInitiateWebPartDragDrop;
+    this.CompleteWebPartDragDrop = WebPartManagerCompleteWebPartDragDrop;
+    this.ContinueWebPartDragDrop = WebPartManagerContinueWebPartDragDrop;
+    this.ProcessWebPartDragEnter = WebPartManagerProcessWebPartDragEnter;
+    this.ProcessWebPartDragOver = WebPartManagerProcessWebPartDragOver;
+    this.ProcessWebPartDrop = WebPartManagerProcessWebPartDrop;
+    this.ShowHelp = WebPartManagerShowHelp;
+    this.ExportWebPart = WebPartManagerExportWebPart;
+    this.Execute = WebPartManagerExecute;
+    this.SubmitPage = WebPartManagerSubmitPage;
+    this.UpdatePositions = WebPartManagerUpdatePositions;
+    window.attachEvent("onunload", WebPartManagerDispose);
 }
-function WebPartManager_Dispose() {
+function WebPartManagerDispose() {
     for (var i = 0; i < __wpm.zones.length; i++) {
         __wpm.zones[i].Dispose();
     }
-    window.detachEvent("onunload", WebPartManager_Dispose);
+    window.detachEvent("onunload", WebPartManagerDispose);
 }
-function WebPartManager_AddZone(zoneElement, uniqueID, isVertical, allowLayoutChange, highlightColor) {
+function WebPartManagerAddZone(zoneElement, uniqueID, isVertical, allowLayoutChange, highlightColor) {
     var zoneIndex = this.zones.length;
     var zone = new Zone(zoneElement, zoneIndex, uniqueID, isVertical, allowLayoutChange, highlightColor);
     this.zones[zoneIndex] = zone;
     return zone;
 }
-function WebPartManager_IsDragDropEnabled() {
+function WebPartManagerIsDragDropEnabled() {
     return ((typeof(this.overlayContainerElement) != "undefined") && (this.overlayContainerElement != null));
 }
-function WebPartManager_DragDrop() {
+function WebPartManagerDragDrop() {
     if ((typeof(this.draggedWebPart) != "undefined") && (this.draggedWebPart != null)) {
         var tempWebPart = this.draggedWebPart;
         this.draggedWebPart = null;
@@ -439,7 +439,7 @@ function WebPartManager_DragDrop() {
         window.setTimeout("__wpClearSelection()", 0);
     }
 }
-function WebPartManager_InitiateWebPartDragDrop(webPartElement) {
+function WebPartManagerInitiateWebPartDragDrop(webPartElement) {
     var webPart = webPartElement.__webPart;
     this.UpdatePositions();
     this.dragState = new WebPartDragState(webPartElement, "move");
@@ -462,16 +462,16 @@ function WebPartManager_InitiateWebPartDragDrop(webPartElement) {
             }
         }
     }
-    document.body.attachEvent("ondragover", Zone_OnDragOver);
+    document.body.attachEvent("ondragover", ZoneOnDragOver);
     return "move";
 }
-function WebPartManager_CompleteWebPartDragDrop() {
+function WebPartManagerCompleteWebPartDragDrop() {
     var dragState = this.dragState;
     this.dragState = null;
     if ((typeof(dragState.dropZoneElement) != "undefined") && (dragState.dropZoneElement != null)) {
         dragState.dropZoneElement.__zone.ToggleDropCues(false, dragState.dropIndex, false);
     }
-    document.body.detachEvent("ondragover", Zone_OnDragOver);
+    document.body.detachEvent("ondragover", ZoneOnDragOver);
     for (var i = 0; i < __wpm.zones.length; i++) {
         __wpm.zones[i].allowDrop = false;
     }
@@ -489,7 +489,7 @@ function WebPartManager_CompleteWebPartDragDrop() {
         }
     }
 }
-function WebPartManager_ContinueWebPartDragDrop() {
+function WebPartManagerContinueWebPartDragDrop() {
     var dragState = this.dragState;
     if ((typeof(dragState) != "undefined") && (dragState != null)) {
         var style = this.overlayContainerElement.style;
@@ -498,18 +498,18 @@ function WebPartManager_ContinueWebPartDragDrop() {
         style.top = location.y + 4 + (dragState.webPartElement.clientTop ? dragState.webPartElement.clientTop : 0);
     }
 }
-function WebPartManager_Execute(script) {
+function WebPartManagerExecute(script) {
     if (this.menu) {
         this.menu.Hide();
     }
     var scriptReference = new Function(script);
     return (scriptReference() != false);
 }
-function WebPartManager_ProcessWebPartDragEnter() {
+function WebPartManagerProcessWebPartDragEnter() {
     var dragState = __wpm.dragState;
     if ((typeof(dragState) != "undefined") && (dragState != null)) {
         var currentEvent = window.event;
-        var newDropZoneElement = Zone_GetParentZoneElement(currentEvent.srcElement);
+        var newDropZoneElement = ZoneGetParentZoneElement(currentEvent.srcElement);
         if ((typeof(newDropZoneElement.__zone) == "undefined") || (newDropZoneElement.__zone == null) ||
             (newDropZoneElement.__zone.allowDrop == false)) {
             newDropZoneElement = null;
@@ -547,13 +547,13 @@ function WebPartManager_ProcessWebPartDragEnter() {
     }
     return false;
 }
-function WebPartManager_ProcessWebPartDragOver() {
+function WebPartManagerProcessWebPartDragOver() {
     var dragState = __wpm.dragState;
     var currentEvent = window.event;
     var handled = false;
     if ((typeof(dragState) != "undefined") && (dragState != null) &&
         (typeof(dragState.dropZoneElement) != "undefined") && (dragState.dropZoneElement != null)) {
-        var dropZoneElement = Zone_GetParentZoneElement(currentEvent.srcElement);
+        var dropZoneElement = ZoneGetParentZoneElement(currentEvent.srcElement);
         if ((typeof(dropZoneElement) != "undefined") && (dropZoneElement != null) && (dropZoneElement.__zone.allowDrop == false)) {
             dropZoneElement = null;
         }
@@ -591,11 +591,11 @@ function WebPartManager_ProcessWebPartDragOver() {
     }
     return handled;
 }
-function WebPartManager_ProcessWebPartDrop() {
+function WebPartManagerProcessWebPartDrop() {
     var dragState = this.dragState;
     if ((typeof(dragState) != "undefined") && (dragState != null)) {
         var currentEvent = window.event;
-        var dropZoneElement = Zone_GetParentZoneElement(currentEvent.srcElement);
+        var dropZoneElement = ZoneGetParentZoneElement(currentEvent.srcElement);
         if ((typeof(dropZoneElement) != "undefined") && (dropZoneElement != null) && (dropZoneElement.__zone.allowDrop == false)) {
             dropZoneElement = null;
         }
@@ -606,7 +606,7 @@ function WebPartManager_ProcessWebPartDrop() {
     }
     return false;
 }
-function WebPartManager_ShowHelp(helpUrl, helpMode) {
+function WebPartManagerShowHelp(helpUrl, helpMode) {
     if ((typeof(this.menu) != "undefined") && (this.menu != null)) {
         this.menu.Hide();
     }
@@ -623,7 +623,7 @@ function WebPartManager_ShowHelp(helpUrl, helpMode) {
         window.location = helpUrl;
     }
 }
-function WebPartManager_ExportWebPart(exportUrl, warn, confirmOnly) {
+function WebPartManagerExportWebPart(exportUrl, warn, confirmOnly) {
     if (warn == true && __wpmExportWarning.length > 0 && this.personalizationScopeShared != true) {
         if (confirm(__wpmExportWarning) == false) {
             return false;
@@ -634,12 +634,12 @@ function WebPartManager_ExportWebPart(exportUrl, warn, confirmOnly) {
     }
     return true;
 }
-function WebPartManager_UpdatePositions() {
+function WebPartManagerUpdatePositions() {
     for (var i = 0; i < this.zones.length; i++) {
         this.zones[i].UpdatePosition();
     }
 }
-function WebPartManager_SubmitPage(eventTarget, eventArgument) {
+function WebPartManagerSubmitPage(eventTarget, eventArgument) {
     if ((typeof(this.menu) != "undefined") && (this.menu != null)) {
         this.menu.Hide();
     }

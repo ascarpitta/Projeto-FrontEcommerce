@@ -1,5 +1,5 @@
 //CdnPath=http://ajax.aspnetcdn.com/ajax/4.5.1/1/TreeView.js
-function TreeView_HoverNode(data, node) {
+function TreeViewHoverNode(data, node) {
     if (!data) {
         return;
     }
@@ -14,7 +14,7 @@ function TreeView_HoverNode(data, node) {
     node.hoverHyperLinkClass = data.hoverHyperLinkClass;
     WebFormAppendToClassName(node, data.hoverHyperLinkClass);
 }
-function TreeView_GetNodeText(node) {
+function TreeViewGetNodeText(node) {
     var trNode = WebFormGetParentByTagName(node, "TR");
     var outerNodes;
     if (trNode.childNodes[trNode.childNodes.length - 1].getElementsByTagName) {
@@ -28,7 +28,7 @@ function TreeView_GetNodeText(node) {
         trNode.childNodes[trNode.childNodes.length - 1].childNodes[0];
     return (textNode && textNode.nodeValue) ? textNode.nodeValue : "";
 }
-function TreeView_PopulateNode(data, index, node, selectNode, selectImageNode, lineType, text, path, databound, datapath, parentIsLast) {
+function TreeViewPopulateNode(data, index, node, selectNode, selectImageNode, lineType, text, path, databound, datapath, parentIsLast) {
     if (!data) {
         return;
     }
@@ -56,9 +56,9 @@ function TreeView_PopulateNode(data, index, node, selectNode, selectImageNode, l
     }
     var param = index + "|" + data.lastIndex + "|" + databound + context.isChecked + parentIsLast + "|" +
         text.length + "|" + text + datapath.length + "|" + datapath + path;
-    TreeView_PopulateNodeDoCallBack(context, param);
+    TreeViewPopulateNodeDoCallBack(context, param);
 }
-function TreeView_ProcessNodeData(result, context) {
+function TreeViewProcessNodeData(result, context) {
     var treeNode = context.node;
     if (result.length > 0) {
         var ci =  result.indexOf("|", 0);
@@ -95,11 +95,11 @@ function TreeView_ProcessNodeData(result, context) {
                 "javascript:TreeView_ToggleNode(" + context.data.name + "," + context.index + ",document.getElementById('" + treeNode.id + "'),'" + context.lineType + "',document.getElementById('" + newChildren.id + "'))" :
                 "javascript:TreeView_ToggleNode(" + context.data.name + "," + context.index + "," + treeNode.id + ",'" + context.lineType + "'," + newChildren.id + ")";
             if ((typeof(context.selectNode) != "undefined") && (context.selectNode != null) && context.selectNode.href &&
-                (context.selectNode.href.indexOf("javascript:TreeView_PopulateNode", 0) == 0)) {
+                (context.selectNode.href.indexOf("javascript:TreeViewPopulateNode", 0) == 0)) {
                 context.selectNode.href = treeNode.href;
             }
             if ((typeof(context.selectImageNode) != "undefined") && (context.selectImageNode != null) && context.selectNode.href &&
-                (context.selectImageNode.href.indexOf("javascript:TreeView_PopulateNode", 0) == 0)) {
+                (context.selectImageNode.href.indexOf("javascript:TreeViewPopulateNode", 0) == 0)) {
                 context.selectImageNode.href = treeNode.href;
             }
         }
@@ -136,7 +136,7 @@ function TreeView_ProcessNodeData(result, context) {
         }
     }
 }
-function TreeView_SelectNode(data, node, nodeId) {
+function TreeViewSelectNode(data, node, nodeId) {
     if (!data) {
         return;
     }
@@ -156,7 +156,7 @@ function TreeView_SelectNode(data, node, nodeId) {
     }
     data.selectedNodeID.value = nodeId;
 }
-function TreeView_ToggleNode(data, index, node, lineType, children) {
+function TreeViewToggleNode(data, index, node, lineType, children) {
     if (!data) {
         return;
     }
@@ -179,7 +179,7 @@ function TreeView_ToggleNode(data, index, node, lineType, children) {
                 else {
                     img.src = data.images[5];
                 }
-                img.alt = data.collapseToolTip.replace(/\{0\}/, TreeView_GetNodeText(node));
+                img.alt = data.collapseToolTip.replace(/\{0\}/, TreeViewGetNodeText(node));
             }
         }
         else {
@@ -198,14 +198,14 @@ function TreeView_ToggleNode(data, index, node, lineType, children) {
                 else {
                     img.src = data.images[4];
                 }
-                img.alt = data.expandToolTip.replace(/\{0\}/, TreeView_GetNodeText(node));
+                img.alt = data.expandToolTip.replace(/\{0\}/, TreeViewGetNodeText(node));
             }
         }
     }
     catch(e) {}
     data.expandState.value =  data.expandState.value.substring(0, index) + newExpandState + data.expandState.value.slice(index + 1);
 }
-function TreeView_UnhoverNode(node) {
+function TreeViewUnhoverNode(node) {
     if (!node.hoverClass) {
         return;
     }

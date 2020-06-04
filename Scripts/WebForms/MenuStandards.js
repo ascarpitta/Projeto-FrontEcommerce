@@ -118,8 +118,8 @@ Sys.WebForms.Menu.prototype = {
             this.container.focus();
         }
     },
-    get_displayed: function() { return this.element.style.display !== 'none'; },
-    get_focused: function() {
+    getDisplayed: function() { return this.element.style.display !== 'none'; },
+    getFocused: function() {
         if (this.container) {
             return this.container.focused;
         }
@@ -138,7 +138,7 @@ Sys.WebForms.Menu.prototype = {
         }
     },
     hide: function() {
-        if (!this.get_displayed()) {
+        if (!this.getDisplayed()) {
             return;
         }
         this.each(function(item) {
@@ -147,7 +147,7 @@ Sys.WebForms.Menu.prototype = {
             }
         });
         if (!this.isRoot()) {
-            if (this.get_focused()) {
+            if (this.getFocused()) {
                 this.container.navigateTo(this.parentMenuItem);
             }
             this.element.style.display = 'none';
@@ -221,7 +221,7 @@ Sys.WebForms.MenuItem.prototype = {
         }
     },
     focus: function() {
-        if (!this.parentMenu.get_displayed()) {
+        if (!this.parentMenu.getDisplayed()) {
             this.parentMenu.show();
         }
         this.setTabIndex(0);
@@ -257,7 +257,7 @@ Sys.WebForms.MenuItem.prototype = {
                 currentFocusedItem.hover(false);
             }
             this.applyUp(function(menuItem) {
-                if (menuItem.childMenu && !menuItem.childMenu.get_displayed()) {
+                if (menuItem.childMenu && !menuItem.childMenu.getDisplayed()) {
                     menuItem.childMenu.show();
                 }
             });
@@ -297,7 +297,7 @@ Sys.WebForms.MenuItem.prototype = {
             this.container.pendingMouseoutId = null;
         }
         this.hover(true);
-        if (this.container.menu.get_focused()) {
+        if (this.container.menu.getFocused()) {
             this.container.navigateTo(this);
         }
     },
