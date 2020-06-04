@@ -26,7 +26,7 @@ produto.addEventListener('submit', function (e) {
 
     e.preventDefault();
     console.debug('Ocorreu um click');
-})
+});
 
 function busca() {
     $.ajax({
@@ -120,7 +120,7 @@ function ativar() {
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Usuário ativo')
+            alert('Usuário ativo');
             id = url.id;
             user = id;
             usuario();

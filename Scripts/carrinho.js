@@ -14,11 +14,11 @@ function usuario() {
     end6 = window.localStorage.getItem('end6');
 
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function carrinho() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/userid/' + user,
         type: 'GET',
@@ -96,14 +96,14 @@ function carrinho() {
             });
 
             $(".remove").click(function() {
-                usuario()
+                usuario();
                 $.ajax({
                     url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/RemoverProduto/' + user + '/' + window.localStorage.getItem('produto' + $(this).attr("id").replace("remove", "")),
                     type: 'get',
                     dataType: 'json',
                     success: function (url) {
                         window.localStorage.setItem("user", user);
-                        alert("Produto removido com sucesso")
+                        alert("Produto removido com sucesso");
                     },
                     error: function (url) {
                         //alert('Erro ao remover produtoo')
@@ -114,7 +114,7 @@ function carrinho() {
             $(".increase").click(function () {
                 console.info(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).text()));
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) + 1);
-                usuario()
+                usuario();
                 $.ajax({
                     url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/AumentarProduto/' + user + '/' + window.localStorage.getItem('produto' + $(this).parent().attr("id").replace("quantity", "")),
                     type: 'get',
@@ -135,7 +135,7 @@ function carrinho() {
 
             $(".decrease").click(function () {
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) - 1);
-                usuario()
+                usuario();
                 $.ajax({
                     url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/DiminuirProduto/' + user + '/' + window.localStorage.getItem('produto' + $(this).parent().attr("id").replace("quantity", "")),
                     type: 'get',
@@ -159,7 +159,7 @@ function carrinho() {
 
 
 function consend() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
         type: 'GET',
@@ -186,7 +186,7 @@ function consend() {
 }
 
 function endereco() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end,
         type: 'get',
@@ -197,16 +197,16 @@ function endereco() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function endereco1() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end1,
         type: 'get',
@@ -217,16 +217,16 @@ function endereco1() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function endereco2() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end2,
         type: 'get',
@@ -237,16 +237,16 @@ function endereco2() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function endereco3() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end3,
         type: 'get',
@@ -257,16 +257,16 @@ function endereco3() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function endereco4() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end4,
         type: 'get',
@@ -277,16 +277,16 @@ function endereco4() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function endereco5() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end5,
         type: 'get',
@@ -297,16 +297,16 @@ function endereco5() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function endereco5() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end6,
         type: 'get',
@@ -317,16 +317,16 @@ function endereco5() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
-            alert('Erro ao finalizar pedido')
+            alert('Erro ao finalizar pedido');
         }
     });
 }
 
 function finalizar() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/' + user,
         type: 'get',
@@ -337,7 +337,7 @@ function finalizar() {
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            alert('Pedido realizado')
+            alert('Pedido realizado');
         },
         error: function (url) {
             //alert('Erro ao finalizar pedido')
@@ -346,6 +346,6 @@ function finalizar() {
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

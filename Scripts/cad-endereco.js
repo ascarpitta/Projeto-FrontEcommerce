@@ -30,8 +30,8 @@ cadendereco.addEventListener('submit', function (e) {
     console.debug({ nomeEnd, uf, cidade, cep, bairro, rua, numero, complemento, obs });
 
     e.preventDefault();
-    console.debug('Ocorreu um click');   
-})
+    console.debug('Ocorreu um click');
+});
 
 function usuario() {
     user = window.localStorage.getItem('user');

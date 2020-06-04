@@ -5,7 +5,7 @@ var desejo1, desejo2, desejo3, desejo4, desejo5, desejo6, desejo7, desejo8, dese
     desejo29, desejo30, desejo40, desejo41, desejo42, desejo43, desejo44, desejo45, desejo46,
     desejo47, desejo48, desejo49, desejo50, desejo51, desejo52, desejo53, desejo54, desejo55,
     desejo56, desejo57, desejo58, desejo59, desejo60;
-function usuario(); {
+function usuario() {
     desejo1 = window.localStorage.getItem('desejo1');
     desejo2 = window.localStorage.getItem('desejo2');
     desejo3 = window.localStorage.getItem('desejo3');

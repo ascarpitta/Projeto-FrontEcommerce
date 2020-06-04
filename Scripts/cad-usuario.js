@@ -24,7 +24,7 @@ cadusuario.addEventListener('submit', function (e) {
 
     e.preventDefault();
     console.debug('Ocorreu um click');
-})
+});
 
 function teste() {
     var validar = false;
