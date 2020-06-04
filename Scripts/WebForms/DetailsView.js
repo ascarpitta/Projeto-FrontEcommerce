@@ -2,20 +2,20 @@
 function DetailsView() {
     this.pageIndex = null;
     this.dataKeys = null;
-    this.createPropertyString = DetailsView_createPropertyString;
-    this.setStateField = DetailsView_setStateValue;
-    this.getHiddenFieldContents = DetailsView_getHiddenFieldContents;
+    this.createPropertyString = DetailsViewCreatePropertyString;
+    this.setStateField = DetailsViewSetStateValue;
+    this.getHiddenFieldContents = DetailsViewGetHiddenFieldContents;
     this.stateField = null;
     this.panelElement = null;
     this.callback = null;
 }
-function DetailsView_createPropertyString() {
-    return createPropertyStringFromValues_DetailsView(this.pageIndex, this.dataKeys);
+function DetailsViewCreatePropertyString() {
+    return createPropertyStringFromValuesDetailsView(this.pageIndex, this.dataKeys);
 }
-function DetailsView_setStateValue() {
+function DetailsViewSetStateValue() {
     this.stateField.value = this.createPropertyString();
 }
-function DetailsView_OnCallback (result, context) {
+function DetailsViewOnCallback (result, context) {
     var value = new String(result);
     var valsArray = value.split("|");
     var innerHtml = valsArray[2];
@@ -23,12 +23,12 @@ function DetailsView_OnCallback (result, context) {
         innerHtml += "|" + valsArray[i];
     }
     context.panelElement.innerHTML = innerHtml;
-    context.stateField.value = createPropertyStringFromValues_DetailsView(valsArray[0], valsArray[1]);
+    context.stateField.value = createPropertyStringFromValuesDetailsView(valsArray[0], valsArray[1]);
 }
-function DetailsView_getHiddenFieldContents(arg) {
+function DetailsViewGetHiddenFieldContents(arg) {
     return arg + "|" + this.stateField.value;
 }
-function createPropertyStringFromValues_DetailsView(pageIndex, dataKeys) {
+function createPropertyStringFromValuesDetailsView(pageIndex, dataKeys) {
     var value = new Array(pageIndex, dataKeys);
     return value.join("|");
 }

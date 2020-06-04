@@ -1,5 +1,5 @@
 //CdnPath=http://ajax.aspnetcdn.com/ajax/4.5.1/1/WebForms.js
-function WebForm_FindFirstFocusableChild(control) {
+function WebFormFindFirstFocusableChild(control) {
     if (!control || !(control.tagName)) {
         return null;
     }
@@ -11,12 +11,12 @@ function WebForm_FindFirstFocusableChild(control) {
     if (children) {
         for (var i = 0; i < children.length; i++) {
             try {
-                if (WebForm_CanFocus(children[i])) {
+                if (WebFormCanFocus(children[i])) {
                     return children[i];
                 }
                 else {
-                    var focused = WebForm_FindFirstFocusableChild(children[i]);
-                    if (WebForm_CanFocus(focused)) {
+                    var focused = WebFormFindFirstFocusableChild(children[i]);
+                    if (WebFormCanFocus(focused)) {
                         return focused;
                     }
                 }
@@ -26,7 +26,7 @@ function WebForm_FindFirstFocusableChild(control) {
     }
     return null;
 }
-function WebForm_AutoFocus(focusId) {
+function WebFormAutoFocus(focusId) {
     var targetControl;
     if (__nonMSDOMBrowser) {
         targetControl = document.getElementById(focusId);
@@ -35,8 +35,8 @@ function WebForm_AutoFocus(focusId) {
         targetControl = document.all[focusId];
     }
     var focused = targetControl;
-    if (targetControl && (!WebForm_CanFocus(targetControl)) ) {
-        focused = WebForm_FindFirstFocusableChild(targetControl);
+    if (targetControl && (!WebFormCanFocus(targetControl)) ) {
+        focused = WebFormFindFirstFocusableChild(targetControl);
     }
     if (focused) {
         try {
@@ -52,18 +52,18 @@ function WebForm_AutoFocus(focusId) {
         }
     }
 }
-function WebForm_CanFocus(element) {
+function WebFormCanFocus(element) {
     if (!element || !(element.tagName)) {
         return false;
     }
     var tagName = element.tagName.toLowerCase();
     return (!(element.disabled) &&
             (!(element.type) || element.type.toLowerCase() != "hidden") &&
-            WebForm_IsFocusableTag(tagName) &&
+            WebFormIsFocusableTag(tagName) &&
             WebForm_IsInVisibleContainer(element)
             );
 }
-function WebForm_IsFocusableTag(tagName) {
+function WebFormIsFocusableTag(tagName) {
     return (tagName == "input" ||
             tagName == "textarea" ||
             tagName == "select" ||

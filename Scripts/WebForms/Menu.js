@@ -3,31 +3,31 @@ var __rootMenuItem;
 var __menuInterval;
 var __scrollPanel;
 var __disappearAfter = 500;
-function Menu_ClearInterval() {
+function MenuClearInterval() {
     if (__menuInterval) {
         window.clearInterval(__menuInterval);
     }
 }
-function Menu_Collapse(item) {
-    Menu_SetRoot(item);
+function MenuCollapse(item) {
+    MenuSetRoot(item);
     if (__rootMenuItem) {
-        Menu_ClearInterval();
+        MenuClearInterval();
         if (__disappearAfter >= 0) {
-            __menuInterval = window.setInterval("Menu_HideItems()", __disappearAfter);
+            __menuInterval = window.setInterval("MenuHideItems()", __disappearAfter);
         }
     }
 }
-function Menu_Expand(item, horizontalOffset, verticalOffset, hideScrollers) {
-    Menu_ClearInterval();
+function MenuExpand(item, horizontalOffset, verticalOffset, hideScrollers) {
+    MenuClearInterval();
     var tr = item.parentNode.parentNode.parentNode.parentNode.parentNode;
     var horizontal = true;
     if (!tr.id) {
         horizontal = false;
         tr = tr.parentNode;
     }
-    var child = Menu_FindSubMenu(item);
+    var child = MenuFindSubMenu(item);
     if (child) {
-        var data = Menu_GetData(item);
+        var data = MenuGetData(item);
         if (!data) {
             return null;
         }
@@ -37,21 +37,21 @@ function Menu_Expand(item, horizontalOffset, verticalOffset, hideScrollers) {
         if (horizontal) {
             child.pos = "bottom";
         }
-        PopOut_Show(child.id, hideScrollers, data);
+        PopOutShow(child.id, hideScrollers, data);
     }
-    Menu_SetRoot(item);
+    MenuSetRoot(item);
     if (child) {
         if (!document.body.__oldOnClick && document.body.onclick) {
             document.body.__oldOnClick = document.body.onclick;
         }
         if (__rootMenuItem) {
-            document.body.onclick = Menu_HideItems;
+            document.body.onclick = MenuHideItems;
         }
     }
-    Menu_ResetSiblings(tr);
+    MenuResetSiblings(tr);
     return child;
 }
-function Menu_FindMenu(item) {
+function MenuFindMenu(item) {
     if (item && item.menu) {
         return item.menu;
     }
@@ -61,7 +61,7 @@ function Menu_FindMenu(item) {
     }
     for (var i = tr.id.length - 1; i >= 0; i--) {
         if (tr.id.charAt(i) < '0' || tr.id.charAt(i) > '9') {
-            var menu = WebForm_GetElementById(tr.id.substr(0, i));
+            var menu = WebFormGetElementById(tr.id.substr(0, i));
             if (menu) {
                 item.menu = menu;
                 return menu;
@@ -70,17 +70,17 @@ function Menu_FindMenu(item) {
     }
     return null;
 }
-function Menu_FindNext(item) {
-    var a = WebForm_GetElementByTagName(item, "A");
-    var parent = Menu_FindParentContainer(item);
+function MenuFindNext(item) {
+    var a = WebFormGetElementByTagName(item, "A");
+    var parent = MenuFindParentContainer(item);
     var first = null;
     if (parent) {
-        var links = WebForm_GetElementsByTagName(parent, "A");
+        var links = WebFormGetElementsByTagName(parent, "A");
         var match = false;
         for (var i = 0; i < links.length; i++) {
             var link = links[i];
-            if (Menu_IsSelectable(link)) {
-                if (Menu_FindParentContainer(link) == parent) {
+            if (MenuIsSelectable(link)) {
+                if (MenuFindParentContainer(link) == parent) {
                     if (match) {
                         return link;
                     }
@@ -96,12 +96,12 @@ function Menu_FindNext(item) {
     }
     return first;
 }
-function Menu_FindParentContainer(item) {
+function MenuFindParentContainer(item) {
     if (item.menu_ParentContainerCache) {
         return item.menu_ParentContainerCache;
     }
-    var a = (item.tagName.toLowerCase() == "a") ? item : WebForm_GetElementByTagName(item, "A");
-    var menu = Menu_FindMenu(a);
+    var a = (item.tagName.toLowerCase() == "a") ? item : WebFormGetElementByTagName(item, "A");
+    var menu = MenuFindMenu(a);
     if (menu) {
         var parent = item;
         while (parent && parent.tagName &&
@@ -113,29 +113,29 @@ function Menu_FindParentContainer(item) {
         return parent;
     }
 }
-function Menu_FindParentItem(item) {
-    var parentContainer = Menu_FindParentContainer(item);
+function MenuFindParentItem(item) {
+    var parentContainer = MenuFindParentContainer(item);
     var parentContainerID = parentContainer.id;
     var len = parentContainerID.length;
     if (parentContainerID && parentContainerID.substr(len - 5) == "Items") {
         var parentItemID = parentContainerID.substr(0, len - 5);
-        return WebForm_GetElementById(parentItemID);
+        return WebFormGetElementById(parentItemID);
     }
     return null;
 }
-function Menu_FindPrevious(item) {
-    var a = WebForm_GetElementByTagName(item, "A");
-    var parent = Menu_FindParentContainer(item);
+function MenuFindPrevious(item) {
+    var a = WebFormGetElementByTagName(item, "A");
+    var parent = MenuFindParentContainer(item);
     var last = null;
     if (parent) {
-        var links = WebForm_GetElementsByTagName(parent, "A");
+        var links = WebFormGetElementsByTagName(parent, "A");
         for (var i = 0; i < links.length; i++) {
             var link = links[i];
-            if (Menu_IsSelectable(link)) {
+            if (MenuIsSelectable(link)) {
                 if (link == a && last) {
                     return last;
                 }
-                if (Menu_FindParentContainer(link) == parent) {
+                if (MenuFindParentContainer(link) == parent) {
                     last = link;
                 }
             }
@@ -143,38 +143,38 @@ function Menu_FindPrevious(item) {
     }
     return last;
 }
-function Menu_FindSubMenu(item) {
+function MenuFindSubMenu(item) {
     var tr = item.parentNode.parentNode.parentNode.parentNode.parentNode;
     if (!tr.id) {
         tr=tr.parentNode;
     }
-    return WebForm_GetElementById(tr.id + "Items");
+    return WebFormGetElementById(tr.id + "Items");
 }
-function Menu_Focus(item) {
+function MenuFocus(item) {
     if (item && item.focus) {
-        var pos = WebForm_GetElementPosition(item);
-        var parentContainer = Menu_FindParentContainer(item);
+        var pos = WebFormGetElementPosition(item);
+        var parentContainer = MenuFindParentContainer(item);
         if (!parentContainer.offset) {
             parentContainer.offset = 0;
         }
-        var posParent = WebForm_GetElementPosition(parentContainer);
+        var posParent = WebFormGetElementPosition(parentContainer);
         var delta;
         if (pos.y + pos.height > posParent.y + parentContainer.offset + parentContainer.clippedHeight) {
             delta = pos.y + pos.height - posParent.y - parentContainer.offset - parentContainer.clippedHeight;
-            PopOut_Scroll(parentContainer, delta);
+            PopOutScroll(parentContainer, delta);
         }
         else if (pos.y < posParent.y + parentContainer.offset) {
             delta = posParent.y + parentContainer.offset - pos.y;
-            PopOut_Scroll(parentContainer, -delta);
+            PopOutScroll(parentContainer, -delta);
         }
-        PopOut_HideScrollers(parentContainer);
+        PopOutHideScrollers(parentContainer);
         item.focus();
     }
 }
-function Menu_GetData(item) {
+function MenuGetData(item) {
     if (!item.data) {
-        var a = (item.tagName.toLowerCase() == "a" ? item : WebForm_GetElementByTagName(item, "a"));
-        var menu = Menu_FindMenu(a);
+        var a = (item.tagName.toLowerCase() == "a" ? item : WebFormGetElementByTagName(item, "a"));
+        var menu = MenuFindMenu(a);
         try {
             item.data = eval(menu.id + "_Data");
         }
@@ -182,18 +182,18 @@ function Menu_GetData(item) {
     }
     return item.data;
 }
-function Menu_HideItems(items) {
+function MenuHideItems(items) {
     if (document.body.__oldOnClick) {
         document.body.onclick = document.body.__oldOnClick;
         document.body.__oldOnClick = null;
     }
-    Menu_ClearInterval();
+    MenuClearInterval();
     if (!items || ((typeof(items.tagName) == "undefined") && (items instanceof Event))) {
         items = __rootMenuItem;
     }
     var table = items;
     if ((typeof(table) == "undefined") || (table == null) || !table.tagName || (table.tagName.toLowerCase() != "table")) {
-        table = WebForm_GetElementByTagName(table, "TABLE");
+        table = WebFormGetElementByTagName(table, "TABLE");
     }
     if ((typeof(table) == "undefined") || (table == null) || !table.tagName || (table.tagName.toLowerCase() != "table")) {
         return;
@@ -210,15 +210,15 @@ function Menu_HideItems(items) {
     if (isVertical) {
         for(i = 0; i < rows.length; i++) {
             if (rows[i].id) {
-                child = WebForm_GetElementById(rows[i].id + "Items");
+                child = WebFormGetElementById(rows[i].id + "Items");
                 if (child) {
-                    Menu_HideItems(child);
+                    MenuHideItems(child);
                 }
             }
             else if (rows[i].cells[0]) {
-                nextLevel = WebForm_GetElementByTagName(rows[i].cells[0], "TABLE");
+                nextLevel = WebFormGetElementByTagName(rows[i].cells[0], "TABLE");
                 if (nextLevel) {
-                    Menu_HideItems(nextLevel);
+                    MenuHideItems(nextLevel);
                 }
             }
         }
@@ -226,90 +226,90 @@ function Menu_HideItems(items) {
     else if (rows[0]) {
         for(i = 0; i < rows[0].cells.length; i++) {
             if (rows[0].cells[i].id) {
-                child = WebForm_GetElementById(rows[0].cells[i].id + "Items");
+                child = WebFormGetElementById(rows[0].cells[i].id + "Items");
                 if (child) {
-                    Menu_HideItems(child);
+                    MenuHideItems(child);
                 }
             }
             else {
-                nextLevel = WebForm_GetElementByTagName(rows[0].cells[i], "TABLE");
+                nextLevel = WebFormGetElementByTagName(rows[0].cells[i], "TABLE");
                 if (nextLevel) {
-                    Menu_HideItems(rows[0].cells[i].firstChild);
+                    MenuHideItems(rows[0].cells[i].firstChild);
                 }
             }
         }
     }
     if (items && items.id) {
-        PopOut_Hide(items.id);
+        PopOutHide(items.id);
     }
 }
-function Menu_HoverDisabled(item) {
+function MenuHoverDisabled(item) {
     var node = (item.tagName.toLowerCase() == "td") ?
         item:
         item.cells[0];
-    var data = Menu_GetData(item);
+    var data = MenuGetData(item);
     if (!data) return;
-    node = WebForm_GetElementByTagName(node, "table").rows[0].cells[0].childNodes[0];
+    node = WebFormGetElementByTagName(node, "table").rows[0].cells[0].childNodes[0];
     if (data.disappearAfter >= 200) {
         __disappearAfter = data.disappearAfter;
     }
-    Menu_Expand(node, data.horizontalOffset, data.verticalOffset); 
+    MenuExpand(node, data.horizontalOffset, data.verticalOffset); 
 }
-function Menu_HoverDynamic(item) {
+function MenuHoverDynamic(item) {
     var node = (item.tagName.toLowerCase() == "td") ?
         item:
         item.cells[0];
-    var data = Menu_GetData(item);
+    var data = MenuGetData(item);
     if (!data) {
         return;
     }
-    var nodeTable = WebForm_GetElementByTagName(node, "table");
+    var nodeTable = WebFormGetElementByTagName(node, "table");
     if (data.hoverClass) {
         nodeTable.hoverClass = data.hoverClass;
-        WebForm_AppendToClassName(nodeTable, data.hoverClass);
+        WebFormAppendToClassName(nodeTable, data.hoverClass);
     }
     node = nodeTable.rows[0].cells[0].childNodes[0];
     if (data.hoverHyperLinkClass) {
         node.hoverHyperLinkClass = data.hoverHyperLinkClass;
-        WebForm_AppendToClassName(node, data.hoverHyperLinkClass);
+        WebFormAppendToClassName(node, data.hoverHyperLinkClass);
     }
     if (data.disappearAfter >= 200) {
         __disappearAfter = data.disappearAfter;
     }
-    Menu_Expand(node, data.horizontalOffset, data.verticalOffset); 
+    MenuExpand(node, data.horizontalOffset, data.verticalOffset); 
 }
-function Menu_HoverRoot(item) {
+function MenuHoverRoot(item) {
     var node = (item.tagName.toLowerCase() == "td") ?
         item:
         item.cells[0];
-    var data = Menu_GetData(item);
+    var data = MenuGetData(item);
     if (!data) {
         return null;
     }
-    var nodeTable = WebForm_GetElementByTagName(node, "table");
+    var nodeTable = WebFormGetElementByTagName(node, "table");
     if (data.staticHoverClass) {
         nodeTable.hoverClass = data.staticHoverClass;
-        WebForm_AppendToClassName(nodeTable, data.staticHoverClass);
+        WebFormAppendToClassName(nodeTable, data.staticHoverClass);
     }
     node = nodeTable.rows[0].cells[0].childNodes[0];
     if (data.staticHoverHyperLinkClass) {
         node.hoverHyperLinkClass = data.staticHoverHyperLinkClass;
-        WebForm_AppendToClassName(node, data.staticHoverHyperLinkClass);
+        WebFormAppendToClassName(node, data.staticHoverHyperLinkClass);
     }
     return node;
 }
-function Menu_HoverStatic(item) {
-    var node = Menu_HoverRoot(item);
-    var data = Menu_GetData(item);
+function MenuHoverStatic(item) {
+    var node = MenuHoverRoot(item);
+    var data = MenuGetData(item);
     if (!data) {
         return;
     }
     __disappearAfter = data.disappearAfter;
-    Menu_Expand(node, data.horizontalOffset, data.verticalOffset); 
+    MenuExpand(node, data.horizontalOffset, data.verticalOffset); 
 }
-function Menu_IsHorizontal(item) {
+function MenuIsHorizontal(item) {
     if (item) {
-        var a = ((item.tagName && (item.tagName.toLowerCase == "a")) ? item : WebForm_GetElementByTagName(item, "A"));
+        var a = ((item.tagName && (item.tagName.toLowerCase == "a")) ? item : WebFormGetElementByTagName(item, "A"));
         if (!a) {
             return false;
         }
@@ -320,10 +320,10 @@ function Menu_IsHorizontal(item) {
     }
     return false;
 }
-function Menu_IsSelectable(link) {
+function MenuIsSelectable(link) {
     return (link && link.href)
 }
-function Menu_Key(item) {
+function MenuKey(item) {
     var event;
     if (item.currentTarget) {
         event = item;
@@ -333,21 +333,21 @@ function Menu_Key(item) {
         event = window.event;        
     }
     var key = (event ? event.keyCode : -1);
-    var data = Menu_GetData(item);
+    var data = MenuGetData(item);
     if (!data) {
         return;
     }
-    var horizontal = Menu_IsHorizontal(item);
-    var a = WebForm_GetElementByTagName(item, "A");
+    var horizontal = MenuIsHorizontal(item);
+    var a = WebFormGetElementByTagName(item, "A");
     var nextItem, parentItem, previousItem;
     if ((!horizontal && key == 38) || (horizontal && key == 37)) {
-        previousItem = Menu_FindPrevious(item);
+        previousItem = MenuFindPrevious(item);
         while (previousItem && previousItem.disabled) {
-            previousItem = Menu_FindPrevious(previousItem);
+            previousItem = MenuFindPrevious(previousItem);
         }
         if (previousItem) {
-            Menu_Focus(previousItem);
-            Menu_Expand(previousItem, data.horizontalOffset, data.verticalOffset, true);
+            MenuFocus(previousItem);
+            MenuExpand(previousItem, data.horizontalOffset, data.verticalOffset, true);
             event.cancelBubble = true;
             if (event.stopPropagation) event.stopPropagation();
             return;
@@ -355,10 +355,10 @@ function Menu_Key(item) {
     }
     if ((!horizontal && key == 40) || (horizontal && key == 39)) {
         if (horizontal) {
-            var subMenu = Menu_FindSubMenu(a);
+            var subMenu = MenuFindSubMenu(a);
             if (subMenu && subMenu.style && subMenu.style.visibility && 
                 subMenu.style.visibility.toLowerCase() == "hidden") {
-                Menu_Expand(a, data.horizontalOffset, data.verticalOffset, true);
+                MenuExpand(a, data.horizontalOffset, data.verticalOffset, true);
                 event.cancelBubble = true;
                 if (event.stopPropagation) {
                     event.stopPropagation();
@@ -366,13 +366,13 @@ function Menu_Key(item) {
                 return;
             }
         }
-        nextItem = Menu_FindNext(item);
+        nextItem = MenuFindNext(item);
         while (nextItem && nextItem.disabled) {
-            nextItem = Menu_FindNext(nextItem);
+            nextItem = MenuFindNext(nextItem);
         }
         if (nextItem) {
-            Menu_Focus(nextItem);
-            Menu_Expand(nextItem, data.horizontalOffset, data.verticalOffset, true);
+            MenuFocus(nextItem);
+            MenuExpand(nextItem, data.horizontalOffset, data.verticalOffset, true);
             event.cancelBubble = true;
             if (event.stopPropagation) {
                 event.stopPropagation();
@@ -381,19 +381,19 @@ function Menu_Key(item) {
         }
     }
     if ((!horizontal && key == 39) || (horizontal && key == 40)) {
-        var children = Menu_Expand(a, data.horizontalOffset, data.verticalOffset, true);
+        var children = MenuExpand(a, data.horizontalOffset, data.verticalOffset, true);
         if (children) {
             var firstChild;
-            children = WebForm_GetElementsByTagName(children, "A");
+            children = WebFormGetElementsByTagName(children, "A");
             for (var i = 0; i < children.length; i++) {
-                if (!children[i].disabled && Menu_IsSelectable(children[i])) {
+                if (!children[i].disabled && MenuIsSelectable(children[i])) {
                     firstChild = children[i];
                     break;
                 }
             }
             if (firstChild) {
-                Menu_Focus(firstChild);
-                Menu_Expand(firstChild, data.horizontalOffset, data.verticalOffset, true);
+                MenuFocus(firstChild);
+                MenuExpand(firstChild, data.horizontalOffset, data.verticalOffset, true);
                 event.cancelBubble = true;
                 if (event.stopPropagation) {
                     event.stopPropagation();
@@ -402,18 +402,18 @@ function Menu_Key(item) {
             }
         }
         else {
-            parentItem = Menu_FindParentItem(item);
-            while (parentItem && !Menu_IsHorizontal(parentItem)) {
-                parentItem = Menu_FindParentItem(parentItem);
+            parentItem = MenuFindParentItem(item);
+            while (parentItem && !MenuIsHorizontal(parentItem)) {
+                parentItem = MenuFindParentItem(parentItem);
             }
             if (parentItem) {
-                nextItem = Menu_FindNext(parentItem);
+                nextItem = MenuFindNext(parentItem);
                 while (nextItem && nextItem.disabled) {
-                    nextItem = Menu_FindNext(nextItem);
+                    nextItem = MenuFindNext(nextItem);
                 }
                 if (nextItem) {
-                    Menu_Focus(nextItem);
-                    Menu_Expand(nextItem, data.horizontalOffset, data.verticalOffset, true);
+                    MenuFocus(nextItem);
+                    MenuExpand(nextItem, data.horizontalOffset, data.verticalOffset, true);
                     event.cancelBubble = true;
                     if (event.stopPropagation) {
                         event.stopPropagation();
@@ -424,16 +424,16 @@ function Menu_Key(item) {
         }
     }
     if ((!horizontal && key == 37) || (horizontal && key == 38)) {
-        parentItem = Menu_FindParentItem(item);
+        parentItem = MenuFindParentItem(item);
         if (parentItem) {
-            if (Menu_IsHorizontal(parentItem)) {
-                previousItem = Menu_FindPrevious(parentItem);
+            if (MenuIsHorizontal(parentItem)) {
+                previousItem = MenuFindPrevious(parentItem);
                 while (previousItem && previousItem.disabled) {
-                    previousItem = Menu_FindPrevious(previousItem);
+                    previousItem = MenuFindPrevious(previousItem);
                 }
                 if (previousItem) {
-                    Menu_Focus(previousItem);
-                    Menu_Expand(previousItem, data.horizontalOffset, data.verticalOffset, true);
+                    MenuFocus(previousItem);
+                    MenuExpand(previousItem, data.horizontalOffset, data.verticalOffset, true);
                     event.cancelBubble = true;
                     if (event.stopPropagation) {
                         event.stopPropagation();
@@ -441,11 +441,11 @@ function Menu_Key(item) {
                     return;
                 }
             }
-            var parentA = WebForm_GetElementByTagName(parentItem, "A");
+            var parentA = WebFormGetElementByTagName(parentItem, "A");
             if (parentA) {
-                Menu_Focus(parentA);
+                MenuFocus(parentA);
             }
-            Menu_ResetSiblings(parentItem);
+            MenuResetSiblings(parentItem);
             event.cancelBubble = true;
             if (event.stopPropagation) {
                 event.stopPropagation();
@@ -454,7 +454,7 @@ function Menu_Key(item) {
         }
     }
     if (key == 27) {
-        Menu_HideItems();
+        MenuHideItems();
         event.cancelBubble = true;
         if (event.stopPropagation) {
             event.stopPropagation();
@@ -462,7 +462,7 @@ function Menu_Key(item) {
         return;
     }
 }
-function Menu_ResetSiblings(item) {
+function MenuResetSiblings(item) {
     var table = (item.tagName.toLowerCase() == "td") ?
         item.parentNode.parentNode.parentNode :
         item.parentNode.parentNode;
@@ -478,9 +478,9 @@ function Menu_ResetSiblings(item) {
         for(i = 0; i < table.rows.length; i++) {
             childNode = table.rows[i];
             if (childNode != item) {
-                child = WebForm_GetElementById(childNode.id + "Items");
+                child = WebFormGetElementById(childNode.id + "Items");
                 if (child) {
-                    Menu_HideItems(child);
+                    MenuHideItems(child);
                 }
             }
         }
@@ -489,21 +489,21 @@ function Menu_ResetSiblings(item) {
         for(i = 0; i < table.rows[0].cells.length; i++) {
             childNode = table.rows[0].cells[i];
             if (childNode != item) {
-                child = WebForm_GetElementById(childNode.id + "Items");
+                child = WebFormGetElementById(childNode.id + "Items");
                 if (child) {
-                    Menu_HideItems(child);
+                    MenuHideItems(child);
                 }
             }
         }
     }
-    Menu_ResetTopMenus(table, table, 0, true);
+    MenuResetTopMenus(table, table, 0, true);
 }
-function Menu_ResetTopMenus(table, doNotReset, level, up) {
+function MenuResetTopMenus(table, doNotReset, level, up) {
     var i, child, childNode;
     if (up && table.id == "") {
         var parentTable = table.parentNode.parentNode.parentNode.parentNode;
         if (parentTable.tagName.toLowerCase() == "table") {
-            Menu_ResetTopMenus(parentTable, doNotReset, level + 1, true);
+            MenuResetTopMenus(parentTable, doNotReset, level + 1, true);
         }
     }
     else {
@@ -511,18 +511,18 @@ function Menu_ResetTopMenus(table, doNotReset, level, up) {
             if (table.rows[0].id) {
                 for(i = 0; i < table.rows.length; i++) {
                     childNode = table.rows[i];
-                    child = WebForm_GetElementById(childNode.id + "Items");
+                    child = WebFormGetElementById(childNode.id + "Items");
                     if (child) {
-                        Menu_HideItems(child);
+                        MenuHideItems(child);
                     }
                 }
             }
             else {
                 for(i = 0; i < table.rows[0].cells.length; i++) {
                     childNode = table.rows[0].cells[i];
-                    child = WebForm_GetElementById(childNode.id + "Items");
+                    child = WebFormGetElementById(childNode.id + "Items");
                     if (child) {
-                        Menu_HideItems(child);
+                        MenuHideItems(child);
                     }
                 }
             }
@@ -532,50 +532,50 @@ function Menu_ResetTopMenus(table, doNotReset, level, up) {
                 for (var j = 0; j < table.rows[i].cells.length; j++) {
                     var subTable = table.rows[i].cells[j].firstChild;
                     if (subTable && subTable.tagName.toLowerCase() == "table") {
-                        Menu_ResetTopMenus(subTable, doNotReset, level - 1, false);
+                        MenuResetTopMenus(subTable, doNotReset, level - 1, false);
                     }
                 }
             }
         }
     }
 }
-function Menu_RestoreInterval() {
+function MenuRestoreInterval() {
     if (__menuInterval && __rootMenuItem) {
-        Menu_ClearInterval();
-        __menuInterval = window.setInterval("Menu_HideItems()", __disappearAfter);
+        MenuClearInterval();
+        __menuInterval = window.setInterval("MenuHideItems()", __disappearAfter);
     }
 }
-function Menu_SetRoot(item) {
-    var newRoot = Menu_FindMenu(item);
+function MenuSetRoot(item) {
+    var newRoot = MenuFindMenu(item);
     if (newRoot) {
         if (__rootMenuItem && __rootMenuItem != newRoot) {
-            Menu_HideItems();
+            MenuHideItems();
         }
         __rootMenuItem = newRoot;
     }
 }
-function Menu_Unhover(item) {
+function MenuUnhover(item) {
     var node = (item.tagName.toLowerCase() == "td") ?
         item:
         item.cells[0];
-    var nodeTable = WebForm_GetElementByTagName(node, "table");
+    var nodeTable = WebFormGetElementByTagName(node, "table");
     if (nodeTable.hoverClass) {
-        WebForm_RemoveClassName(nodeTable, nodeTable.hoverClass);
+        WebFormRemoveClassName(nodeTable, nodeTable.hoverClass);
     }
     node = nodeTable.rows[0].cells[0].childNodes[0];
     if (node.hoverHyperLinkClass) {
-        WebForm_RemoveClassName(node, node.hoverHyperLinkClass);
+        WebFormRemoveClassName(node, node.hoverHyperLinkClass);
     }
-    Menu_Collapse(node);
+    MenuCollapse(node);
 }
-function PopOut_Clip(element, y, height) {
+function PopOutClip(element, y, height) {
     if (element && element.style) {
         element.style.clip = "rect(" + y + "px auto " + (y + height) + "px auto)";
         element.style.overflow = "hidden";
     }
 }
-function PopOut_Down(scroller) {
-    Menu_ClearInterval();
+function PopOutDown(scroller) {
+    MenuClearInterval();
     var panel;
     if (scroller) {
         panel = scroller.parentNode
@@ -584,41 +584,41 @@ function PopOut_Down(scroller) {
         panel = __scrollPanel;
     }
     if (panel && ((panel.offset + panel.clippedHeight) < panel.physicalHeight)) {
-        PopOut_Scroll(panel, 2)
+        PopOutScroll(panel, 2)
         __scrollPanel = panel;
-        PopOut_ShowScrollers(panel);
-        PopOut_Stop();
-        __scrollPanel.interval = window.setInterval("PopOut_Down()", 8);
+        PopOutShowScrollers(panel);
+        PopOutStop();
+        __scrollPanel.interval = window.setInterval("PopOutDown()", 8);
     }
     else {
-        PopOut_ShowScrollers(panel);
+        PopOutShowScrollers(panel);
     }
 }
-function PopOut_Hide(panelId) {
-    var panel = WebForm_GetElementById(panelId);
+function PopOutHide(panelId) {
+    var panel = WebFormGetElementById(panelId);
     if (panel && panel.tagName.toLowerCase() == "div") {
         panel.style.visibility = "hidden";
         panel.style.display = "none";
         panel.offset = 0;
         panel.scrollTop = 0;
-        var table = WebForm_GetElementByTagName(panel, "TABLE");
+        var table = WebFormGetElementByTagName(panel, "TABLE");
         if (table) {
-            WebForm_SetElementY(table, 0);
+            WebFormSetElementY(table, 0);
         }
         if (window.navigator && window.navigator.appName == "Microsoft Internet Explorer" &&
             !window.opera) {
             var childFrameId = panel.id + "_MenuIFrame";
-            var childFrame = WebForm_GetElementById(childFrameId);
+            var childFrame = WebFormGetElementById(childFrameId);
             if (childFrame) {
                 childFrame.style.display = "none";
             }
         }
     }
 }
-function PopOut_HideScrollers(panel) {
+function PopOutHideScrollers(panel) {
     if (panel && panel.style) {
-        var up = WebForm_GetElementById(panel.id + "Up");
-        var dn = WebForm_GetElementById(panel.id + "Dn");
+        var up = WebFormGetElementById(panel.id + "Up");
+        var dn = WebFormGetElementById(panel.id + "Dn");
         if (up) {
             up.style.visibility = "hidden";
             up.style.display = "none";
@@ -629,36 +629,36 @@ function PopOut_HideScrollers(panel) {
         }
     }
 }
-function PopOut_Position(panel, hideScrollers) {
+function PopOutPosition(panel, hideScrollers) {
     if (window.opera) {
         panel.parentNode.removeChild(panel);
         document.forms[0].appendChild(panel);
     }
-    var rel = WebForm_GetElementById(panel.rel);
-    var relTable = WebForm_GetElementByTagName(rel, "TABLE");
-    var relCoordinates = WebForm_GetElementPosition(relTable ? relTable : rel);
-    var panelCoordinates = WebForm_GetElementPosition(panel);
+    var rel = WebFormGetElementById(panel.rel);
+    var relTable = WebFormGetElementByTagName(rel, "TABLE");
+    var relCoordinates = WebFormGetElementPosition(relTable ? relTable : rel);
+    var panelCoordinates = WebFormGetElementPosition(panel);
     var panelHeight = ((typeof(panel.physicalHeight) != "undefined") && (panel.physicalHeight != null)) ?
         panel.physicalHeight :
         panelCoordinates.height;
     panel.physicalHeight = panelHeight;
     var panelParentCoordinates;
     if (panel.offsetParent) {
-        panelParentCoordinates = WebForm_GetElementPosition(panel.offsetParent);
+        panelParentCoordinates = WebFormGetElementPosition(panel.offsetParent);
     }
     else {
         panelParentCoordinates = new Object();
         panelParentCoordinates.x = 0;
         panelParentCoordinates.y = 0;
     }
-    var overflowElement = WebForm_GetElementById("__overFlowElement");
+    var overflowElement = WebFormGetElementById("__overFlowElement");
     if (!overflowElement) {
         overflowElement = document.createElement("img");
         overflowElement.id="__overFlowElement";
-        WebForm_SetElementWidth(overflowElement, 1);
+        WebFormSetElementWidth(overflowElement, 1);
         document.body.appendChild(overflowElement);
     }
-    WebForm_SetElementHeight(overflowElement, panelHeight + relCoordinates.y + parseInt(panel.y ? panel.y : 0));
+    WebFormSetElementHeight(overflowElement, panelHeight + relCoordinates.y + parseInt(panel.y ? panel.y : 0));
     overflowElement.style.visibility = "visible";
     overflowElement.style.display = "inline";
     var clientHeight = 0;
@@ -695,79 +695,79 @@ function PopOut_Position(panel, hideScrollers) {
     var rightWindowBorder = clientWidth + scrollLeft;
     var position = panel.pos;
     if ((typeof(position) == "undefined") || (position == null) || (position == "")) {
-        position = (WebForm_GetElementDir(rel) == "rtl" ? "middleleft" : "middleright");
+        position = (WebFormGetElementDir(rel) == "rtl" ? "middleleft" : "middleright");
     }
     position = position.toLowerCase();
     var y = relCoordinates.y + parseInt(panel.y ? panel.y : 0) - panelParentCoordinates.y;
     var borderParent = (rel && rel.parentNode && rel.parentNode.parentNode && rel.parentNode.parentNode.parentNode
         && rel.parentNode.parentNode.parentNode.tagName.toLowerCase() == "div") ?
         rel.parentNode.parentNode.parentNode : null;
-    WebForm_SetElementY(panel, y);
-    PopOut_SetPanelHeight(panel, panelHeight, true);
+    WebFormSetElementY(panel, y);
+    PopOutSetPanelHeight(panel, panelHeight, true);
     var clip = false;
     var overflow;
     if (position.indexOf("top") != -1) {
         y -= panelHeight;
-        WebForm_SetElementY(panel, y); 
+        WebFormSetElementY(panel, y); 
         if (y < -panelParentCoordinates.y) {
             y = -panelParentCoordinates.y;
-            WebForm_SetElementY(panel, y); 
+            WebFormSetElementY(panel, y); 
             if (panelHeight > clientHeight - 2) {
                 clip = true;
-                PopOut_SetPanelHeight(panel, clientHeight - 2);
+                PopOutSetPanelHeight(panel, clientHeight - 2);
             }
         }
     }
     else {
         if (position.indexOf("bottom") != -1) {
             y += relCoordinates.height;
-            WebForm_SetElementY(panel, y); 
+            WebFormSetElementY(panel, y); 
         }
         overflow = y + panelParentCoordinates.y + panelHeight - bottomWindowBorder;
         if (overflow > 0) {
             y -= overflow;
-            WebForm_SetElementY(panel, y); 
+            WebFormSetElementY(panel, y); 
             if (y < -panelParentCoordinates.y) {
                 y = 2 - panelParentCoordinates.y + scrollTop;
-                WebForm_SetElementY(panel, y); 
+                WebFormSetElementY(panel, y); 
                 clip = true;
-                PopOut_SetPanelHeight(panel, clientHeight - 2);
+                PopOutSetPanelHeight(panel, clientHeight - 2);
             }
         }
     }
     if (!clip) {
-        PopOut_SetPanelHeight(panel, panel.clippedHeight, true);
+        PopOutSetPanelHeight(panel, panel.clippedHeight, true);
     }
     var panelParentOffsetY = 0;
     if (panel.offsetParent) {
-        panelParentOffsetY = WebForm_GetElementPosition(panel.offsetParent).y;
+        panelParentOffsetY = WebFormGetElementPosition(panel.offsetParent).y;
     }
     var panelY = ((typeof(panel.originY) != "undefined") && (panel.originY != null)) ?
         panel.originY :
         y - panelParentOffsetY;
     panel.originY = panelY;
     if (!hideScrollers) {
-        PopOut_ShowScrollers(panel);
+        PopOutShowScrollers(panel);
     }
     else {
-        PopOut_HideScrollers(panel);
+        PopOutHideScrollers(panel);
     }
     var x = relCoordinates.x + parseInt(panel.x ? panel.x : 0) - panelParentCoordinates.x;
     if (borderParent && borderParent.clientLeft) {
         x += 2 * borderParent.clientLeft;
     }
-    WebForm_SetElementX(panel, x);
+    WebFormSetElementX(panel, x);
     if (position.indexOf("left") != -1) {
         x -= panelCoordinates.width;
-        WebForm_SetElementX(panel, x);
+        WebFormSetElementX(panel, x);
         if (x < -panelParentCoordinates.x) {
-            WebForm_SetElementX(panel, -panelParentCoordinates.x);
+            WebFormSetElementX(panel, -panelParentCoordinates.x);
         }
     }
     else {
         if (position.indexOf("right") != -1) {
             x += relCoordinates.width;
-            WebForm_SetElementX(panel, x);
+            WebFormSetElementX(panel, x);
         }
         overflow = x + panelParentCoordinates.x + panelCoordinates.width - rightWindowBorder;
         if (overflow > 0) {
@@ -777,56 +777,56 @@ function PopOut_Position(panel, hideScrollers) {
             else {
                 x -= overflow;
             }
-            WebForm_SetElementX(panel, x);
+            WebFormSetElementX(panel, x);
             if (x < -panelParentCoordinates.x) {
-                WebForm_SetElementX(panel, -panelParentCoordinates.x);
+                WebFormSetElementX(panel, -panelParentCoordinates.x);
             }
         }
     }
 }
-function PopOut_Scroll(panel, offsetDelta) {
-    var table = WebForm_GetElementByTagName(panel, "TABLE");
+function PopOutScroll(panel, offsetDelta) {
+    var table = WebFormGetElementByTagName(panel, "TABLE");
     if (!table) {
         return;
     }
     table.style.position = "relative";
     var tableY = (table.style.top ? parseInt(table.style.top) : 0);
     panel.offset += offsetDelta;
-    WebForm_SetElementY(table, tableY - offsetDelta);
+    WebFormSetElementY(table, tableY - offsetDelta);
 }
-function PopOut_SetPanelHeight(element, height, doNotClip) {
+function PopOutSetPanelHeight(element, height, doNotClip) {
     if (element && element.style) {
-        var size = WebForm_GetElementPosition(element);
+        var size = WebFormGetElementPosition(element);
         element.physicalWidth = size.width;
         element.clippedHeight = height;
-        WebForm_SetElementHeight(element, height - (element.clientTop ? (2 * element.clientTop) : 0));
+        WebFormSetElementHeight(element, height - (element.clientTop ? (2 * element.clientTop) : 0));
         if (doNotClip && element.style) {
             element.style.clip = "rect(auto auto auto auto)";
         }
         else {
-            PopOut_Clip(element, 0, height);
+            PopOutClip(element, 0, height);
         }
     }
 }
-function PopOut_Show(panelId, hideScrollers, data) {
-    var panel = WebForm_GetElementById(panelId);
+function PopOutShow(panelId, hideScrollers, data) {
+    var panel = WebFormGetElementById(panelId);
     if (panel && panel.tagName.toLowerCase() == "div") {
         panel.style.visibility = "visible";
         panel.style.display = "inline";
         if (!panel.offset || hideScrollers) {
             panel.scrollTop = 0;
             panel.offset = 0;
-            var table = WebForm_GetElementByTagName(panel, "TABLE");
+            var table = WebFormGetElementByTagName(panel, "TABLE");
             if (table) {
-                WebForm_SetElementY(table, 0);
+                WebFormSetElementY(table, 0);
             }
         }
-        PopOut_Position(panel, hideScrollers);
+        PopOutPosition(panel, hideScrollers);
         var z = 1;
         var isIE = window.navigator && window.navigator.appName == "Microsoft Internet Explorer" && !window.opera;
         if (isIE && data) {
             var childFrameId = panel.id + "_MenuIFrame";
-            var childFrame = WebForm_GetElementById(childFrameId);
+            var childFrame = WebFormGetElementById(childFrameId);
             var parent = panel.offsetParent;
             if (!childFrame) {
                 childFrame = document.createElement("iframe");
@@ -843,12 +843,12 @@ function PopOut_Show(panelId, hideScrollers, data) {
                     parent.appendChild(childFrame);
                 }
             }
-            var pos = WebForm_GetElementPosition(panel);
-            var parentPos = WebForm_GetElementPosition(parent);
-            WebForm_SetElementX(childFrame, pos.x - parentPos.x);
-            WebForm_SetElementY(childFrame, pos.y - parentPos.y);
-            WebForm_SetElementWidth(childFrame, pos.width);
-            WebForm_SetElementHeight(childFrame, pos.height);
+            var pos = WebFormGetElementPosition(panel);
+            var parentPos = WebFormGetElementPosition(parent);
+            WebFormSetElementX(childFrame, pos.x - parentPos.x);
+            WebFormSetElementY(childFrame, pos.y - parentPos.y);
+            WebFormSetElementWidth(childFrame, pos.width);
+            WebFormSetElementHeight(childFrame, pos.height);
             childFrame.style.display = "block";
             if (panel.currentStyle && panel.currentStyle.zIndex && panel.currentStyle.zIndex != "auto") {
                 z = panel.currentStyle.zIndex;
@@ -860,10 +860,10 @@ function PopOut_Show(panelId, hideScrollers, data) {
         panel.style.zIndex = z;
     }
 }
-function PopOut_ShowScrollers(panel) {
+function PopOutShowScrollers(panel) {
     if (panel && panel.style) {
-        var up = WebForm_GetElementById(panel.id + "Up");
-        var dn = WebForm_GetElementById(panel.id + "Dn");
+        var up = WebFormGetElementById(panel.id + "Up");
+        var dn = WebFormGetElementById(panel.id + "Dn");
         var cnt = 0;
         if (up && dn) {
             if (panel.offset && panel.offset > 0) {
@@ -871,10 +871,10 @@ function PopOut_ShowScrollers(panel) {
                 up.style.display = "inline";
                 cnt++;
                 if (panel.clientWidth) {
-                    WebForm_SetElementWidth(up, panel.clientWidth
+                    WebFormSetElementWidth(up, panel.clientWidth
                         - (up.clientLeft ? (2 * up.clientLeft) : 0));
                 }
-                WebForm_SetElementY(up, 0);
+                WebFormSetElementY(up, 0);
             }
             else {
                 up.style.visibility = "hidden";
@@ -885,10 +885,10 @@ function PopOut_ShowScrollers(panel) {
                 dn.style.display = "inline";
                 cnt++;
                 if (panel.clientWidth) {
-                    WebForm_SetElementWidth(dn, panel.clientWidth
+                    WebFormSetElementWidth(dn, panel.clientWidth
                         - (dn.clientLeft ? (2 * dn.clientLeft) : 0));
                 }
-                WebForm_SetElementY(dn, panel.clippedHeight - WebForm_GetElementPosition(dn).height
+                WebFormSetElementY(dn, panel.clippedHeight - WebFormGetElementPosition(dn).height
                     - (panel.clientTop ? (2 * panel.clientTop) : 0));
             }
             else {
@@ -901,14 +901,14 @@ function PopOut_ShowScrollers(panel) {
         }
     }
 }
-function PopOut_Stop() {
+function PopOutStop() {
     if (__scrollPanel && __scrollPanel.interval) {
         window.clearInterval(__scrollPanel.interval);
     }
-    Menu_RestoreInterval();
+    MenuRestoreInterval();
 }
-function PopOut_Up(scroller) {
-    Menu_ClearInterval();
+function PopOutUp(scroller) {
+    MenuClearInterval();
     var panel;
     if (scroller) {
         panel = scroller.parentNode
@@ -917,10 +917,10 @@ function PopOut_Up(scroller) {
         panel = __scrollPanel;
     }
     if (panel && panel.offset && panel.offset > 0) {
-        PopOut_Scroll(panel, -2);
+        PopOutScroll(panel, -2);
         __scrollPanel = panel;
-        PopOut_ShowScrollers(panel);
-        PopOut_Stop();
-        __scrollPanel.interval = window.setInterval("PopOut_Up()", 8);
+        PopOutShowScrollers(panel);
+        PopOutStop();
+        __scrollPanel.interval = window.setInterval("PopOutUp()", 8);
     }
 }

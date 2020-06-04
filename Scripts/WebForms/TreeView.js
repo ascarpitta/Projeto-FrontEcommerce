@@ -4,7 +4,7 @@ function TreeView_HoverNode(data, node) {
         return;
     }
     node.hoverClass = data.hoverClass;
-    WebForm_AppendToClassName(node, data.hoverClass);
+    WebFormAppendToClassName(node, data.hoverClass);
     if (__nonMSDOMBrowser) {
         node = node.childNodes[node.childNodes.length - 1];
     }
@@ -12,7 +12,7 @@ function TreeView_HoverNode(data, node) {
         node = node.children[node.children.length - 1];
     }
     node.hoverHyperLinkClass = data.hoverHyperLinkClass;
-    WebForm_AppendToClassName(node, data.hoverHyperLinkClass);
+    WebFormAppendToClassName(node, data.hoverHyperLinkClass);
 }
 function TreeView_GetNodeText(node) {
     var trNode = WebForm_GetParentByTagName(node, "TR");
@@ -145,14 +145,14 @@ function TreeView_SelectNode(data, node, nodeId) {
         if (id.length > 0) {
             var selectedNode = document.getElementById(id);
             if ((typeof(selectedNode) != "undefined") && (selectedNode != null)) {
-                WebForm_RemoveClassName(selectedNode, data.selectedHyperLinkClass);
+                WebFormRemoveClassName(selectedNode, data.selectedHyperLinkClass);
                 selectedNode = WebForm_GetParentByTagName(selectedNode, "TD");
-                WebForm_RemoveClassName(selectedNode, data.selectedClass);
+                WebFormRemoveClassName(selectedNode, data.selectedClass);
             }
         }
-        WebForm_AppendToClassName(node, data.selectedHyperLinkClass);
+        WebFormAppendToClassName(node, data.selectedHyperLinkClass);
         node = WebForm_GetParentByTagName(node, "TD");
-        WebForm_AppendToClassName(node, data.selectedClass)
+        WebFormAppendToClassName(node, data.selectedClass)
     }
     data.selectedNodeID.value = nodeId;
 }
@@ -209,12 +209,12 @@ function TreeView_UnhoverNode(node) {
     if (!node.hoverClass) {
         return;
     }
-    WebForm_RemoveClassName(node, node.hoverClass);
+    WebFormRemoveClassName(node, node.hoverClass);
     if (__nonMSDOMBrowser) {
         node = node.childNodes[node.childNodes.length - 1];
     }
     else {
         node = node.children[node.children.length - 1];
     }
-    WebForm_RemoveClassName(node, node.hoverHyperLinkClass);
+    WebFormRemoveClassName(node, node.hoverHyperLinkClass);
 }

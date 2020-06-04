@@ -293,7 +293,7 @@ function WebPartMenu(menuLabelElement, menuDropDownElement, menuElement) {
     this.Show = WebPartMenu_Show;
     this.Hide = WebPartMenu_Hide;
     this.Hover = WebPartMenu_Hover;
-    this.Unhover = WebPartMenu_Unhover;
+    this.Unhover = WebPartMenuUnhover;
     this.Dispose = WebPartMenu_Dispose;
     var menu = this;
     this.disposeDelegate = function() { menu.Dispose(); };
@@ -355,7 +355,7 @@ function WebPartMenu_Hover() {
         this.menuLabelElement.style.color = this.labelHoverColor;
     }
 }
-function WebPartMenu_Unhover() {
+function WebPartMenuUnhover() {
     if (this.labelHoverClassName != "") {
         this.menuLabelElement.style.textDecoration = this.oldTextDecoration;
         this.menuLabelElement.className = this.oldClassName;

@@ -440,7 +440,7 @@ function WebForm_TextBoxKeyHandler(event) {
 function WebForm_TrimString(value) {
     return value.replace(/^\s+|\s+$/g, '')
 }
-function WebForm_AppendToClassName(element, className) {
+function WebFormAppendToClassName(element, className) {
     var currentClassName = ' ' + WebForm_TrimString(element.className) + ' ';
     className = WebForm_TrimString(className);
     var index = currentClassName.indexOf(' ' + className + ' ');
@@ -448,7 +448,7 @@ function WebForm_AppendToClassName(element, className) {
         element.className = (element.className === '') ? className : element.className + ' ' + className;
     }
 }
-function WebForm_RemoveClassName(element, className) {
+function WebFormRemoveClassName(element, className) {
     var currentClassName = ' ' + WebForm_TrimString(element.className) + ' ';
     className = WebForm_TrimString(className);
     var index = currentClassName.indexOf(' ' + className + ' ');
@@ -457,7 +457,7 @@ function WebForm_RemoveClassName(element, className) {
             currentClassName.substring(index + className.length + 1, currentClassName.length));
     }
 }
-function WebForm_GetElementById(elementId) {
+function WebFormGetElementById(elementId) {
     if (document.getElementById) {
         return document.getElementById(elementId);
     }
@@ -466,14 +466,14 @@ function WebForm_GetElementById(elementId) {
     }
     else return null;
 }
-function WebForm_GetElementByTagName(element, tagName) {
-    var elements = WebForm_GetElementsByTagName(element, tagName);
+function WebFormGetElementByTagName(element, tagName) {
+    var elements = WebFormGetElementsByTagName(element, tagName);
     if (elements && elements.length > 0) {
         return elements[0];
     }
     else return null;
 }
-function WebForm_GetElementsByTagName(element, tagName) {
+function WebFormGetElementsByTagName(element, tagName) {
     if (element && tagName) {
         if (element.getElementsByTagName) {
             return element.getElementsByTagName(tagName);
@@ -484,16 +484,16 @@ function WebForm_GetElementsByTagName(element, tagName) {
     }
     return null;
 }
-function WebForm_GetElementDir(element) {
+function WebFormGetElementDir(element) {
     if (element) {
         if (element.dir) {
             return element.dir;
         }
-        return WebForm_GetElementDir(element.parentNode);
+        return WebFormGetElementDir(element.parentNode);
     }
     return "ltr";
 }
-function WebForm_GetElementPosition(element) {
+function WebFormGetElementPosition(element) {
     var result = new Object();
     result.x = 0;
     result.y = 0;
@@ -549,22 +549,22 @@ function WebForm_GetParentByTagName(element, tagName) {
     }
     return parent;
 }
-function WebForm_SetElementHeight(element, height) {
+function WebFormSetElementHeight(element, height) {
     if (element && element.style) {
         element.style.height = height + "px";
     }
 }
-function WebForm_SetElementWidth(element, width) {
+function WebFormSetElementWidth(element, width) {
     if (element && element.style) {
         element.style.width = width + "px";
     }
 }
-function WebForm_SetElementX(element, x) {
+function WebFormSetElementX(element, x) {
     if (element && element.style) {
         element.style.left = x + "px";
     }
 }
-function WebForm_SetElementY(element, y) {
+function WebFormSetElementY(element, y) {
     if (element && element.style) {
         element.style.top = y + "px";
     }
