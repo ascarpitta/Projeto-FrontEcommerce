@@ -125,13 +125,13 @@ function criarCardsProdutos() {
                 dataType: 'json',
                 success: function (url) {
                     console.log(url);
-                    alert('Usuário desativado')
+                    alert('Usuário desativado');
                     id = url.id;
                     user = id;
                     usuario();
                     window.localStorage.setItem("user", user);
-                    sessionStorage.clear()
-                    localStorage.clear()
+                    sessionStorage.clear();
+                    localStorage.clear();
                 }
             });
         }
@@ -139,6 +139,6 @@ function criarCardsProdutos() {
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

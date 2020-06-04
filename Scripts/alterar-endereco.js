@@ -5,7 +5,7 @@ var user;
 altendereco.addEventListener('submit', function (e) {
 
     var obj = new FormData(altendereco);
-    console.debug(obj)
+    console.debug(obj);
     var end = JSON.stringify(obj.get('end'));
     var nomeEnd = JSON.stringify(obj.get('nomeEnd'));
     var uf = JSON.stringify(obj.get('uf'));
@@ -17,21 +17,21 @@ altendereco.addEventListener('submit', function (e) {
     var complemento = JSON.stringify(obj.get('complemento'));
     var complemento = JSON.stringify(obj.get('obs'));
 
-    console.debug({ end, nomeEnd, uf, cidade, cep, bairro, rua, numero, complemento, obs })
+    console.debug({ end, nomeEnd, uf, cidade, cep, bairro, rua, numero, complemento, obs });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
+    console.debug('Ocorreu um click');
 })
 
 function usuario() {
     endereco = window.localStorage.getItem('endereco');
-    console.log("endereço fora da função: ", endereco)
+    console.log("endereço fora da função: ", endereco);
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function endereco() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
         type: 'get',
@@ -61,7 +61,7 @@ function endereco() {
 }
 
 function editar() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/' + user + '/' + $('#end').val().replace(/\s/g, '') + '/' + $('#nomeEnd').val().replace(/\s/g, '') + '/' + $('#cep').val().replace(/\s/g, '') + '/' + $('#uf').val().replace(/\s/g, '') + '/' + $('#cidade').val().replace(/\s/g, '') + '/' + $('#bairro').val().replace(/\s/g, '') + '/' + $('#rua').val().replace(/\s/g, '') + '/' + $('#numero').val().replace(/\s/g, '') + '/' + $('#complemento').val().replace(/\s/g, '') + '/' + $('#obs').val().replace(/\s/g, ''),
         type: 'get',

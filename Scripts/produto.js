@@ -10,22 +10,22 @@ Http.send();
 
 Http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType)
+        console.log(Http.responseType);
     }
 }
 
 produto.addEventListener('submit', function (e) {
 
     var obj = new FormData(produto);
-    console.debug(obj)
+    console.debug(obj);
 
     var id = JSON.stringify(obj.get('id'));
     var quantity = JSON.stringify(obj.get('quantity'));
     var price = JSON.stringify(obj.get('price'));
-    console.debug({ quantity, price, id })
+    console.debug({ quantity, price, id });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
+    console.debug('Ocorreu um click');
 })
 
 function busca() {
@@ -42,13 +42,13 @@ function busca() {
 
 function usuario() {
     idProduto = window.localStorage.getItem('idProduto');
-    console.log("Prroduto fora da função: ", idProduto)
+    console.log("Prroduto fora da função: ", idProduto);
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function todosprodutos() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos',
         type: 'get',
@@ -64,7 +64,7 @@ function todosprodutos() {
 }
 
 function detalhes() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/id/5e56f7aaf45d7520c44ded3f',
         type: 'get',
@@ -87,13 +87,13 @@ function detalhes() {
             window.localStorage.setItem("idProduto", idProduto);
         },
         error: function (url) {
-            alert('Erro ao buscar produto')
+            alert('Erro ao buscar produto');
         }
     });
 }
 
 function addCarrinho() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto,
         type: 'get',
@@ -106,14 +106,14 @@ function addCarrinho() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 
 function ativar() {
-    usuario()
-    usuario()
+    usuario();
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/' + user + '/' + idProduto,
         type: 'get',
@@ -127,35 +127,35 @@ function ativar() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao ativar produto')
+            alert('Erro ao ativar produto');
         }
     });
 }
 
 function desativar() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto' + user + idProduto,
         type: 'get',
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Usuário desativado')
+            alert('Usuário desativado');
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            sessionStorage.clear()
-            localStorage.clear()
+            sessionStorage.clear();
+            localStorage.clear();
         },
         error: function (url) {
-            alert('Erro ao desativar produto')
+            alert('Erro ao desativar produto');
         }
     });
 }
 
 function add() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/AddListaDesejo/' + user + '/' + idProduto,
         type: 'get',
@@ -168,13 +168,13 @@ function add() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar a lista de desejos')
+            alert('Erro ao adicionar a lista de desejos');
         }
     });
 }
 
 function rem() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + idProduto,
         type: 'get',
@@ -187,31 +187,12 @@ function rem() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao remover da lista de desejos')
+            alert('Erro ao remover da lista de desejos');
         }
     });
 }
 
-//function teste() {
-//    var qnt = document.querySelector('#quantity').value
-//    event.preventDefault();
-//    fetch('https://projetobackecommerce.azurewebsites.net/Api/produtos/')
-//        .then(res => res.json())
-//        .then(data => {
-//            console.log({ data })
-//            console.log(qnt, data[0].price, data[0].id)
-//        })
-
-//    var dinamicDescricao = document.querySelector('#dinamicDescricao').value
-//    fetch('https://projetobackecommerce.azurewebsites.net/Api/produtos/')
-//        .then(res => res.json())
-//        .then(data => {
-//            console.log({ data })
-//            alert(data[0].description)
-//        })
-//}
-
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

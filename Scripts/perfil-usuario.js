@@ -1,14 +1,14 @@
 ﻿var user;
-var conteudo = document.querySelector('#conteudo')
-var consulta = document.querySelector('#consulta')
+var conteudo = document.querySelector('#conteudo');
+var consulta = document.querySelector('#consulta');
 
 function usuario() {
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function perfil() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/id/' + user,
         type: 'GET',
@@ -29,13 +29,13 @@ function perfil() {
             document.getElementById("detalhes3").innerHTML = cpf;
         },
         error: function (url) {
-            alert('É necessário realizar o login')
+            alert('É necessário realizar o login');
         }
     });
 }
 
 function consend() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
         type: 'GET',
@@ -59,7 +59,7 @@ function consend() {
 }
 
 function pedidos() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/pedidos/' + user,
         type: 'GET',
@@ -83,14 +83,14 @@ function pedidos() {
 }
 
 function ativar() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/' + user,
         type: 'get',
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Usuário ativo')
+            alert('Usuário ativo');
             id = url.id;
             user = id;
             usuario();
@@ -100,25 +100,25 @@ function ativar() {
 }
 
 function desativar() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/' + user,
         type: 'get',
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Usuário desativado')
+            alert('Usuário desativado');
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
-            sessionStorage.clear()
-            localStorage.clear()
+            sessionStorage.clear();
+            localStorage.clear();
         }
     });
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

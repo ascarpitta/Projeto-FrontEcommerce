@@ -8,20 +8,20 @@ Http.send();
 
 Http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType)
+        console.log(Http.responseType);
     }
 }
 
 cadcpf.addEventListener('submit', function (e) {
 
     var obj = new FormData(cadcpf);
-    console.debug(obj)
+    console.debug(obj);
 
     var cpf = JSON.stringify(obj.get('cpf'));
-    console.debug({ cpf })
+    console.debug({ cpf });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
+    console.debug('Ocorreu um click');
 })
 
 function verificarcpf() {
@@ -31,15 +31,15 @@ function verificarcpf() {
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Cpf já cadastrado')
+            alert('Cpf já cadastrado');
         },
         error: function (url) {
-            alert('Cpf pode prosseguir')
+            alert('Cpf pode prosseguir');
         }
     });
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

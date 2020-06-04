@@ -1,11 +1,11 @@
 ﻿var user;
 var produto;
-var altproduto = document.querySelector('#altproduto')
+var altproduto = document.querySelector('#altproduto');
 
 altproduto.addEventListener('submit', function (e) {
 
     var obj = new FormData(altproduto);
-    console.debug(obj)
+    console.debug(obj);
 
     var prod = JSON.stringify(obj.get('prod'));
     var nome = JSON.stringify(obj.get('nome'));
@@ -16,20 +16,20 @@ altproduto.addEventListener('submit', function (e) {
     var quantidade = JSON.stringify(obj.get('quantidade'));
     var frete = JSON.stringify(obj.get('frete'));
 
-    console.debug({ prod, nome, marca, categoria, descricao, preco, quantidade, frete })
+    console.debug({ prod, nome, marca, categoria, descricao, preco, quantidade, frete });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
+    console.debug('Ocorreu um click');
 })
 
 function usuario() {
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
-    console.log("Produto fora da função: ", produto)
+    console.log("id fora da função: ", user);
+    console.log("Produto fora da função: ", produto);
 }
 
 function produto() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e8cfff8d7067e80b084664d',
         type: 'get',
@@ -102,7 +102,7 @@ function produto() {
 } 
 
 function altProduto() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/alterarProduto/' + user + '/' + $('#prod').val() + '/' + $('#nome').val() + '/' + $('#descricao').val() + '/' + $('#preco').val() + '/' + $('#frete').val() + '/' + $('#quantidade').val() + '/' + $('#categoria').val() + '/' + $('#marca').val(),
         type: 'get',
@@ -110,7 +110,7 @@ function altProduto() {
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Produto alterado com sucesso')
+            alert('Produto alterado com sucesso');
             id = url.id;
             user = id;
             usuario();
@@ -120,6 +120,6 @@ function altProduto() {
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

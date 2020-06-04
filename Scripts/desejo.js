@@ -5,7 +5,7 @@ var desejo1, desejo2, desejo3, desejo4, desejo5, desejo6, desejo7, desejo8, dese
     desejo29, desejo30, desejo40, desejo41, desejo42, desejo43, desejo44, desejo45, desejo46,
     desejo47, desejo48, desejo49, desejo50, desejo51, desejo52, desejo53, desejo54, desejo55,
     desejo56, desejo57, desejo58, desejo59, desejo60;
-function usuario() {
+function usuario(); {
     desejo1 = window.localStorage.getItem('desejo1');
     desejo2 = window.localStorage.getItem('desejo2');
     desejo3 = window.localStorage.getItem('desejo3');
@@ -46,11 +46,11 @@ function usuario() {
     desejo23 = window.localStorage.getItem('desejo39');
     desejo23 = window.localStorage.getItem('desejo40');
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function desejo() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/ListaDesejo/' + user,
         type: 'GET',
@@ -75,14 +75,14 @@ function desejo() {
             });
         },
         error: function (url) {
-            alert('Erro ao carregar produtos')
+            alert('Erro ao carregar produtos');
         }
     });
 }
 
 
 function remover() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo1,
         type: 'get',
@@ -100,7 +100,7 @@ function remover() {
     });
 }
 function remover2() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo2,
         type: 'get',
@@ -118,7 +118,7 @@ function remover2() {
     });
 }
 function remover3() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo3,
         type: 'get',
@@ -136,7 +136,7 @@ function remover3() {
     });
 }
 function remover4() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo4,
         type: 'get',
@@ -154,7 +154,7 @@ function remover4() {
     });
 }
 function remover5() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo5,
         type: 'get',
@@ -172,7 +172,7 @@ function remover5() {
     });
 }
 function remover6() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo6,
         type: 'get',
@@ -190,7 +190,7 @@ function remover6() {
     });
 }
 function remover7() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo7,
         type: 'get',
@@ -208,7 +208,7 @@ function remover7() {
     });
 }
 function remover8() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo8,
         type: 'get',
@@ -226,7 +226,7 @@ function remover8() {
     });
 }
 function remover9() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo9,
         type: 'get',
@@ -244,7 +244,7 @@ function remover9() {
     });
 }
 function remover10() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo10,
         type: 'get',
@@ -262,7 +262,7 @@ function remover10() {
     });
 }
 function remover11() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo11,
         type: 'get',
@@ -280,7 +280,7 @@ function remover11() {
     });
 }
 function remover12() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo12,
         type: 'get',
@@ -298,7 +298,7 @@ function remover12() {
     });
 }
 function remover13() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo13,
         type: 'get',
@@ -316,7 +316,7 @@ function remover13() {
     });
 }
 function remover14() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo14,
         type: 'get',
@@ -334,7 +334,7 @@ function remover14() {
     });
 }
 function remover15() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo15,
         type: 'get',
@@ -352,7 +352,7 @@ function remover15() {
     });
 }
 function remover16() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo16,
         type: 'get',
@@ -370,7 +370,7 @@ function remover16() {
     });
 }
 function remover17() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo17,
         type: 'get',
@@ -388,7 +388,7 @@ function remover17() {
     });
 }
 function remover18() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo18,
         type: 'get',
@@ -406,7 +406,7 @@ function remover18() {
     });
 }
 function remover19() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo19,
         type: 'get',
@@ -424,7 +424,7 @@ function remover19() {
     });
 }
 function remover20() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo20,
         type: 'get',
@@ -442,7 +442,7 @@ function remover20() {
     });
 }
 function remover21() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo21,
         type: 'get',
@@ -460,7 +460,7 @@ function remover21() {
     });
 }
 function remover22() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo22,
         type: 'get',
@@ -478,7 +478,7 @@ function remover22() {
     });
 }
 function remover23() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo23,
         type: 'get',
@@ -496,7 +496,7 @@ function remover23() {
     });
 }
 function remover24() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo24,
         type: 'get',
@@ -514,7 +514,7 @@ function remover24() {
     });
 }
 function remover25() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo25,
         type: 'get',
@@ -532,7 +532,7 @@ function remover25() {
     });
 }
 function remover26() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo26,
         type: 'get',
@@ -550,7 +550,7 @@ function remover26() {
     });
 }
 function remover27() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo27,
         type: 'get',
@@ -568,7 +568,7 @@ function remover27() {
     });
 }
 function remover28() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo28,
         type: 'get',
@@ -586,7 +586,7 @@ function remover28() {
     });
 }
 function remover29() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo29,
         type: 'get',
@@ -604,7 +604,7 @@ function remover29() {
     });
 }
 function remover30() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo30,
         type: 'get',
@@ -622,7 +622,7 @@ function remover30() {
     });
 }
 function remover31() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo31,
         type: 'get',
@@ -640,7 +640,7 @@ function remover31() {
     });
 }
 function remover32() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo32,
         type: 'get',
@@ -658,7 +658,7 @@ function remover32() {
     });
 }
 function remover33() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo33,
         type: 'get',
@@ -676,7 +676,7 @@ function remover33() {
     });
 }
 function remover34() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo34,
         type: 'get',
@@ -694,7 +694,7 @@ function remover34() {
     });
 }
 function remover35() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo35,
         type: 'get',
@@ -712,7 +712,7 @@ function remover35() {
     });
 }
 function remover36() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo36,
         type: 'get',
@@ -730,7 +730,7 @@ function remover36() {
     });
 }
 function remover37() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo37,
         type: 'get',
@@ -748,7 +748,7 @@ function remover37() {
     });
 }
 function remover38() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo38,
         type: 'get',
@@ -766,7 +766,7 @@ function remover38() {
     });
 }
 function remover39() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo39,
         type: 'get',
@@ -784,7 +784,7 @@ function remover39() {
     });
 }
 function remover40() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo40,
         type: 'get',
@@ -802,7 +802,7 @@ function remover40() {
     });
 }
 function remover41() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo41,
         type: 'get',
@@ -820,7 +820,7 @@ function remover41() {
     });
 }
 function remover42() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo42,
         type: 'get',
@@ -838,7 +838,7 @@ function remover42() {
     });
 }
 function remover43() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo43,
         type: 'get',
@@ -856,7 +856,7 @@ function remover43() {
     });
 }
 function remover44() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo44,
         type: 'get',
@@ -874,7 +874,7 @@ function remover44() {
     });
 }
 function remover45() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo45,
         type: 'get',
@@ -892,7 +892,7 @@ function remover45() {
     });
 }
 function remover46() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo46,
         type: 'get',
@@ -910,7 +910,7 @@ function remover46() {
     });
 }
 function remover47() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo47,
         type: 'get',
@@ -928,7 +928,7 @@ function remover47() {
     });
 }
 function remover48() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo48,
         type: 'get',
@@ -946,7 +946,7 @@ function remover48() {
     });
 }
 function remover49() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo49,
         type: 'get',
@@ -964,7 +964,7 @@ function remover49() {
     });
 }
 function remover50() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo50,
         type: 'get',
@@ -982,7 +982,7 @@ function remover50() {
     });
 }
 function remover51() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo51,
         type: 'get',
@@ -1000,7 +1000,7 @@ function remover51() {
     });
 }
 function remover52() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo52,
         type: 'get',
@@ -1018,7 +1018,7 @@ function remover52() {
     });
 }
 function remover53() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo53,
         type: 'get',
@@ -1036,7 +1036,7 @@ function remover53() {
     });
 }
 function remover54() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo54,
         type: 'get',
@@ -1054,7 +1054,7 @@ function remover54() {
     });
 }
 function remover55() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo55,
         type: 'get',
@@ -1072,7 +1072,7 @@ function remover55() {
     });
 }
 function remover56() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo56,
         type: 'get',
@@ -1090,7 +1090,7 @@ function remover56() {
     });
 }
 function remover57() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo57,
         type: 'get',
@@ -1108,7 +1108,7 @@ function remover57() {
     });
 }
 function remover58() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo58,
         type: 'get',
@@ -1126,7 +1126,7 @@ function remover58() {
     });
 }
 function remover59() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo59,
         type: 'get',
@@ -1144,7 +1144,7 @@ function remover59() {
     });
 }
 function remover60() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo60,
         type: 'get',
@@ -1163,7 +1163,7 @@ function remover60() {
 }
 
 function addCarrinho() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + desejo1,
         type: 'get',
@@ -1176,12 +1176,12 @@ function addCarrinho() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho2() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + desejo2,
         type: 'get',
@@ -1194,12 +1194,12 @@ function addCarrinho2() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho3() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto3,
         type: 'get',
@@ -1212,12 +1212,12 @@ function addCarrinho3() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho4() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto4,
         type: 'get',
@@ -1230,12 +1230,12 @@ function addCarrinho4() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho5() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto5,
         type: 'get',
@@ -1248,12 +1248,12 @@ function addCarrinho5() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho6() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto6,
         type: 'get',
@@ -1266,12 +1266,12 @@ function addCarrinho6() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho7() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto7,
         type: 'get',
@@ -1284,12 +1284,12 @@ function addCarrinho7() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho8() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto8,
         type: 'get',
@@ -1302,12 +1302,12 @@ function addCarrinho8() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho9() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto9,
         type: 'get',
@@ -1320,12 +1320,12 @@ function addCarrinho9() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho10() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto10,
         type: 'get',
@@ -1338,12 +1338,12 @@ function addCarrinho10() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho11() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto11,
         type: 'get',
@@ -1356,12 +1356,12 @@ function addCarrinho11() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho12() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto12,
         type: 'get',
@@ -1374,12 +1374,12 @@ function addCarrinho12() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho13() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto13,
         type: 'get',
@@ -1392,12 +1392,12 @@ function addCarrinho13() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho14() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto14,
         type: 'get',
@@ -1410,12 +1410,12 @@ function addCarrinho14() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho15() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto15,
         type: 'get',
@@ -1428,12 +1428,12 @@ function addCarrinho15() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho16() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto16,
         type: 'get',
@@ -1446,12 +1446,12 @@ function addCarrinho16() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho17() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto17,
         type: 'get',
@@ -1464,12 +1464,12 @@ function addCarrinho17() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho18() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto18,
         type: 'get',
@@ -1482,12 +1482,12 @@ function addCarrinho18() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho19() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto19,
         type: 'get',
@@ -1500,12 +1500,12 @@ function addCarrinho19() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho20() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto20,
         type: 'get',
@@ -1518,12 +1518,12 @@ function addCarrinho20() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho21() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto20,
         type: 'get',
@@ -1536,12 +1536,12 @@ function addCarrinho21() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho22() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto21,
         type: 'get',
@@ -1554,12 +1554,12 @@ function addCarrinho22() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho23() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto22,
         type: 'get',
@@ -1572,12 +1572,12 @@ function addCarrinho23() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho24() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto23,
         type: 'get',
@@ -1590,12 +1590,12 @@ function addCarrinho24() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho25() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto24,
         type: 'get',
@@ -1608,12 +1608,12 @@ function addCarrinho25() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho26() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto25,
         type: 'get',
@@ -1626,12 +1626,12 @@ function addCarrinho26() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho27() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto26,
         type: 'get',
@@ -1644,12 +1644,12 @@ function addCarrinho27() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho28() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto27,
         type: 'get',
@@ -1662,12 +1662,12 @@ function addCarrinho28() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho29() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto28,
         type: 'get',
@@ -1680,12 +1680,12 @@ function addCarrinho29() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho30() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto29,
         type: 'get',
@@ -1698,12 +1698,12 @@ function addCarrinho30() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho31() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto30,
         type: 'get',
@@ -1716,12 +1716,12 @@ function addCarrinho31() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho32() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto31,
         type: 'get',
@@ -1734,12 +1734,12 @@ function addCarrinho32() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho33() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto32,
         type: 'get',
@@ -1752,12 +1752,12 @@ function addCarrinho33() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho34() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto33,
         type: 'get',
@@ -1770,12 +1770,12 @@ function addCarrinho34() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho35() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto34,
         type: 'get',
@@ -1788,12 +1788,12 @@ function addCarrinho35() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho36() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto35,
         type: 'get',
@@ -1806,12 +1806,12 @@ function addCarrinho36() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho37() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto36,
         type: 'get',
@@ -1824,12 +1824,12 @@ function addCarrinho37() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho38() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto37,
         type: 'get',
@@ -1842,12 +1842,12 @@ function addCarrinho38() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho39() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto38,
         type: 'get',
@@ -1860,12 +1860,12 @@ function addCarrinho39() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho40() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto39,
         type: 'get',
@@ -1878,12 +1878,12 @@ function addCarrinho40() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho41() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto40,
         type: 'get',
@@ -1896,12 +1896,12 @@ function addCarrinho41() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho42() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto41,
         type: 'get',
@@ -1914,12 +1914,12 @@ function addCarrinho42() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho43() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto42,
         type: 'get',
@@ -1932,12 +1932,12 @@ function addCarrinho43() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho44() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto43,
         type: 'get',
@@ -1950,12 +1950,12 @@ function addCarrinho44() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho45() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto44,
         type: 'get',
@@ -1968,12 +1968,12 @@ function addCarrinho45() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho46() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto45,
         type: 'get',
@@ -1986,12 +1986,12 @@ function addCarrinho46() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho47() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto47,
         type: 'get',
@@ -2004,12 +2004,12 @@ function addCarrinho47() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho48() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto47,
         type: 'get',
@@ -2022,12 +2022,12 @@ function addCarrinho48() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho49() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto48,
         type: 'get',
@@ -2040,12 +2040,12 @@ function addCarrinho49() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho50() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto49,
         type: 'get',
@@ -2058,12 +2058,12 @@ function addCarrinho50() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho51() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto50,
         type: 'get',
@@ -2076,12 +2076,12 @@ function addCarrinho51() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho52() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto51,
         type: 'get',
@@ -2094,12 +2094,12 @@ function addCarrinho52() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho53() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto52,
         type: 'get',
@@ -2112,12 +2112,12 @@ function addCarrinho53() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho54() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto53,
         type: 'get',
@@ -2130,12 +2130,12 @@ function addCarrinho54() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho55() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto54,
         type: 'get',
@@ -2148,12 +2148,12 @@ function addCarrinho55() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho56() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto55,
         type: 'get',
@@ -2166,12 +2166,12 @@ function addCarrinho56() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho57() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto56,
         type: 'get',
@@ -2184,12 +2184,12 @@ function addCarrinho57() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho58() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto57,
         type: 'get',
@@ -2202,12 +2202,12 @@ function addCarrinho58() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho59() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto58,
         type: 'get',
@@ -2220,12 +2220,12 @@ function addCarrinho59() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 function addCarrinho60() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto59,
         type: 'get',
@@ -2238,13 +2238,13 @@ function addCarrinho60() {
             window.localStorage.setItem("user", user);
         },
         error: function (url) {
-            alert('Erro ao adicionar no carrinho')
+            alert('Erro ao adicionar no carrinho');
         }
     });
 }
 
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }
