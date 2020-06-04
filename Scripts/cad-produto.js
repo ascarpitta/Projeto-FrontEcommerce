@@ -8,14 +8,13 @@ Http.send();
 
 Http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType)
+        console.log(Http.responseType);
     }
 }
 
 cadproduto.addEventListener('submit', function (e) {
-
     var obj = new FormData(cadproduto);
-    console.debug(obj)
+    console.debug(obj);
 
     var nome = JSON.stringify(obj.get('nome'));
     var marca = JSON.stringify(obj.get('marca'));
@@ -25,19 +24,19 @@ cadproduto.addEventListener('submit', function (e) {
     var quantidade = JSON.stringify(obj.get('quantidade'));
     var frete = JSON.stringify(obj.get('frete'));
 
-    console.debug({ nome, marca, categoria, descricao, preco, quantidade, frete })
+    console.debug({ nome, marca, categoria, descricao, preco, quantidade, frete });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
-})
+    console.debug('Ocorreu um click');
+});
 
 function usuario() {
     user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function cadProduto() {
-    usuario()
+    usuario();
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/CadastroProduto/' + user + '/' +
             $('#nome').val().replace(/\s/g, '') + '/' + $('#descricao').val().replace(/\s/g, '') +
@@ -49,7 +48,7 @@ function cadProduto() {
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Produto cadastrado com sucesso') 
+            alert('Produto cadastrado com sucesso'); 
             id = url.id;
             user = id;
             usuario();
@@ -59,6 +58,6 @@ function cadProduto() {
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

@@ -8,20 +8,20 @@ Http.send();
 
 Http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType)
+        console.log(Http.responseType);
     }
-}
+};
 
 cademail.addEventListener('submit', function (e) {
 
     var obj = new FormData(cademail);
-    console.debug(obj)
+    console.debug(obj);
 
     var email = JSON.stringify(obj.get('email'));
-    console.debug({ email })
+    console.debug({ email });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
+    console.debug('Ocorreu um click');
 })
 
 function verificaremail() {
@@ -31,15 +31,15 @@ function verificaremail() {
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('E-mail já cadastrado')
+            alert('E-mail já cadastrado');
         },
         error: function (url) {
-            alert('Email pode prosseguir com sucesso')
+            alert('Email pode prosseguir com sucesso');
         }
     });
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

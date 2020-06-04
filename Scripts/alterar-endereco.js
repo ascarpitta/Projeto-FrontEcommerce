@@ -68,7 +68,7 @@ function editar() {
         dataType: 'json',
         success: function (url) {
             console.log(url);
-            alert('Endereço atualizado com sucesso')
+            alert('Endereço atualizado com sucesso');
             id = url.id;
             user = id;
             usuario();
@@ -98,6 +98,6 @@ function verificar() {
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }

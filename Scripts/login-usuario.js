@@ -9,25 +9,24 @@ Http.send();
 
 Http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType)
+        console.log(Http.responseType);
     }
 }
 
 formulario.addEventListener('submit', function (e) {
-
     var obj = new FormData(formulario);
-    console.debug(obj)
+    console.debug(obj);
 
     var email = JSON.stringify(obj.get('email'));
     var password = JSON.stringify(obj.get('password'));
-    console.info({ email, password })
+    console.info({ email, password });
 
     e.preventDefault();
-    console.debug('Ocorreu um click')
+    console.debug('Ocorreu um click');
 })
 
 function usuario() {
-    console.log("id fora da função: ", user)
+    console.log("id fora da função: ", user);
 }
 
 function teste() {
@@ -37,7 +36,7 @@ function teste() {
         dataType: 'json',   
         success: function (url) {
             console.log(url);
-            alert('Login realizado com sucesso')
+            alert('Login realizado com sucesso');
             id = url.id;
             user = id;
             usuario();
@@ -45,12 +44,12 @@ function teste() {
             window.location.href = "index.html";
         },
         error: function (url) {
-            alert('Erro ao realizar login')
+            alert('Erro ao realizar login');
         }
     });
 }
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }
