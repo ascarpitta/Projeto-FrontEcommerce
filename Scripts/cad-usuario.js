@@ -16,6 +16,12 @@ cadusuario.addEventListener("submit", function (e) {
 
 function teste() {
     var validar = false;
+    var nome = document.querySelector("#nome");
+    var cpf = document.querySelector("#cpf");
+    var password = document.querySelector("#password");
+    var senha2 = document.querySelector("#senha2");
+    var email = document.querySelector("#email");
+
     if (nome.value == "" || nome.value == null || nome.lenght < 3) {
         validar = true;
         alert("Por favor, indique o seu nome.");
