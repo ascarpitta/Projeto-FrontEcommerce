@@ -21,7 +21,7 @@ function produto() {
             criarCardsProdutos();
         },
         error(url) {
-            //alert('Erro ao visualizar produtos');
+            //alert("Erro ao visualizar produtos");
         }
     });
 }
@@ -32,50 +32,50 @@ function criarCardsProdutos() {
     //Laço que percorrerá todos os produtos carregados pelo backend
     urlGlobal.forEach(function (item, index) {
         //Variavel que armazena os cards dos produtos
-        var card = '<div class="card" style="width: 15rem;">' +
-            '<div class="card-body">' +
-            '<img class="card-img-top" src="mackenzie.png" alt="Card image cap">' +
-            '<label>' + item.name + '</label>' +
-            '</div>' +
-            '<div>' +
-            '<div class="top">' +
-            '<div class="open_div">Ver detalhes</div>' +
-            '<div class="hidden_div">' +
-            '<div class="mt-1 font-weight-bold">' +
-            '<span>' + item.name + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'R$' +
-            '<span>' + item.price + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'Descrição:' +
-            '<span>' + item.description + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'Categoria:' +
-            '<span>' + item.category + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'Marca:' +
-            '<span>' + item.marca + '</span>' +
-            '</div>' +
-            '<div class="card row justify-content-center" style="width: 20rem;">' +
-            '<button class="btn btn-primary ativar" type="button" style="background: #4F5D75;" id="' + item.id + '">Ativar</button> </a>' +
-            '<button class="btn btn-primary desativar" type="button" style="background: #4F5D75;" id="' + item.id + '">Desativar </a>' +
-            '</div>' +
-            '<div class="card row justify-content-center">' +
-            '<form method="post" action="alterar-produto.html" style="width: 20rem;">' +
-            '<button class="btn btn-primary " type="submit" style="width: 20rem; background: #4F5D75;">Editar</button>' +
-            '</form>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '<div style="width: 2rem;">' +
-            '<div class="card-body"></div>' +
-            '</div>';
+        var card = "<div class='card' style='width: 15rem;'>" +
+            "<div class='card-body'>" +
+            "<img class='card-img-top' src='mackenzie.png' alt='Card image cap'>" +
+            "<label>" + item.name + "</label>" +
+            "</div>" +
+            "<div>" +
+            "<div class='top'>" +
+            "<div class='open_div'>Ver detalhes</div>" +
+            "<div class='hidden_div'>" +
+            "<div class='mt-1 font-weight-bold'>" +
+            "<span>" + item.name + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "R$" +
+            "<span>" + item.price + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Descrição:" +
+            "<span>" + item.description + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Categoria:" +
+            "<span>" + item.category + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Marca:" +
+            "<span>" + item.marca + "</span>" +
+            "</div>" +
+            "<div class='card row justify-content-center' style='width: 20rem;'>" +
+            "<button class='btn btn-primary ativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Ativar</button> </a>" +
+            "<button class='btn btn-primary desativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Desativar </a>" +
+            "</div>" +
+            "<div class='card row justify-content-center'>" +
+            "<form method='post' action='alterar-produto.html' style='width: 20rem;'>" +
+            "<button class='btn btn-primary ' type='submit' style='width: 20rem; background: #4F5D75;'>Editar</button>" +
+            "</form>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div style='width: 2rem;'>" +
+            "<div class='card-body'></div>" +
+            "</div>";
 
         //Incluindo card na div principal
         $("#lista_produtos").append(card);
