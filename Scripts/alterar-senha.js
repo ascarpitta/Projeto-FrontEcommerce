@@ -1,20 +1,20 @@
-﻿var alterarsenha = document.getElementById('alterarsenha');
+﻿var alterarsenha = document.getElementById("alterarsenha");
 var user;
 
-alterarsenha.addEventListener('submit', function (e) {
+alterarsenha.addEventListener("submit", function (e) {
     var obj = new FormData(alterarsenha);
     console.debug(obj);
 
-    var password = JSON.stringify(obj.get('password'));
-    var senha2 = JSON.stringify(obj.get('senha2'));
+    var password = JSON.stringify(obj.get("password"));
+    var senha2 = JSON.stringify(obj.get("senha2"));
     console.debug({ password, senha2 });
 
     e.preventDefault();
-    console.debug('Ocorreu um click');
+    console.debug("Ocorreu um click");
 });
 
 function usuario() {
-    user = window.localStorage.getItem('user');
+    user = window.localStorage.getItem("user");
     console.log("id fora da função: ", user);
 }
 
@@ -32,24 +32,24 @@ function teste() {
     }
     if (password.value != senha2.value) {
         validar = true;
-        alert('As senhas não coincidem, por favor verifique');
+        alert("As senhas não coincidem, por favor verifique");
         return false;
     }
     if (validar) {
-        alert('Erro ao validar senha');
+        alert("Erro ao validar senha");
     }
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/' + user + '/' + $('#passwordAtual').val() + '/' + $('#password').val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/" + user + "/" + $("#passwordAtual").val() + "/" + $("#password").val(),
         crossDomain: true,
-        type: 'get',
-        dataType: 'json',
+        type: "get",
+        dataType: "json",
         success(url) {
             console.log(url);
-            alert('Senha alterada com sucesso');
+            alert("Senha alterada com sucesso");
         },
         error(url) {
-            alert('Não foi possível alterar a senha');
+            alert("Não foi possível alterar a senha");
         }
     });
 }
