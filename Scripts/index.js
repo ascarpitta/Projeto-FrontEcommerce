@@ -1,61 +1,5 @@
 ﻿let urlGlobal;
 
-function produto() {
-    //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
-    var endpoint;
-    if (window.localStorage.getItem("Nome_Busca") != "" && window.localStorage.getItem("Nome_Busca") != null) {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
-        //colocar show dos botões de ordenação aqui
-        window.localStorage.setItem("Nome_Busca", "");
-        var teste = "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarNomeAZ()'>A-z</button>"+
-            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarNomeZA()'>Z-a</button>"+
-            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarPrecoDesc()'>Maior preço</button>"+
-            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarPrecoAsc()'>Menor preço</button>";
-        $("#ordena_produtos").append(teste);
-    } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos";
-    }
-
-    //Começo do ajax para buscar os produtos
-    $.ajax({
-        url: endpoint,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            urlGlobal = url;
-            criarCardsProdutos();
-        }
-    });
-}
-
-function ordenarNomeAZ() {
-    urlGlobal.sort(function (a, b) {
-        return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-    });
-    criarCardsProdutos();
-}
-
-function ordenarNomeZA() {
-    urlGlobal.sort(function (a, b) {
-        return (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0);
-    });
-    criarCardsProdutos();
-}
-
-function ordenarPrecoAsc() {
-    urlGlobal.sort(function (a, b) {
-        return (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0);
-    });
-    criarCardsProdutos();
-}
-
-function ordenarPrecoDesc() {
-    urlGlobal.sort(function (a, b) {
-        return (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0);
-    });
-    criarCardsProdutos();
-}
-
 function criarCardsProdutos() {
     $("#lista_produtos").empty();
 
@@ -124,7 +68,7 @@ function criarCardsProdutos() {
     $(".addDesejo").click(function () {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
@@ -142,7 +86,7 @@ function criarCardsProdutos() {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
 
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
@@ -160,7 +104,7 @@ function criarCardsProdutos() {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
 
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
@@ -173,6 +117,62 @@ function criarCardsProdutos() {
             });
         }
     });
+}
+
+function produto() {
+    //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
+    var endpoint;
+    if (window.localStorage.getItem("Nome_Busca") !== "" && window.localStorage.getItem("Nome_Busca") !== null) {
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
+        //colocar show dos botões de ordenação aqui
+        window.localStorage.setItem("Nome_Busca", "");
+        var teste = "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarNomeAZ()'>A-z</button>"+
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarNomeZA()'>Z-a</button>"+
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarPrecoDesc()'>Maior preço</button>"+
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarPrecoAsc()'>Menor preço</button>";
+        $("#ordena_produtos").append(teste);
+    } else {
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos";
+    }
+
+    //Começo do ajax para buscar os produtos
+    $.ajax({
+        url: endpoint,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            urlGlobal = url;
+            criarCardsProdutos();
+        }
+    });
+}
+
+function ordenarNomeAZ() {
+    urlGlobal.sort(function (a, b) {
+        return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+    });
+    criarCardsProdutos();
+}
+
+function ordenarNomeZA() {
+    urlGlobal.sort(function (a, b) {
+        return (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0);
+    });
+    criarCardsProdutos();
+}
+
+function ordenarPrecoAsc() {
+    urlGlobal.sort(function (a, b) {
+        return (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0);
+    });
+    criarCardsProdutos();
+}
+
+function ordenarPrecoDesc() {
+    urlGlobal.sort(function (a, b) {
+        return (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0);
+    });
+    criarCardsProdutos();
 }
 
 function sair() {
