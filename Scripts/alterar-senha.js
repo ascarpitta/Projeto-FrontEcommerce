@@ -20,17 +20,17 @@ function usuario() {
 
 function teste() {
     var validar = false;
-    if (password.value == "" || password.value == null || password.lenght < 6) {
+    if (password.value === "" || password.value === null || password.lenght < 6) {
         validar = true;
         alert("Por favor, indique uma senha válida.");
         return false;
     }
-    if (senha2.value == "" || senha2.value == null || senha2.lenght < 6) {
+    if (senha2.value === "" || senha2.value === null || senha2.lenght < 6) {
         validar = true;
         alert("Por favor, indique uma senha válida.");
         return false;
     }
-    if (password.value != senha2.value) {
+    if (password.value !== senha2.value) {
         validar = true;
         alert("As senhas não coincidem, por favor verifique");
         return false;

@@ -16,7 +16,7 @@ function carrinho() {
             console.info(url);
             var produtoCarrinho = "";
             url.produtos.forEach(function (item, i) {
-                if (i == 0) {
+                if (i === 0) {
                     produtoCarrinho = "<div class='item'>" +
                         "<div class='buttons'>" +
                         "<span class='delete-btn remove' id='remove>X</span>" +
