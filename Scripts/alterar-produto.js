@@ -1,29 +1,29 @@
 ﻿var user;
 var produto;
-var altproduto = document.querySelector('#altproduto');
+var altproduto = document.querySelector("#altproduto");
 
-altproduto.addEventListener('submit', function (e) {
+altproduto.addEventListener("submit", function (e) {
 
     var obj = new FormData(altproduto);
     console.debug(obj);
 
-    var prod = JSON.stringify(obj.get('prod'));
-    var nome = JSON.stringify(obj.get('nome'));
-    var marca = JSON.stringify(obj.get('marca'));
-    var categoria = JSON.stringify(obj.get('categoria'));
-    var descricao = JSON.stringify(obj.get('descricao'));
-    var preco = JSON.stringify(obj.get('preco'));
-    var quantidade = JSON.stringify(obj.get('quantidade'));
-    var frete = JSON.stringify(obj.get('frete'));
+    var prod = JSON.stringify(obj.get("prod"));
+    var nome = JSON.stringify(obj.get("nome"));
+    var marca = JSON.stringify(obj.get("marca"));
+    var categoria = JSON.stringify(obj.get("categoria"));
+    var descricao = JSON.stringify(obj.get("descricao"));
+    var preco = JSON.stringify(obj.get("preco"));
+    var quantidade = JSON.stringify(obj.get("quantidade"));
+    var frete = JSON.stringify(obj.get("frete"));
 
     console.debug({ prod, nome, marca, categoria, descricao, preco, quantidade, frete });
 
     e.preventDefault();
-    console.debug('Ocorreu um click');
+    console.debug("Ocorreu um click");
 });
 
 function usuario() {
-    user = window.localStorage.getItem('user');
+    user = window.localStorage.getItem("user");
     console.log("id fora da função: ", user);
     console.log("Produto fora da função: ", produto);
 }
@@ -31,9 +31,9 @@ function usuario() {
 function produto() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e8cfff8d7067e80b084664d',
-        type: 'get',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e8cfff8d7067e80b084664d",
+        type: "get",
+        dataType: "json",
         success(url) {
             console.log(url);
             id = url.id;
@@ -104,13 +104,12 @@ function produto() {
 function altProduto() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/alterarProduto/' + user + '/' + $('#prod').val() + '/' + $('#nome').val() + '/' + $('#descricao').val() + '/' + $('#preco').val() + '/' + $('#frete').val() + '/' + $('#quantidade').val() + '/' + $('#categoria').val() + '/' + $('#marca').val(),
-        type: 'get',
-        //data: { nome: $('#nome').val(), marca: $('#marca').val(), categoria: $('#categoria').val(), descricao: $('#descricao').val(), preco: $('#preco').val(), quantidade: $('#quantidade').val()},
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/produtos/alterarProduto/" + user + "/" + $("#prod").val() + "/" + $("#nome").val() + "/" + $("#descricao").val() + "/" + $("#preco").val() + "/" + $("#frete").val() + "/" + $("#quantidade").val() + "/" + $("#categoria").val() + "/" + $("#marca").val(),
+        type: "get",
+        dataType: "json",
         success(url) {
             console.log(url);
-            alert('Produto alterado com sucesso');
+            alert("Produto alterado com sucesso");
             id = url.id;
             user = id;
             usuario();

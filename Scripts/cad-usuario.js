@@ -1,17 +1,17 @@
-﻿var cadusuario = document.getElementById('cadusuario');
+﻿var cadusuario = document.getElementById("cadusuario");
 
-cadusuario.addEventListener('submit', function (e) {
+cadusuario.addEventListener("submit", function (e) {
     var obj = new FormData(cadusuario);
     console.debug(obj);
 
-    var nome = JSON.stringify(obj.get('nome'));
-    var cpf = JSON.stringify(obj.get('cpf'));
-    var email = JSON.stringify(obj.get('email'));
-    var password = JSON.stringify(obj.get('password'));
+    var nome = JSON.stringify(obj.get("nome"));
+    var cpf = JSON.stringify(obj.get("cpf"));
+    var email = JSON.stringify(obj.get("email"));
+    var password = JSON.stringify(obj.get("password"));
     console.debug({ nome, cpf, email, password });
 
     e.preventDefault();
-    console.debug('Ocorreu um click');
+    console.debug("Ocorreu um click");
 });
 
 function teste() {
@@ -51,22 +51,23 @@ function teste() {
     }
     if (password.value != senha2.value) {
         validar = true;
-        alert('As senhas não coincidem, por favor verifique');
+        alert("As senhas não coincidem, por favor verifique");
         return false;
     }
     if (validar) {
-        alert('Erro ao realizar cadastrado');
+        alert("Erro ao realizar cadastrado");
     }
     else {
-        alert('Cadastro realizado com sucesso');
+        alert("Cadastro realizado com sucesso");
     }
 
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/' + $('#email').val() + '/' + $('#cpf').val() + '/' + $('#nome').val() + '/' + $('#senha2').val(),
-        type: 'POST',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/" + $("#email").val() + "/" + $("#cpf").val() + "/" + $("#nome").val() + "/" + $("#senha2").val(),
+        type: "POST",
+        dataType: "json",
         success(url) {
-            alert('Cadastro realizado com sucesso');
+            console.log(url);
+            alert("Cadastro realizado com sucesso");
         }
     });
 }

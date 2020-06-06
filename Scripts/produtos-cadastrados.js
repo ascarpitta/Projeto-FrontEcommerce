@@ -102,7 +102,7 @@ function criarCardsProdutos() {
                 dataType: 'json',
                 success(url) {
                     console.log(url);
-                    alert('Usuário ativo')
+                    alert('Usuário ativo');
                     id = url.id;
                     user = id;
                     usuario();
