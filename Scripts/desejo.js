@@ -31,7 +31,7 @@ function desejo() {
             }
 
             url.forEach(function (item, i) {
-                if (i == 0) {
+                if (i === 0) {
                     document.getElementById("produto").innerHTML = item.nameProduto;
                     window.localStorage.setItem("desejo" + (i + 1).toString(), item.idProduto);
                     document.getElementById("produto").parentElement.parentElement.style.display = "";
