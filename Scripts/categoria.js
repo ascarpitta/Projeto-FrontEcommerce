@@ -72,7 +72,7 @@ function criarCardsProdutos() {
                 url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/AddListaDesejo/' + user + '/' + idProduto,
                 type: 'get',
                 dataType: 'json',
-                success: function (url) {
+                success(url) {
                     console.log(url);
                 }
             });
@@ -90,7 +90,7 @@ function criarCardsProdutos() {
                 url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + idProduto,
                 type: 'get',
                 dataType: 'json',
-                success: function (url) {
+                success(url) {
                     console.log(url);
                 }
             });
@@ -108,7 +108,7 @@ function criarCardsProdutos() {
                 url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto,
                 type: 'get',
                 dataType: 'json',
-                success: function (url) {
+                success(url) {
                     console.log(url);
                 }
             });

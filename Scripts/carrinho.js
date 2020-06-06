@@ -12,7 +12,7 @@ function carrinho() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/userid/' + user,
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.info(url);
             var produtoCarrinho = "";
             url.produtos.forEach(function (item, i) {
@@ -90,11 +90,11 @@ function carrinho() {
                     url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/RemoverProduto/' + user + '/' + window.localStorage.getItem('produto' + $(this).attr("id").replace("remove", "")),
                     type: 'get',
                     dataType: 'json',
-                    success: function (url) {
+                    success(url) {
                         window.localStorage.setItem("user", user);
                         alert("Produto removido com sucesso");
                     },
-                    error: function (url) {
+                    error(url) {
                         //alert('Erro ao remover produtoo')
                     }
                 });
@@ -108,7 +108,7 @@ function carrinho() {
                     url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/AumentarProduto/' + user + '/' + window.localStorage.getItem('produto' + $(this).parent().attr("id").replace("quantity", "")),
                     type: 'get',
                     dataType: 'json',
-                    success: function (url) {
+                    success(url) {
                         console.log(url);
                         id = url.id;
                         user = id;
@@ -116,7 +116,7 @@ function carrinho() {
                         window.localStorage.setItem("user", user);
                         //alert("Produto aumentado com sucesso")
                     },
-                    error: function (url) {
+                    error(url) {
                         //alert('Erro ao aumentar produtoo')
                     }
                 });
@@ -129,7 +129,7 @@ function carrinho() {
                     url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/DiminuirProduto/' + user + '/' + window.localStorage.getItem('produto' + $(this).parent().attr("id").replace("quantity", "")),
                     type: 'get',
                     dataType: 'json',
-                    success: function (url) {
+                    success(url) {
                         console.log(url);
                         id = url.id;
                         user = id;
@@ -137,7 +137,7 @@ function carrinho() {
                         window.localStorage.setItem("user", user);
                         //alert("Produto diminuido com sucesso")
                     },
-                    error: function (url) {
+                    error(url) {
                         //alert('Erro ao diminuido produtoo')
                     }
                 });
@@ -152,7 +152,7 @@ function consend() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
@@ -184,7 +184,7 @@ function consend() {
                 url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + ende,
                 type: 'get',
                 dataType: 'json',
-                success: function (url) {
+                success(url) {
                     console.log(url);
                     id = url.id;
                     user = id;
@@ -203,7 +203,7 @@ function finalizar() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/' + user,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
@@ -211,7 +211,7 @@ function finalizar() {
             window.localStorage.setItem("user", user);
             alert('Pedido realizado');
         },
-        error: function (url) {
+        error(url) {
             //alert('Erro ao finalizar pedido')
         }
     });

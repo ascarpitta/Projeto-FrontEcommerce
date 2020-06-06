@@ -29,11 +29,11 @@ function verificarcpf() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/cpf/' + $('#cpf').val(),
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Cpf já cadastrado');
         },
-        error: function (url) {
+        error(url) {
             alert('Cpf pode prosseguir');
         }
     });

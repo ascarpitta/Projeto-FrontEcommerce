@@ -36,7 +36,7 @@ function endereco() {
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "get",
         dataType: "json",
-        success: function (url) {
+        success(url) {
             console.log(url);
             help = url[0].id;
             endereco = help;
@@ -66,7 +66,7 @@ function editar() {
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/" + user + "/" + $("#end").val().replace(/\s/g, "") + "/" + $("#nomeEnd").val().replace(/\s/g, "") + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val().replace(/\s/g, "") + "/" + $("#cidade").val().replace(/\s/g, "") + "/" + $("#bairro").val().replace(/\s/g, "") + "/" + $("#rua").val().replace(/\s/g, "") + "/" + $("#numero").val().replace(/\s/g, "") + "/" + $("#complemento").val().replace(/\s/g, "") + "/" + $("#obs").val().replace(/\s/g, ""),
         type: "get",
         dataType: "json",
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert("Endereço atualizado com sucesso");
             id = url.id;
@@ -82,7 +82,7 @@ function verificar() {
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/viacep/" + $("#cep").val(),
         type: "get",
         dataType: "json",
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;

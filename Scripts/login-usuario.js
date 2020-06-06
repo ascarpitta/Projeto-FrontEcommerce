@@ -34,7 +34,7 @@ function teste() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/' + $('#email').val() + '/' + $('#password').val(),
         type: 'GET',
         dataType: 'json',   
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Login realizado com sucesso');
             id = url.id;
@@ -43,7 +43,7 @@ function teste() {
             window.localStorage.setItem("user", user);
             window.location.href = "index.html";
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao realizar login');
         }
     });

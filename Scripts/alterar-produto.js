@@ -34,7 +34,7 @@ function produto() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e8cfff8d7067e80b084664d',
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
@@ -108,7 +108,7 @@ function altProduto() {
         type: 'get',
         //data: { nome: $('#nome').val(), marca: $('#marca').val(), categoria: $('#categoria').val(), descricao: $('#descricao').val(), preco: $('#preco').val(), quantidade: $('#quantidade').val()},
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Produto alterado com sucesso');
             id = url.id;

@@ -72,7 +72,7 @@ function teste() {
         type: 'POST',
         //data: { email: $('#email').val(), nome: $('#nome').val(), cpf: $('#cpf').val(), senha: $('senha2').val() },
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Cadastro realizado com sucesso');
         }

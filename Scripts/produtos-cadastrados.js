@@ -16,11 +16,11 @@ function produto() {
         url: endpoint,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             urlGlobal = url;
             criarCardsProdutos();
         },
-        error: function (url) {
+        error(url) {
             //alert('Erro ao visualizar produtos');
         }
     });
@@ -100,7 +100,7 @@ function criarCardsProdutos() {
                 url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/' + user + '/' + idproduto,
                 type: 'get',
                 dataType: 'json',
-                success: function (url) {
+                success(url) {
                     console.log(url);
                     alert('Usuário ativo')
                     id = url.id;
@@ -123,7 +123,7 @@ function criarCardsProdutos() {
                 url: 'https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/' + user + idproduto,
                 type: 'get',
                 dataType: 'json',
-                success: function (url) {
+                success(url) {
                     console.log(url);
                     alert('Usuário desativado');
                     id = url.id;

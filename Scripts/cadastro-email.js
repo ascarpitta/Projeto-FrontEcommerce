@@ -29,11 +29,11 @@ function verificaremail() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/email/' + $('#email').val(),
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('E-mail já cadastrado');
         },
-        error: function (url) {
+        error(url) {
             alert('Email pode prosseguir com sucesso');
         }
     });

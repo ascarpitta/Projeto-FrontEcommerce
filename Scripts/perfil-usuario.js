@@ -11,7 +11,7 @@ function perfil() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/id/' + user,
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
@@ -26,7 +26,7 @@ function perfil() {
             document.getElementById("detalhes2").innerHTML = email;
             document.getElementById("detalhes3").innerHTML = cpf;
         },
-        error: function (url) {
+        error(url) {
             alert('É necessário realizar o login');
         }
     });
@@ -38,7 +38,7 @@ function consend() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
@@ -62,7 +62,7 @@ function pedidos() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/pedidos/BuscarPedidos/' + user,
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
@@ -86,7 +86,7 @@ function ativar() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/' + user,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Usuário ativo');
             id = url.id;
@@ -103,7 +103,7 @@ function desativar() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/' + user,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Usuário desativado');
             id = url.id;

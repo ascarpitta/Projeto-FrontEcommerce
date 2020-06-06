@@ -29,7 +29,7 @@ function teste() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/recuperacao/' + $('#email').val() + '/' + $('#cpf').val(),
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('E-mail enviado com sucesso');
         }

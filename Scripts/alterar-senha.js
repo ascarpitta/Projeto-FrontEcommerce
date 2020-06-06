@@ -56,11 +56,11 @@ function teste() {
         crossDomain: true,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Senha alterada com sucesso');
         },
-        error: function (url) {
+        error(url) {
             alert('Não foi possível alterar a senha');
         }
     });
