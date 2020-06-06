@@ -1,18 +1,7 @@
-﻿var alterarsenha = document.getElementById('alterarsenha');
-var user;
-var produto, produto1, produto2, produto3, produto4, produto5, produto6;
-var end, end1, end2, end3, end4, end5, end6;
+﻿var user;
+var ende;
 
 function usuario() {
-    end = window.localStorage.getItem('end');
-    console.log("id prod fora da função: ", end)
-    end1 = window.localStorage.getItem('end1');
-    end2 = window.localStorage.getItem('end2');
-    end3 = window.localStorage.getItem('end3');
-    end4 = window.localStorage.getItem('end4');
-    end5 = window.localStorage.getItem('end5');
-    end6 = window.localStorage.getItem('end6');
-
     user = window.localStorage.getItem('user');
     console.log("id fora da função: ", user);
 }
@@ -157,7 +146,6 @@ function carrinho() {
     });
 }
 
-
 function consend() {
     usuario();
     $.ajax({
@@ -176,155 +164,39 @@ function consend() {
                     '<span id="consulta4">' + item.uf + '</span>' +
                     '</div>' +
                     '<hr />' +
-
-                    '<button type="submit" class="btn btn-primary" style="background:#4F5D75;" onclick="finalizar()">Esse</button>';
+                    '<button type="submit" class="btn btn-primary escolherEnd" style="background:#4F5D75;" >Esse</button>';
                 $("#lista_end").append(consEnd);
-                
+                id = item.id;
+                ende = id;
+                usuario();
+                console.info('depois', id);
             })
         }
     });
-}
 
-function endereco() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
+    $(".escolherEnd").click(function () {
+        var idProduto = $(this).attr("id");
+        var user = window.localStorage.getItem('user');
+        if (user == null) {
+            alert("Você não está logado!");
+        } else {
+            $.ajax({
+                url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + ende,
+                type: 'get',
+                dataType: 'json',
+                success: function (url) {
+                    console.log(url);
+                    id = url.id;
+                    user = id;
+                    usuario();
+                    window.localStorage.setItem("user", user);
+                    alert('Endereço escolhido');
+                }
+            });
         }
     });
 }
-
-function endereco1() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end1,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
-        }
-    });
-}
-
-function endereco2() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end2,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
-        }
-    });
-}
-
-function endereco3() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end3,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
-        }
-    });
-}
-
-function endereco4() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end4,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
-        }
-    });
-}
-
-function endereco5() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end5,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
-        }
-    });
-}
-
-function endereco5() {
-    usuario();
-    $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + end6,
-        type: 'get',
-        dataType: 'json',
-        success: function (url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-            alert('Pedido realizado');
-        },
-        error: function (url) {
-            alert('Erro ao finalizar pedido');
-        }
-    });
-}
-
+    
 function finalizar() {
     usuario();
     $.ajax({

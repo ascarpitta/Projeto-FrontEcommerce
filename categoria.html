@@ -1,4 +1,4 @@
-ï»¿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -6,6 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
+        .top {
+            position: relative;
+            width: 240px;
+            height: 40px;
+            background-color: #E0AFA0;
+            border: 1px solid #4F5D75;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .open_div {
+            cursor: pointer;
+        }
+
+        .hidden_div {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            top: -400px;
+            left: 50%;
+            margin-left: -150px;
+            background-color: #F4F3EE;
+            border: 2px solid #c0c0c0;
+            overflow: hidden;
+            clear: both;
+        }
+
         .sub:hover {
             width: 100px;
             height: 30px;
@@ -57,7 +84,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> </button>
 
                 <div class="container" style="width: 55rem;">
-                    <input class="form-control mr-sm-2" type="search" id="busca" placeholder="O que vocÃª procura" style="width: 50rem" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" id="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
                     <button type="button" onclick="busca()">&#128269</button>
                 </div>
 
@@ -80,45 +107,42 @@
                 </ul>
             </div>
         </nav>
+        <br>
     </header>
     <br>
-    <h2 class="text-center">Seus pedidos</h2>
-    <br>
-
-    <nav>
-        <div class="row justify-content-center">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="lojas.html" aria-label="Anterior">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="lojas.html">1</a></li>
-                <li class="page-item"><a class="page-link" href="lojas-2.html">2</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="lojas-2.html" aria-label="PrÃ³ximo">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">PrÃ³ximo</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <hr>
+    <div class="row justify-content-center">
+       <button type="button" class="btn btn-primary" style="background:#4F5D75;">Roupas</button>
+       <button type="button" class="btn btn-primary" style="background:#4F5D75;">Livros</button>
+       <button type="button" class="btn btn-primary" style="background:#4F5D75;">Utensilios</button>
+       <button type="button" class="btn btn-primary" style="background:#4F5D75;">Eletrodomesticos</button>
+       <button type="button" class="btn btn-primary" style="background:#4F5D75;">Outros</button>
+    </div>          
+              
+    <div class="container">
+        <div class="row justify-content-center" id="lista_produtos"></div>
+    </div>
+    <br>  <hr />  <br>
     <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Scripts/historico-pedidos.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Scripts/busca.js" charset="utf-8"></script>
-    <footer class="section footer-classic context-dark bg-image" style="background: #F8E0EC;">
+    <script type="text/javascript" src="Scripts/categoria.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Scripts/Busca.js" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            $(".hidden_div").hide();
+            $(".open_div").click(function () {
+                $(this).toggleClass("active").next().slideToggle("slow");
+                return false;
+            });
+        });
+    </script>
+    <footer class="section footer-classic context-dark bg-image" style="background: #E0AFA0;">
         <div class="container">
             <div class="row row-30">
                 <div class="col-md-4 col-xl-5">
                     <div class="pr-xl-4">
                         <a class="brand" href="index.html"><img class="brand-logo-light" src="mackenzie.png" alt="" width="130" height="55"></a>
                         <p> Somos um ecommerce de compra e venda de utilidades diversas, para atender as necessidades solicitadas.  </p>
-                        <p class="rights"><span>Â©  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
+                        <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -135,8 +159,8 @@
                 <div class="col-md-4 col-xl-3">
                     <h5>Links</h5>
                     <ul class="nav-list">
-                        <li><a href="sobre-nos.html">Sobre nÃ³s</a></li>
-                        <li><a href="politica-seguranca.html">Politicas de seguranÃ§a</a></li>
+                        <li><a href="sobre-nos.html">Sobre nós</a></li>
+                        <li><a href="politica-seguranca.html">Politicas de segurança</a></li>
                     </ul>
                 </div>
             </div>

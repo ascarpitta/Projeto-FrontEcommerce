@@ -43,8 +43,7 @@ function cadProduto() {
             '/' + $('#preco').val().replace(/\s/g, '') + '/' + $('#frete').val().replace(/\s/g, '') +
             '/' + $('#quantidade').val().replace(/\s/g, '') + '/' + $('#categoria').val().replace(/\s/g, '') +
             '/' + $('#marca').val().replace(/\s/g, ''),
-        type: 'post',
-        //data: { nome: $('#nome').val(), marca: $('#marca').val(), categoria: $('#categoria').val(), descricao: $('#descricao').val(), preco: $('#preco').val(), quantidade: $('#quantidade').val()},
+        type: 'POST',
         dataType: 'json',
         success: function (url) {
             console.log(url);

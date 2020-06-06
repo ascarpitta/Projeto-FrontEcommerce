@@ -61,7 +61,7 @@ function consend() {
 function pedidos() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/pedidos/' + user,
+        url: 'https://projeto-ecommerce.herokuapp.com/api/pedidos/BuscarPedidos/' + user,
         type: 'GET',
         dataType: 'json',
         success: function (url) {
