@@ -16,6 +16,12 @@ cadusuario.addEventListener('submit', function (e) {
 
 function teste() {
     var validar = false;
+    var nome = document.querySelector("#nome");
+    var cpf = document.querySelector("#cpf");
+    var password = document.querySelector("#password");
+    var senha2 = document.querySelector("#senha2");
+    var email = document.querySelector("#email");
+
     if (nome.value == "" || nome.value == null || nome.lenght < 3) {
         validar = true;
         alert("Por favor, indique o seu nome.");
@@ -58,10 +64,8 @@ function teste() {
     $.ajax({
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/' + $('#email').val() + '/' + $('#cpf').val() + '/' + $('#nome').val() + '/' + $('#senha2').val(),
         type: 'POST',
-        //data: { email: $('#email').val(), nome: $('#nome').val(), cpf: $('#cpf').val(), senha: $('senha2').val() },
         dataType: 'json',
         success(url) {
-            console.log(url);
             alert('Cadastro realizado com sucesso');
         }
     });
