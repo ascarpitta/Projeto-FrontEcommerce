@@ -7,10 +7,10 @@ function produto() {
         endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
-        var teste = '<button class="btn btn-primary addCarrinho" type="button" style="background: #4F5D75;" onclick="ordenarNomeAZ()">A-z</button>'+
-            '<button class="btn btn-primary addCarrinho" type="button" style="background: #4F5D75;" onclick="ordenarNomeZA()">Z-a</button>'+
-            '<button class="btn btn-primary addCarrinho" type="button" style="background: #4F5D75;" onclick="ordenarPrecoDesc()">Maior preço</button>'+
-            '<button class="btn btn-primary addCarrinho" type="button" style="background: #4F5D75;" onclick="ordenarPrecoAsc()">Menor preço</button>';
+        var teste = "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarNomeAZ()'>A-z</button>"+
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarNomeZA()'>Z-a</button>"+
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarPrecoDesc()'>Maior preço</button>"+
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' onclick='ordenarPrecoAsc()'>Menor preço</button>";
         $("#ordena_produtos").append(teste);
     } else {
         endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos";
@@ -62,48 +62,48 @@ function criarCardsProdutos() {
     //Laço que percorrerá todos os produtos carregados pelo backend
     urlGlobal.forEach(function (item, index) {
         //Variavel que armazena os cards dos produtos
-        var card = '<div class="card" style="width: 15rem;">' +
-            '<div class="card-body">' +
-            '<img class="card-img-top" src="mackenzie.png" alt="Card image cap">' +
-            '<label>' + item.name + '</label>' +
-            '</div>' +
-            '<div>' +
-            '<div class="top">' +
-            '<div class="open_div">Ver detalhes</div>' +
-            '<div class="hidden_div">' +
-            '<div class="mt-1 font-weight-bold">' +
-            '<span>' + item.name + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'R$' +
-            '<span>' + item.price + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'Descrição:' +
-            '<span>' + item.description + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'Categoria:' +
-            '<span>' + item.category + '</span>' +
-            '</div>' +
-            '<div class="mt-1">' +
-            'Marca:' +
-            '<span>' + item.marca + '</span>' +
-            '</div>' +
-            '<div class="card row justify-content-center" style="width: 5rem;">' +
-            '<button class="btn btn-primary addDesejo" type="button" style="background: #4F5D75;" id="' + item.id + '"><img class="card-img-top" src="desejo.jpg" alt="desejo" height="37" width="37"></button> </a>' +
-            '<button class="btn btn-primary remDesejo" type="button" style="background: #4F5D75;" id="' + item.id + '"><img class="card-img-top" src="desejo2.jpg" alt="desejo" height="37" width="37"></button> </a>' +
-            '</div>' +
-            '<div class="card row justify-content-center" style="width: 20rem;">' +
-            '<button class="btn btn-primary addCarrinho" type="button" style="background: #4F5D75;" id="' + item.id + '">Adicionar ao carrinho</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '<div style="width: 2rem;">' +
-            '<div class="card-body"></div>' +
-            '</div>';
+        var card = "<div class='card' style='width: 15rem;'>" +
+            "<div class='card-body'>" +
+            "<img class='card-img-top' src='mackenzie.png' alt='Card image cap'>" +
+            "<label>" + item.name + "</label>" +
+            "</div>" +
+            "<div>" +
+            "<div class='top'>" +
+            "<div class='open_div'>Ver detalhes</div>" +
+            "<div class='hidden_div'>" +
+            "<div class='mt-1 font-weight-bold'>" +
+            "<span>" + item.name + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "R$" +
+            "<span>" + item.price + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Descrição:" +
+            "<span>" + item.description + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Categoria:" +
+            "<span>" + item.category + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Marca:" +
+            "<span>" + item.marca + "</span>" +
+            "</div>" +
+            "<div class='card row justify-content-center' style='width: 5rem;'>" +
+            "<button class='btn btn-primary addDesejo' type='button' style='background: #4F5D75;' id='" + item.id + "'><img class='card-img-top' src='desejo.jpg' alt='desejo' height='37' width='37'></button> </a>" +
+            "<button class='btn btn-primary remDesejo' type='button' style='background: #4F5D75;' id='" + item.id + "'><img class='card-img-top' src='desejo2.jpg' alt='desejo' height='37' width='37'></button> </a>" +
+            "</div>" +
+            "<div class='card row justify-content-center' style='width: 20rem;'>" +
+            "<button class='btn btn-primary addCarrinho' type='button' style='background: #4F5D75;' id='" + item.id + "'>Adicionar ao carrinho</button>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div style='width: 2rem;'>" +
+            "<div class='card-body'></div>" +
+            "</div>";
 
         //Incluindo card na div principal
         if (index <= 7) {
