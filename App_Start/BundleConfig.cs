@@ -7,7 +7,7 @@ using System.Web.UI;
 
 namespace eCommerceFront
 {
-    public class static BundleConfig
+    public class  BundleConfig
     {
         // Para obter mais informações sobre o Agrupamento, visite https://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
