@@ -37,7 +37,6 @@ function endereco() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             help = url[0].id;
             endereco = help;
             window.localStorage.setItem("endereco", endereco);
@@ -67,7 +66,6 @@ function editar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Endereço atualizado com sucesso");
             id = url.id;
             user = id;
@@ -83,7 +81,6 @@ function verificar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             id = url.id;
             user = id;
             usuario();
