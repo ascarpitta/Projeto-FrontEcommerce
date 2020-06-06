@@ -10,7 +10,6 @@ formulario.addEventListener("submit", function (e) {
     console.info({ email, password });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function teste() {
@@ -19,7 +18,6 @@ function teste() {
         type: "GET",
         dataType: "json",   
         success(url) {
-            console.log(url);
             alert("Login realizado com sucesso");
             var id = url.id;
             user = id;

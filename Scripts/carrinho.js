@@ -109,7 +109,6 @@ function carrinho() {
                     type: "get",
                     dataType: "json",
                     success(url) {
-                        console.log(url);
                         id = url.id;
                         user = id;
                         usuario();
@@ -130,7 +129,6 @@ function carrinho() {
                     type: "get",
                     dataType: "json",
                     success(url) {
-                        console.log(url);
                         id = url.id;
                         user = id;
                         usuario();
@@ -185,7 +183,6 @@ function consend() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    console.log(url);
                     id = url.id;
                     user = id;
                     usuario();
@@ -204,7 +201,6 @@ function finalizar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             id = url.id;
             user = id;
             usuario();

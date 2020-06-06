@@ -11,7 +11,6 @@ cadusuario.addEventListener("submit", function (e) {
     console.debug({ nome, cpf, email, password });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function teste() {
@@ -66,7 +65,6 @@ function teste() {
         type: "POST",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Cadastro realizado com sucesso");
         }
     });

@@ -16,7 +16,6 @@ cadproduto.addEventListener("submit", function (e) {
     console.debug({ nome, marca, categoria, descricao, preco, quantidade, frete });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function cadProduto() {
@@ -29,7 +28,6 @@ function cadProduto() {
         type: "POST",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("roduto cadastrado com sucesso"); 
             var id = url.id;
             var user = id;

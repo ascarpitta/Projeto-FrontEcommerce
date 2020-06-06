@@ -18,7 +18,6 @@ cadendereco.addEventListener("submit", function (e) {
     console.debug({ nomeEnd, uf, cidade, cep, bairro, rua, numero, complemento, obs });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function cadastro() {
@@ -28,7 +27,6 @@ function cadastro() {
         type: "post",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Endereço cadastrado com sucesso");
             var id = url.id;
             user = id;
@@ -44,7 +42,6 @@ function verificar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             id = url.id;
             user = id;
             usuario();

@@ -9,7 +9,6 @@ senha.addEventListener("submit", function (e) {
     console.info({ email, cpf });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function teste() {
@@ -18,7 +17,6 @@ function teste() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("E-mail enviado com sucesso");
         }
     });

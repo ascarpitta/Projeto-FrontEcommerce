@@ -12,7 +12,6 @@ function perfil() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             id = url.id;
             user = id;
             usuario();
@@ -38,7 +37,6 @@ function consend() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
                 consEnd = "<div class='mt-1'>Nome:" +
@@ -62,7 +60,6 @@ function pedidos() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
                 consEnd = "<div class='mt-1'>Nome:" +
@@ -86,7 +83,6 @@ function ativar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Usuário ativo");
             id = url.id;
             user = id;
@@ -103,7 +99,6 @@ function desativar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Usuário desativado");
             id = url.id;
             user = id;
