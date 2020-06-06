@@ -1,16 +1,16 @@
-﻿var formulario = document.getElementById('formulario');
+﻿var formulario = document.getElementById("formulario");
 var user;
 
-formulario.addEventListener('submit', function (e) {
+formulario.addEventListener("submit", function (e) {
     var obj = new FormData(formulario);
     console.debug(obj);
 
-    var email = JSON.stringify(obj.get('email'));
-    var password = JSON.stringify(obj.get('password'));
+    var email = JSON.stringify(obj.get("email"));
+    var password = JSON.stringify(obj.get("password"));
     console.info({ email, password });
 
     e.preventDefault();
-    console.debug('Ocorreu um click');
+    console.debug("Ocorreu um click");
 });
 
 function usuario() {
@@ -19,12 +19,12 @@ function usuario() {
 
 function teste() {
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/' + $('#email').val() + '/' + $('#password').val(),
-        type: 'GET',
-        dataType: 'json',   
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/" + $("#email").val() + "/" + $("#password").val(),
+        type: "GET",
+        dataType: "json",   
         success(url) {
             console.log(url);
-            alert('Login realizado com sucesso');
+            alert("Login realizado com sucesso");
             id = url.id;
             user = id;
             usuario();
@@ -32,7 +32,7 @@ function teste() {
             window.location.href = "index.html";
         },
         error(url) {
-            alert('Erro ao realizar login');
+            alert("Erro ao realizar login");
         }
     });
 }
