@@ -28,7 +28,7 @@ function cadProduto() {
             "/" + $("#marca").val().replace(/\s/g, ""),
         type: "POST",
         dataType: "json",
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert('Produto cadastrado com sucesso'); 
             var id = url.id;
