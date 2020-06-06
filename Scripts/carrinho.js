@@ -166,7 +166,7 @@ function consend() {
                     "<hr />" +
                     "<button type='submit' class='btn btn-primary escolherEnd' style='background:#4F5D75;' >Esse</button>";
                 $("#lista_end").append(consEnd);
-                id = item.id;
+                var id = item.id;
                 ende = id;
                 usuario();
                 console.info("depois", id);
@@ -177,7 +177,7 @@ function consend() {
     $(".escolherEnd").click(function () {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({

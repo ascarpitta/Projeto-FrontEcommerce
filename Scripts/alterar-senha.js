@@ -45,7 +45,6 @@ function teste() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Senha alterada com sucesso");
         },
         error(url) {

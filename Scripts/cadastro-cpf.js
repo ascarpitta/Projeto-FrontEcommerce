@@ -9,7 +9,6 @@ cadcpf.addEventListener("submit", function (e) {
     console.debug({ cpf });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function verificarcpf() {
@@ -18,7 +17,6 @@ function verificarcpf() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Cpf já cadastrado");
         },
         error(url) {

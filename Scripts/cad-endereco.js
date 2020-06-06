@@ -1,5 +1,5 @@
 ﻿var cadendereco = document.getElementById("cadendereco");
-var user;
+var user = window.localStorage.getItem("user");
 
 cadendereco.addEventListener("submit", function (e) {
 
@@ -21,11 +21,6 @@ cadendereco.addEventListener("submit", function (e) {
     console.debug("Ocorreu um click");
 });
 
-function usuario() {
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-}
-
 function cadastro() {
     usuario();
     $.ajax({
@@ -35,7 +30,7 @@ function cadastro() {
         success(url) {
             console.log(url);
             alert("Endereço cadastrado com sucesso");
-            id = url.id;
+            var id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);

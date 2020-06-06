@@ -9,7 +9,6 @@ cademail.addEventListener("submit", function (e) {
     console.debug({ email });
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function verificaremail() {
@@ -18,7 +17,6 @@ function verificaremail() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("E-mail já cadastrado");
         },
         error(url) {

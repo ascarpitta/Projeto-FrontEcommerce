@@ -35,7 +35,6 @@ function produto() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             id = url.id;
             user = id;
             usuario();
@@ -108,7 +107,6 @@ function altProduto() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.log(url);
             alert("Produto alterado com sucesso");
             id = url.id;
             user = id;
