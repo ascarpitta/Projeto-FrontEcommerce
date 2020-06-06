@@ -65,7 +65,7 @@ function criarCardsProdutos() {
     $(".addDesejo").click(function () {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
@@ -83,7 +83,7 @@ function criarCardsProdutos() {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
 
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
@@ -101,7 +101,7 @@ function criarCardsProdutos() {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
 
-        if (user == null) {
+        if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
