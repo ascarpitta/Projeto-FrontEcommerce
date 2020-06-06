@@ -1,18 +1,6 @@
 ﻿var cadendereco = document.getElementById("cadendereco");
 var user;
 
-var URL = "https://projeto-ecommerce.herokuapp.com/api/enderecos/";
-var Http = new XMLHttpRequest();
-Http.open("GET", URL);
-Http.responseType = "json";
-Http.send();
-
-Http.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType);
-    }
-}
-
 cadendereco.addEventListener("submit", function (e) {
 
     var obj = new FormData(cadendereco);
