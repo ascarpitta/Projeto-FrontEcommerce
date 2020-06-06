@@ -51,7 +51,7 @@ function consend() {
                     '</div>' +
                     '<hr />';
                 $("#lista_end").append(consEnd);
-            })
+            });
         }
     });
 }
@@ -75,7 +75,7 @@ function pedidos() {
                     '</div>' +
                     '<hr />';
                 $("#lista_pedidos").append(consEnd);
-            })
+            });
         }
     });
 }
