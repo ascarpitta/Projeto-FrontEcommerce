@@ -1,4 +1,5 @@
-﻿let urlGlobal;
+﻿var user = window.localStorage.getItem("user");
+let urlGlobal;
 
 function produto() {
     //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
@@ -103,9 +104,9 @@ function criarCardsProdutos() {
                 success(url) {
                     console.log(url);
                     alert("Usuário ativo");
-                    id = url.id;
+                    var id = url.id;
                     user = id;
-                    usuario();
+                    
                     window.localStorage.setItem("user", user);
                 }
             });
@@ -126,9 +127,9 @@ function criarCardsProdutos() {
                 success(url) {
                     console.log(url);
                     alert("Usuário desativado");
-                    id = url.id;
+                    var id = url.id;
                     user = id;
-                    usuario();
+                    
                     window.localStorage.setItem("user", user);
                     sessionStorage.clear();
                     localStorage.clear();
