@@ -81,7 +81,7 @@ function carrinho() {
                         "</div>";
                     window.localStorage.setItem("produto" + (i + 1).toString(), item.idProduto);
                 }
-                $("#produtosCarrinho").append(produtoCarrinho)
+                $("#produtosCarrinho").append(produtoCarrinho);
             });
 
             $(".remove").click(function() {
@@ -170,7 +170,7 @@ function consend() {
                 ende = id;
                 usuario();
                 console.info("depois", id);
-            })
+            });
         }
     });
 
