@@ -1,32 +1,6 @@
 ﻿var user = window.localStorage.getItem("user");
 let urlGlobal;
 
-function produto() {
-    //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
-    var endpoint;
-    if (window.localStorage.getItem("Nome_Busca") !== "" && window.localStorage.getItem("Nome_Busca") !== null) {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
-        //colocar show dos botões de ordenação aqui
-        window.localStorage.setItem("Nome_Busca", "");
-    } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53";
-    }
-
-    //Começo do ajax para buscar os produtos
-    $.ajax({
-        url: endpoint,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            urlGlobal = url;
-            criarCardsProdutos();
-        },
-        error(url) {
-            //alert("Erro ao visualizar produtos");
-        }
-    });
-}
-
 function criarCardsProdutos() {
     $("#lista_produtos").empty();
 
@@ -105,7 +79,7 @@ function criarCardsProdutos() {
                     alert("Usuário ativo");
                     var id = url.id;
                     user = id;
-                    
+
                     window.localStorage.setItem("user", user);
                 }
             });
@@ -127,7 +101,7 @@ function criarCardsProdutos() {
                     alert("Usuário desativado");
                     var id = url.id;
                     user = id;
-                    
+
                     window.localStorage.setItem("user", user);
                     sessionStorage.clear();
                     localStorage.clear();
@@ -136,6 +110,34 @@ function criarCardsProdutos() {
         }
     });
 }
+
+function produto() {
+    //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
+    var endpoint;
+    if (window.localStorage.getItem("Nome_Busca") !== "" && window.localStorage.getItem("Nome_Busca") !== null) {
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
+        //colocar show dos botões de ordenação aqui
+        window.localStorage.setItem("Nome_Busca", "");
+    } else {
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53";
+    }
+
+    //Começo do ajax para buscar os produtos
+    $.ajax({
+        url: endpoint,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            urlGlobal = url;
+            criarCardsProdutos();
+        },
+        error(url) {
+            //alert("Erro ao visualizar produtos");
+        }
+    });
+}
+
+
 
 function sair() {
     sessionStorage.clear();
