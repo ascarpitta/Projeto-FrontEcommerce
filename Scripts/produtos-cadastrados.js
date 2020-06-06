@@ -3,7 +3,7 @@
 function produto() {
     //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
     var endpoint;
-    if (window.localStorage.getItem("Nome_Busca") != "" && window.localStorage.getItem("Nome_Busca") != null) {
+    if (window.localStorage.getItem("Nome_Busca") !== "" && window.localStorage.getItem("Nome_Busca") !== null) {
         endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
@@ -102,7 +102,7 @@ function criarCardsProdutos() {
                 dataType: "json",
                 success(url) {
                     console.log(url);
-                    alert("Usuário ativo")
+                    alert("Usuário ativo");
                     id = url.id;
                     user = id;
                     usuario();
