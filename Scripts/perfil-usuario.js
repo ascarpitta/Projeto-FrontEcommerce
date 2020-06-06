@@ -20,7 +20,7 @@ function perfil() {
 
             nome = url.name;
             email = url.email;
-            cpf = url.cpf; 
+            cpf = url.cpf;
             console.log(nome, email, cpf);
             document.getElementById("detalhes").innerHTML = nome;
             document.getElementById("detalhes2").innerHTML = email;

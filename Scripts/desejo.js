@@ -13,7 +13,6 @@ function usuario() {
     desejo9 = window.localStorage.getItem('desejo9');
     desejo10 = window.localStorage.getItem('desejo10');
 
-
     user = window.localStorage.getItem('user');
     console.log("id fora da função: ", user);
 }
