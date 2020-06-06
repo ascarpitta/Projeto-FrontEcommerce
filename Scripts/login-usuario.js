@@ -1,17 +1,5 @@
 ﻿var formulario = document.getElementById('formulario');
 var user;
-var requestURL = 'https://projeto-ecommerce.herokuapp.com/api/usuarios';
-var Http = new XMLHttpRequest();
-
-Http.open('GET', requestURL);
-Http.responseType = 'json';
-Http.send();
-
-Http.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType);
-    }
-}
 
 formulario.addEventListener('submit', function (e) {
     var obj = new FormData(formulario);
