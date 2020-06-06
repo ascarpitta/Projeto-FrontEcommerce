@@ -1,6 +1,4 @@
 ﻿var user;
-var conteudo = document.querySelector('#conteudo');
-var consulta = document.querySelector('#consulta');
 
 function usuario() {
     user = window.localStorage.getItem('user');
