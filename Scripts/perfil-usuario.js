@@ -1,16 +1,16 @@
 ﻿var user;
 
 function usuario() {
-    user = window.localStorage.getItem('user');
+    user = window.localStorage.getItem("user");
     console.log("id fora da função: ", user);
 }
 
 function perfil() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/id/' + user,
-        type: 'GET',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/id/" + user,
+        type: "GET",
+        dataType: "json",
         success(url) {
             console.log(url);
             id = url.id;
@@ -27,7 +27,7 @@ function perfil() {
             document.getElementById("detalhes3").innerHTML = cpf;
         },
         error(url) {
-            alert('É necessário realizar o login');
+            alert("É necessário realizar o login");
         }
     });
 }
@@ -35,21 +35,21 @@ function perfil() {
 function consend() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
-        type: 'GET',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,"
+        type: "GET",
+        dataType: "json",
         success(url) {
             console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
-                consEnd = '<div class="mt-1">Nome:' +
-                    '<span id="consulta">' + item.nomeEndereco + '</span> - CEP' +
-                    '<span id="consulta1">' + item.cep + '</span> -' +
-                    '<span id="consulta2">' + item.rua + '</span> nº' +
-                    '<span id="consulta3">' + item.numero + '</span> -' +
-                    '<span id="consulta4">' + item.uf + '</span>' +
-                    '</div>' +
-                    '<hr />';
+                consEnd = "<div class='mt-1'>Nome:" +
+                    "<span id='consulta'>" + item.nomeEndereco + "</span> - CEP" +
+                    "<span id='consulta1'>" + item.cep + "</span> -" +
+                    "<span id='consulta2'>" + item.rua + "</span> nº" +
+                    "<span id='consulta3'>" + item.numero + "</span> -" +
+                    "<span id='consulta4'>" + item.uf + "</span>" +
+                    "</div>" +
+                    "<hr />";
                 $("#lista_end").append(consEnd);
             })
         }
@@ -59,21 +59,21 @@ function consend() {
 function pedidos() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/pedidos/BuscarPedidos/' + user,
-        type: 'GET',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/pedidos/BuscarPedidos/" + user,
+        type: "GET",
+        dataType: "json",
         success(url) {
             console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
-                consEnd = '<div class="mt-1">Nome:' +
-                    '<span id="consulta">' + item.nomeEndereco + '</span> - CEP' +
-                    '<span id="consulta1">' + item.cep + '</span> -' +
-                    '<span id="consulta2">' + item.rua + '</span> nº' +
-                    '<span id="consulta3">' + item.numero + '</span> -' +
-                    '<span id="consulta4">' + item.uf + '</span>' +
-                    '</div>' +
-                    '<hr />';
+                consEnd = "<div class='mt-1'>Nome:" +
+                    "<span id='consulta'>" + item.nomeEndereco + "</span> - CEP" +
+                    "<span id='consulta1'>" + item.cep + "</span> -" +
+                    "<span id='consulta2'>" + item.rua + "</span> nº" +
+                    "<span id='consulta3'>" + item.numero + "</span> -" +
+                    "<span id='consulta4'>" + item.uf + "</span>" +
+                    "</div>" +
+                    "<hr />";
                 $("#lista_pedidos").append(consEnd);
             })
         }
@@ -83,12 +83,12 @@ function pedidos() {
 function ativar() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/' + user,
-        type: 'get',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + user,
+        type: "get",
+        dataType: "json",
         success(url) {
             console.log(url);
-            alert('Usuário ativo');
+            alert("Usuário ativo");
             id = url.id;
             user = id;
             usuario();
@@ -100,12 +100,12 @@ function ativar() {
 function desativar() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/' + user,
-        type: 'get',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/" + user,
+        type: "get",
+        dataType: "json",
         success(url) {
             console.log(url);
-            alert('Usuário desativado');
+            alert("Usuário desativado");
             id = url.id;
             user = id;
             usuario();
