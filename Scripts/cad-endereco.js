@@ -44,7 +44,7 @@ function cadastro() {
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val().replace(/\s/g, "") + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val().replace(/\s/g, "") + "/" + $("#cidade").val().replace(/\s/g, "") + "/" + $("#bairro").val().replace(/\s/g, "") + "/" + $("#rua").val().replace(/\s/g, "") + "/" + $("#numero").val().replace(/\s/g, "") + "/" + $("#complemento").val().replace(/\s/g, ""),
         type: "post",
         dataType: "json",
-        success: function (url) {
+        success(url) {
             console.log(url);
             alert("Endereço cadastrado com sucesso");
             id = url.id;
@@ -60,7 +60,7 @@ function verificar() {
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/viacep/" + $("#cep").val(), 
         type: "get",
         dataType: "json",
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;

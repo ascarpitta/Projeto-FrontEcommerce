@@ -1,16 +1,5 @@
-﻿var cadproduto = document.getElementById("cadproduto");
-var user;
-var requestURL = "https://projeto-ecommerce.herokuapp.com/api/produtos";
-var Http = new XMLHttpRequest();
-Http.open("GET", requestURL);
-Http.responseType = "json";
-Http.send();
-
-Http.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        console.log(Http.responseType);
-    }
-}
+﻿var cadproduto = document.getElementById('cadproduto');
+var user = window.localStorage.getItem('user');
 
 cadproduto.addEventListener("submit", function (e) {
     var obj = new FormData(cadproduto);
@@ -30,13 +19,7 @@ cadproduto.addEventListener("submit", function (e) {
     console.debug("Ocorreu um click");
 });
 
-function usuario() {
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-}
-
 function cadProduto() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/produtos/CadastroProduto/" + user + "/" +
             $("#nome").val().replace(/\s/g, "") + "/" + $("#descricao").val().replace(/\s/g, "") +
@@ -47,10 +30,9 @@ function cadProduto() {
         dataType: "json",
         success: function (url) {
             console.log(url);
-            alert("Produto cadastrado com sucesso"); 
-            id = url.id;
-            user = id;
-            usuario();
+            alert('Produto cadastrado com sucesso'); 
+            var id = url.id;
+            var user = id;
             window.localStorage.setItem("user", user);
         }
     });

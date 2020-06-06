@@ -26,15 +26,15 @@ cadcpf.addEventListener("submit", function (e) {
 
 function verificarcpf() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cpf/" + $("#cpf").val(),
-        type: "GET",
-        dataType: "json",
-        success: function (url) {
+        url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/cpf/' + $('#cpf').val(),
+        type: 'GET',
+        dataType: 'json',
+        success(url) {
             console.log(url);
             alert("Cpf já cadastrado");
         },
-        error: function (url) {
-            alert("Cpf pode prosseguir");
+        error(url) {
+            alert('Cpf pode prosseguir');
         }
     });
 }

@@ -23,7 +23,7 @@ function desejo() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/ListaDesejo/' + user,
         type: 'GET',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             document.getElementById("produto").parentElement.parentElement.style.display = "none";
             for (i = 2; i <= 40; i++) {
@@ -42,7 +42,7 @@ function desejo() {
                 }
             });
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao carregar produtos');
         }
     });
@@ -55,14 +55,14 @@ function remover() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo1,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -73,14 +73,14 @@ function remover2() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo2,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -91,14 +91,14 @@ function remover3() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo3,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -109,14 +109,14 @@ function remover4() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo4,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -127,14 +127,14 @@ function remover5() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo5,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -145,14 +145,14 @@ function remover6() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo6,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -163,14 +163,14 @@ function remover7() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo7,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -181,14 +181,14 @@ function remover8() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo8,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -199,14 +199,14 @@ function remover9() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo9,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -217,14 +217,14 @@ function remover10() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo10,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             
         }
     });
@@ -236,14 +236,14 @@ function addCarrinho() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + desejo1,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -254,14 +254,14 @@ function addCarrinho2() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + desejo2,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -272,14 +272,14 @@ function addCarrinho3() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto3,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -290,14 +290,14 @@ function addCarrinho4() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto4,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -308,14 +308,14 @@ function addCarrinho5() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto5,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -326,14 +326,14 @@ function addCarrinho6() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto6,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -344,14 +344,14 @@ function addCarrinho7() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto7,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -362,14 +362,14 @@ function addCarrinho8() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto8,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -380,14 +380,14 @@ function addCarrinho9() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto9,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
@@ -398,14 +398,14 @@ function addCarrinho10() {
         url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + idProduto10,
         type: 'get',
         dataType: 'json',
-        success: function (url) {
+        success(url) {
             console.log(url);
             id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
         },
-        error: function (url) {
+        error(url) {
             alert('Erro ao adicionar no carrinho');
         }
     });
