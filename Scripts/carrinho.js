@@ -9,9 +9,9 @@ function usuario() {
 function carrinho() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/userid/' + user,
-        type: 'GET',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/userid/" + user,
+        type: "GET",
+        dataType: "json",
         success(url) {
             console.info(url);
             var produtoCarrinho = "";
@@ -95,7 +95,7 @@ function carrinho() {
                         alert("Produto removido com sucesso");
                     },
                     error(url) {
-                        //alert('Erro ao remover produtoo')
+                        //alert("Erro ao remover produtoo")
                     }
                 });
             });
@@ -117,7 +117,7 @@ function carrinho() {
                         //alert("Produto aumentado com sucesso")
                     },
                     error(url) {
-                        //alert('Erro ao aumentar produtoo')
+                        //alert("Erro ao aumentar produtoo")
                     }
                 });
             });
@@ -138,7 +138,7 @@ function carrinho() {
                         //alert("Produto diminuido com sucesso")
                     },
                     error(url) {
-                        //alert('Erro ao diminuido produtoo')
+                        //alert("Erro ao diminuido produtoo")
                     }
                 });
             });
@@ -149,9 +149,9 @@ function carrinho() {
 function consend() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/enderecos/' + user,
-        type: 'GET',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
+        type: "GET",
+        dataType: "json",
         success(url) {
             console.log(url);
             var consEnd = "";
@@ -181,9 +181,9 @@ function consend() {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/' + user + '/' + ende,
-                type: 'get',
-                dataType: 'json',
+                url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/" + user + "/" + ende,
+                type: "get",
+                dataType: "json",
                 success(url) {
                     console.log(url);
                     id = url.id;
@@ -200,9 +200,9 @@ function consend() {
 function finalizar() {
     usuario();
     $.ajax({
-        url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/' + user,
-        type: 'get',
-        dataType: 'json',
+        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user,
+        type: "get",
+        dataType: "json",
         success(url) {
             console.log(url);
             id = url.id;
@@ -212,7 +212,7 @@ function finalizar() {
             alert("Pedido realizado");
         },
         error(url) {
-            //alert('Erro ao finalizar pedido')
+            //alert("Erro ao finalizar pedido")
         }
     });
 }

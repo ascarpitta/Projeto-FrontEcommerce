@@ -1,5 +1,5 @@
-﻿var cadproduto = document.getElementById('cadproduto');
-var user = window.localStorage.getItem('user');
+﻿var cadproduto = document.getElementById("cadproduto");
+var user = window.localStorage.getItem("user");
 
 cadproduto.addEventListener("submit", function (e) {
     var obj = new FormData(cadproduto);
@@ -30,7 +30,7 @@ function cadProduto() {
         dataType: "json",
         success(url) {
             console.log(url);
-            alert('Produto cadastrado com sucesso'); 
+            alert("roduto cadastrado com sucesso"); 
             var id = url.id;
             var user = id;
             window.localStorage.setItem("user", user);
