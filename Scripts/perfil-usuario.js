@@ -18,10 +18,9 @@ function perfil() {
             usuario();
             window.localStorage.setItem("user", user);
 
-            nome = url.name;
-            email = url.email;
-            cpf = url.cpf;
-            console.log(nome, email, cpf);
+            var nome = url.name;
+            var email = url.email;
+            var cpf = url.cpf;
             document.getElementById("detalhes").innerHTML = nome;
             document.getElementById("detalhes2").innerHTML = email;
             document.getElementById("detalhes3").innerHTML = cpf;
