@@ -22,34 +22,34 @@ function teste() {
     var senha2 = document.querySelector("#senha2");
     var email = document.querySelector("#email");
 
-    if (nome.value == "" || nome.value == null || nome.lenght < 3) {
+    if (nome.value === "" || nome.value === null || nome.lenght < 3) {
         validar = true;
         alert("Por favor, indique o seu nome.");
         return false;
     }
-    if (cpf.value == "" || cpf.value == null || cpf.value < 11) {
+    if (cpf.value === "" || cpf.value === null || cpf.value < 11) {
         validar = true;
         alert("Por favor, indique um cpf válido.");
         return false;
     }
-    if (password.value == "" || password.value == null || password.lenght < 6) {
+    if (password.value === "" || password.value === null || password.lenght < 6) {
         validar = true;
         alert("Por favor, indique uma senha válida.");
         return false;
-    } if (senha2.value == "" || senha2.value == null || senha2.lenght < 6) {
+    } if (senha2.value === "" || senha2.value === null || senha2.lenght < 6) {
         validar = true;
         alert("Por favor, indique uma senha válida.");
         return false;
     }
-    if (email.value.indexOf("@") == -1 ||
-        email.value == "" ||
-        email.value == null) {
+    if (email.value.indexOf("@") === -1 ||
+        email.value === "" ||
+        email.value === null) {
         validar = true;
         alert("Por favor, indique um e-mail válido.");
         email.focus();
         return false;
     }
-    if (password.value != senha2.value) {
+    if (password.value !== senha2.value) {
         validar = true;
         alert("As senhas não coincidem, por favor verifique");
         return false;
