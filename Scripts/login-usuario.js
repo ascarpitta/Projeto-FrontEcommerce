@@ -1,5 +1,5 @@
 ﻿var formulario = document.getElementById("formulario");
-var user;
+var user = window.localStorage.getItem("user");
 
 formulario.addEventListener("submit", function (e) {
     var obj = new FormData(formulario);
@@ -13,10 +13,6 @@ formulario.addEventListener("submit", function (e) {
     console.debug("Ocorreu um click");
 });
 
-function usuario() {
-    console.log("id fora da função: ", user);
-}
-
 function teste() {
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/" + $("#email").val() + "/" + $("#password").val(),
@@ -25,7 +21,7 @@ function teste() {
         success(url) {
             console.log(url);
             alert("Login realizado com sucesso");
-            id = url.id;
+            var id = url.id;
             user = id;
             usuario();
             window.localStorage.setItem("user", user);
