@@ -19,7 +19,7 @@ function carrinho() {
                 if (i === 0) {
                     produtoCarrinho = "<div class='item'>" +
                         "<div class='buttons'>" +
-                        "<span class='delete-btn remove' id='remove>X</span>" +
+                        "<span class='delete-btn remove' id='remove'>X</span>" +
                         "</div>" +
                         "<div style='width: 7rem;'>" +
                         "<div class='card-body'></div>" +

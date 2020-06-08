@@ -33,7 +33,7 @@ function perfil() {
 function consend() {
     usuario();
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,"
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "GET",
         dataType: "json",
         success(url) {
