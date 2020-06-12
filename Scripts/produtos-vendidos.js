@@ -1,15 +1,15 @@
-ï»¿var user = window.localStorage.getItem("user");
+var user = window.localStorage.getItem("user");
 let urlGlobal;
 
 function criarCardsProdutos() {
-    $("#pedidos").empty();
+    $("#produtos_vendidos").empty();
 
-    //LaÃ§o que percorrerÃ¡ todos os produtos carregados pelo backend
+    //Laço que percorrerá todos os produtos carregados pelo backend
     urlGlobal.forEach(function (item, index) {
         //Variavel que armazena os cards dos produtos
         var card = "<div class='card' style='width: 15rem;'>" +
             "<div class='card-body'>" +
-            "NÂº: " +
+            "<img class='card-img-top' src='mackenzie.png' alt='Card image cap'>" +
             "<label>" + item.name + "</label>" +
             "</div>" +
             "<div>" +
@@ -17,23 +17,23 @@ function criarCardsProdutos() {
             "<div class='open_div'>Ver detalhes</div>" +
             "<div class='hidden_div'>" +
             "<div class='mt-1 font-weight-bold'>" +
-            "Data: "+
             "<span>" + item.name + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Status do pedido: " +
+            "R$" +
             "<span>" + item.price + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Valor final: " +
+            "Descrição:" +
             "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "EndereÃ§o: " +
-            "<span>" + item.description + "</span>" +
+            "Categoria:" +
+            "<span>" + item.category + "</span>" +
             "</div>" +
-            "<div class='card row justify-content-center' style='width: 20rem;'>" +
-            "<button class='btn btn-primary recibo' type='button' style='background: #4F5D75;' id='" + item.id + "'>Receber recibo</button> </a>" +
+            "<div class='mt-1'>" +
+            "Marca:" +
+            "<span>" + item.marca + "</span>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -44,7 +44,7 @@ function criarCardsProdutos() {
             "</div>";
 
         //Incluindo card na div principal
-        $("#pedidos").append(card);
+        $("#produtos_vendidos").append(card);
     });
 
     //Escondendo detalhes
@@ -54,18 +54,20 @@ function criarCardsProdutos() {
         $(this).toggleClass("active").next().slideToggle("slow");
         return false;
     });
+
     //Eventos para cada produto
-    $(".recibo").click(function () {
+    $(".ativar").click(function () {
+        var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
         if (user === null) {
-            alert("VocÃª nÃ£o estÃ¡ logado!");
+            alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/recibos/" + user + "/" + item.id,
+                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/" + user + "/" + idproduto,
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("E-mail enviado");
+                    alert("Usuário ativo");
                     var id = url.id;
                     user = id;
 
@@ -74,20 +76,44 @@ function criarCardsProdutos() {
             });
         }
     });
+
+    $(".desativar").click(function () {
+        var idProduto = $(this).attr("id");
+        var user = window.localStorage.getItem("user");
+
+        if (user === null) {
+            alert("Você não está logado!");
+        } else {
+            $.ajax({
+                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + idproduto,
+                type: "get",
+                dataType: "json",
+                success(url) {
+                    alert("Usuário desativado");
+                    var id = url.id;
+                    user = id;
+
+                    window.localStorage.setItem("user", user);
+                    sessionStorage.clear();
+                    localStorage.clear();
+                }
+            });
+        }
+    });
 }
 
-function pedido() {
-    //VerificaÃ§Ã£o para ver se os produtos a serem carregados devem ser filtrados ou nÃ£o
+function vendidos() {
+    //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
     var endpoint;
     if (window.localStorage.getItem("Nome_Busca") !== "" && window.localStorage.getItem("Nome_Busca") !== null) {
         endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/busca/" + window.localStorage.getItem("Nome_Busca");
-        //colocar show dos botÃµes de ordenaÃ§Ã£o aqui
+        //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
     } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/pedido/BuscarPedidos/" + user;
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/pedidos/ExibirPedidosVenda/" + user;
     }
 
-    //ComeÃ§o do ajax para buscar os produtos
+    //Começo do ajax para buscar os produtos
     $.ajax({
         url: endpoint,
         type: "get",

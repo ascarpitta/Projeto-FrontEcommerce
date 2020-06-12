@@ -1,5 +1,6 @@
 ﻿var user;
 var desejo1, desejo2, desejo3;
+var produto;
 
 function usuario() {
     desejo1 = window.localStorage.getItem("desejo1");
@@ -78,150 +79,6 @@ function remover2() {
         }
     });
 }
-function remover3() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo3,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-
-        }
-    });
-}
-function remover4() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo4,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
-function remover5() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo5,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
-function remover6() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo6,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
-function remover7() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo7,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
-function remover8() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo8,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
-function remover9() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo9,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
-function remover10() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo10,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            
-        }
-    });
-}
 
 function addCarrinho() {
     usuario();
@@ -259,25 +116,6 @@ function addCarrinho2() {
         }
     });
 }
-function addCarrinho3() {
-    usuario();
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/" + user + "/" + idProduto3,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            console.log(url);
-            id = url.id;
-            user = id;
-            usuario();
-            window.localStorage.setItem("user", user);
-        },
-        error(url) {
-            alert("Erro ao adicionar no carrinho");
-        }
-    });
-}
-
 
 function sair() {
     sessionStorage.clear();
