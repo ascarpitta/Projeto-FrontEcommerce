@@ -35,6 +35,10 @@ function criarCardsProdutos() {
             "Marca:" +
             "<span>" + item.marca + "</span>" +
             "</div>" +
+            "<div class='card row justify-content-center' style='width: 20rem;'>" +
+            "<button class='btn btn-primary cancelar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Cancelar pedido</button> </a>" +
+            "<button class='btn btn-primary transporte' type='button' style='background: #4F5D75;' id='" + item.id + "'>Colocar em transporte</button> </a>" +
+            "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -56,7 +60,7 @@ function criarCardsProdutos() {
     });
 
     //Eventos para cada produto
-    $(".ativar").click(function () {
+    $(".cancelar").click(function () {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
         if (user === null) {
@@ -72,6 +76,30 @@ function criarCardsProdutos() {
                     user = id;
 
                     window.localStorage.setItem("user", user);
+                }
+            });
+        }
+    });
+
+    $(".transporte").click(function () {
+        var idProduto = $(this).attr("id");
+        var user = window.localStorage.getItem("user");
+
+        if (user === null) {
+            alert("Você não está logado!");
+        } else {
+            $.ajax({
+                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + idproduto,
+                type: "get",
+                dataType: "json",
+                success(url) {
+                    alert("Usuário desativado");
+                    var id = url.id;
+                    user = id;
+
+                    window.localStorage.setItem("user", user);
+                    sessionStorage.clear();
+                    localStorage.clear();
                 }
             });
         }
@@ -102,7 +130,7 @@ function criarCardsProdutos() {
     });
 }
 
-function vendidos() {
+function produto() {
     //Verificação para ver se os produtos a serem carregados devem ser filtrados ou não
     var endpoint;
     if (window.localStorage.getItem("Nome_Busca") !== "" && window.localStorage.getItem("Nome_Busca") !== null) {
@@ -124,6 +152,19 @@ function vendidos() {
         },
         error(url) {
             //alert("Erro ao visualizar produtos");
+        }
+    });
+}
+
+function andamento() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GetExibirAndamentoVenda/" + user,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            urlGlobal = url;
+            criarCardsProdutos();
+            alert("foi");
         }
     });
 }

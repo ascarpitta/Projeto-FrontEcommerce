@@ -21,19 +21,36 @@ function criarCardsProdutos() {
             "<span>" + item.name + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Status do pedido: " +
-            "<span>" + item.price + "</span>" +
-            "</div>" +
-            "<div class='mt-1'>" +
             "Valor final: " +
             "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
             "Endereço: " +
             "<span>" + item.description + "</span>" +
+            "<button class='btn btn-primary endereco' type='button' style='background: #4F5D75;' id='" + item.id + "'>Alterar</button> </a>" +
+            "</div>" +
+            "<div class='top1'>" +
+            "<div class='open_div1'>Ver produtos</div>" +
+            "<div class='hidden_div1'>" +
+            "<div class='item'>" +
+            "<div class='buttons'>" +
+            "<span class='delete-btn cancelar'>X</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Produto: " +
+            "<span>" + item.description + "</span>" +
+            "</div>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "R$: " +
+            "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='card row justify-content-center' style='width: 20rem;'>" +
-            "<button class='btn btn-primary recibo' type='button' style='background: #4F5D75;' id='" + item.id + "'>Receber recibo</button> </a>" +
+            "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Sinalizar recebimento</button> </a>" +
+            "<hr>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -54,18 +71,47 @@ function criarCardsProdutos() {
         $(this).toggleClass("active").next().slideToggle("slow");
         return false;
     });
+
+    //Escondendo detalhes do produto
+    $(".hidden_div1").hide();
+
+    $(".open_div1").click(function () {
+        $(this).toggleClass("active").next().slideToggle("slow");
+        return false;
+    });
     //Eventos para cada produto
-    $(".recibo").click(function () {
+    $(".cancelar").click(function () {
         var user = window.localStorage.getItem("user");
         if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/recibos/" + user + "/" + item.id,
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/CancelarItemPedido/" + user + item.pedido + "/" + item.produto,
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("E-mail enviado");
+                    alert("item cancelado");
+                    var id = url.id;
+                    user = id;
+
+                    window.localStorage.setItem("user", user);
+                }
+            });
+        }
+    });
+
+    //Eventos para cada produto
+    $(".sinalizar").click(function () {
+        var user = window.localStorage.getItem("user");
+        if (user === null) {
+            alert("Você não está logado!");
+        } else {
+            $.ajax({
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/ReceberItemPedido/" + user + item.pedido + "/" + item.produto,
+                type: "get",
+                dataType: "json",
+                success(url) {
+                    alert("item recebido");
                     var id = url.id;
                     user = id;
 
@@ -84,7 +130,7 @@ function pedido() {
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
     } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/pedido/BuscarPedidos/" + user;
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53";
     }
 
     //Começo do ajax para buscar os produtos
@@ -98,6 +144,19 @@ function pedido() {
         },
         error(url) {
             //alert("Erro ao visualizar produtos");
+        }
+    });
+}
+
+function andamento() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GetExibirAndamentoVenda/" + user,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            urlGlobal = url;
+            criarCardsProdutos();
+            alert("foi");
         }
     });
 }

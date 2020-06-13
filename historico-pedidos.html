@@ -23,7 +23,7 @@
         .hidden_div {
             position: absolute;
             width: 300px;
-            height: 200px;
+            height: 400px;
             top: 40px;
             left: 50%;
             margin-left: -150px;
@@ -31,6 +31,34 @@
             border: 2px solid #c0c0c0;
             overflow: hidden;
             clear: both;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+        .top1 {
+            position: relative;
+            width: 279px;
+            height: 36px;
+            background-color: #E0AFA0;
+            border: 1px solid #4F5D75;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .open_div1 {
+            cursor: pointer;
+        }
+
+        .hidden_div1 {
+            position: absolute;
+            width: 290px;
+            height: 200px;
+            top: 40px;
+            left: 50%;
+            margin-left: -150px;
+            background-color: #F4F3EE;
+            overflow: hidden;
+            clear: both;
+            overflow-y: scroll;
         }
         .sub:hover {
             width: 100px;
@@ -63,6 +91,25 @@
             width: 90px;
             float: none;
             background-color: #c4c4c4;
+        }
+        .delete-btn,
+        .like-btn {
+            display: inline-block;
+            Cursor: pointer;
+        }
+
+        .delete-btn {
+            width: 18px;
+            height: 17px;
+            background: url(x.svg) no-repeat center;
+        }
+        .buttons {
+            margin-right: 20px;
+        }
+        .item {
+            padding: 20px 30px;
+            height: 120px;
+            display: flex;
         }
     </style>
 </head>
@@ -110,10 +157,18 @@
     <br>
     <h2 class="text-center">Seus pedidos</h2>
     <br>
-        <div class="container">
+    <div class="container row justify-content-center">
+        <form method="get" action="historico-pedidos.html">
+            <button type="submit" class="btn btn-primary" style="background:#4F5D75;">Todos pedidos</button>
+        </form>
+        <button type="submit" class="btn btn-primary" style="background:#4F5D75;">Pedidos em andamento</button>
+    </div>
+    <br />
+    <div class="container">
         <div class="row justify-content-center" id="pedidos"></div>
     </div>
-    <hr>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
     <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="Scripts/historico-pedidos.js" charset="utf-8"></script>

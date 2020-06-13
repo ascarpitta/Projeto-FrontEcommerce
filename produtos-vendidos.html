@@ -1,4 +1,4 @@
-<!doctype html>
+ï»¿<!doctype html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -85,7 +85,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> </button>
 
                 <div class="container" style="width: 55rem;">
-                    <input class="form-control mr-sm-2" type="search" id="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" id="busca" placeholder="O que vocï¿½ procura" style="width: 50rem" aria-label="Search">
                     <button type="button" onclick="busca()">&#128269</button>
                 </div>
 
@@ -111,6 +111,10 @@
     <br />
     <h2 class="row justify-content-center">Produtos Vendidos </h2>
     <br>
+    <div class="container row justify-content-center">
+        <div class="row justify-content-center" id="ordena_pedidos"></div>
+        <button class="btn btn-primary ordenar" type="button" style="background: #4F5D75;" onclick="andamento()">Pedidos em andamento</button>
+    </div>
     <div class="container">
         <div class="row justify-content-center" id="produtos_vendidos"></div>
     </div>
@@ -121,7 +125,8 @@
     <script type="text/javascript" src="Scripts/busca.js" charset="utf-8"></script>
     <script>
         $(document).ready(function () {
-            vendidos();
+            pedido();
+            
         });
     </script>
     <footer class="section footer-classic context-dark bg-image" style="background: #E0AFA0;">
@@ -131,7 +136,7 @@
                     <div class="pr-xl-4">
                         <a class="brand" href="index.html"><img class="brand-logo-light" src="mackenzie.png" alt="" width="130" height="55"></a>
                         <p> Somos um ecommerce de compra e venda de utilidades diversas, para atender as necessidades solicitadas.  </p>
-                        <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
+                        <p class="rights"><span>ï¿½  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -148,8 +153,8 @@
                 <div class="col-md-4 col-xl-3">
                     <h5>Links</h5>
                     <ul class="nav-list">
-                        <li><a href="sobre-nos.html">Sobre nós</a></li>
-                        <li><a href="politica-seguranca.html">Politicas de segurança</a></li>
+                        <li><a href="sobre-nos.html">Sobre nï¿½s</a></li>
+                        <li><a href="politica-seguranca.html">Politicas de seguranï¿½a</a></li>
                     </ul>
                 </div>
             </div>
