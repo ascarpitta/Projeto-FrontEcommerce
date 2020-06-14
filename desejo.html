@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
-
         .sub:hover {
             width: 100px;
             height: 30px;
@@ -49,7 +48,7 @@
                     <li>
                         <b><img class="card-img-top" src="lateral-menu.png" alt="menu" style="width: 2rem"> </b>
                         <ul>
-                            <li class="sub"> <a href="categoria.html"> Categorias </a> </li>
+                            <li class="sub"> <a href="lojas.html"> Categorias </a> </li>
                             <li class="sub"> <a href="cadastro-produtos.html"> Vender</a> </li>
                         </ul>
                     </li>
@@ -57,10 +56,10 @@
                 <a class="navbar-brand" href="index.html"> <img src="logo.png" alt="logo" height="80" width="80"> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> </button>
 
-                    <div class="container" style="width: 55rem;">
-                        <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
-                        <button type="submit" onclick="busca()">&#128269</button>
-                    </div>
+                <div class="container" style="width: 55rem;">
+                    <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
+                    <button type="submit" onclick="busca()">&#128269</button>
+                </div>
 
                 <div class="card" style="width: 4rem;">
                     <a href="carrinho.html"> <img class="card-img-top" src="carrinho.png" alt="carrinho"> </a>
@@ -107,10 +106,421 @@
             <div style="width: 2rem;">
                 <div class="card-body"></div>
             </div>
-
-
-
-
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto3"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover3()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho3()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto4"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover4()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho4()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto5"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover5()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho5()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto6"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover6()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho6()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto7"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover7()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho7()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto8"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover8()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho8()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto9"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover9()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho9()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto10"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover10()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho10()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto11"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover11()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho11()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto12"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover12()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho12()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto13"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover13()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho13()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto14"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover14()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho14()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto15"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover15()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho15()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto16"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover16()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho16()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto17"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover17()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho17()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto18"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover18()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho18()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto19"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover19()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho19()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto20"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover20()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho20()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto21"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover21()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho21()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto22"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover22()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho22()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto23"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover23()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho23()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto24"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover24()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho24()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto25"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover25()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho25()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto26"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover26()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho26()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto27"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover27()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho27()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto28"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover28()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho28()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto29"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover29()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho29()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto30"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover30()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho30()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto31"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover31()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho31()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto32"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover32()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho32()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto33"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover33()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho33()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto34"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover34()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho34()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto35"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover35()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho35()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto36"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover36()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho36()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto37"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover37()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho37()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto38"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover38()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho38()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto39"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover39()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho39()">Adicionar ao carrinho</button>
+            </div>
+            <div style="width: 2rem;">
+                <div class="card-body"></div>
+            </div>
+            <div class="card" style="width: 15rem;">
+                <a href="produto.html"><img class="card-img-top" src="mackenzie.png" alt="Card image cap"></a>
+                <div class="card-body">
+                    <label id="produto40"></label>
+                </div>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="remover40()">Remover</button>
+                <button class="btn btn-primary" type="submit" style="background: #4F5D75;" onclick="addCarrinho40()">Adicionar ao carrinho</button>
+            </div>
         </div>
     </div>
     <hr>

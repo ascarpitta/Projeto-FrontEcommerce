@@ -32,6 +32,7 @@
             border: 2px solid #c0c0c0;
             overflow: hidden;
             clear: both;
+            overflow-y: scroll;
         }
 
         .sub:hover {
@@ -65,6 +66,27 @@
             width: 90px;
             float: none;
             background-color: #c4c4c4;
+        }
+        .delete-btn,
+        .like-btn {
+            display: inline-block;
+            Cursor: pointer;
+        }
+
+        .delete-btn {
+            width: 18px;
+            height: 17px;
+            background: url(x.svg) no-repeat center;
+        }
+
+        .buttons {
+            margin-right: 20px;
+        }
+
+        .item {
+            padding: 20px 30px;
+            height: 120px;
+            display: flex;
         }
     </style>
 </head>

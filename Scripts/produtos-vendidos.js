@@ -9,7 +9,7 @@ function criarCardsProdutos() {
         //Variavel que armazena os cards dos produtos
         var card = "<div class='card' style='width: 15rem;'>" +
             "<div class='card-body'>" +
-            "<img class='card-img-top' src='mackenzie.png' alt='Card image cap'>" +
+            "Nº: " +
             "<label>" + item.name + "</label>" +
             "</div>" +
             "<div>" +
@@ -17,27 +17,40 @@ function criarCardsProdutos() {
             "<div class='open_div'>Ver detalhes</div>" +
             "<div class='hidden_div'>" +
             "<div class='mt-1 font-weight-bold'>" +
+            "Data: " +
             "<span>" + item.name + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "R$" +
-            "<span>" + item.price + "</span>" +
-            "</div>" +
-            "<div class='mt-1'>" +
-            "Descrição:" +
+            "Valor final: " +
             "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Categoria:" +
-            "<span>" + item.category + "</span>" +
+            "Endereço: " +
+            "<span>" + item.description + "</span>" +
+            "<button class='btn btn-primary endereco' type='button' style='background: #4F5D75;' id='" + item.id + "'>Alterar</button> </a>" +
+            "</div>" +
+            "<div class='top1'>" +
+            "<div class='open_div1'>Ver produtos</div>" +
+            "<div class='hidden_div1'>" +
+            "<div class='item'>" +
+            "<div class='buttons'>" +
+            "<span class='delete-btn cancelar'>X</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Marca:" +
-            "<span>" + item.marca + "</span>" +
+            "Produto: " +
+            "<span>" + item.description + "</span>" +
+            "</div>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "R$: " +
+            "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='card row justify-content-center' style='width: 20rem;'>" +
-            "<button class='btn btn-primary cancelar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Cancelar pedido</button> </a>" +
-            "<button class='btn btn-primary transporte' type='button' style='background: #4F5D75;' id='" + item.id + "'>Colocar em transporte</button> </a>" +
+            "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Pedido em transporte</button> </a>" +
+            "<hr>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -55,6 +68,14 @@ function criarCardsProdutos() {
     $(".hidden_div").hide();
 
     $(".open_div").click(function () {
+        $(this).toggleClass("active").next().slideToggle("slow");
+        return false;
+    });
+
+    //Escondendo detalhes do produto
+    $(".hidden_div1").hide();
+
+    $(".open_div1").click(function () {
         $(this).toggleClass("active").next().slideToggle("slow");
         return false;
     });
@@ -138,7 +159,7 @@ function produto() {
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
     } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/pedidos/ExibirPedidosVenda/" + user;
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53/";
     }
 
     //Começo do ajax para buscar os produtos

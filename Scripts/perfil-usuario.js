@@ -39,15 +39,43 @@ function consend() {
         success(url) {
             var consEnd = "";
             url.forEach(function (item, i) {
-                consEnd = "<div class='mt-1'>Nome:" +
+                consEnd = "<div class='item'> " +
+                    "<div class='buttons'>" +
+                    "<span class='delete-btn cancelar'>X</span>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class='mt-1'> Nome: " +
                     "<span id='consulta'>" + item.nomeEndereco + "</span> - CEP" +
                     "<span id='consulta1'>" + item.cep + "</span> -" +
                     "<span id='consulta2'>" + item.rua + "</span> nº" +
                     "<span id='consulta3'>" + item.numero + "</span> -" +
                     "<span id='consulta4'>" + item.uf + "</span>" +
                     "</div>" +
+                    
                     "<hr />";
                 $("#lista_end").append(consEnd);
+
+                //Eventos para cada produto
+                $(".cancelar").click(function () {
+                    var idProduto = $(this).attr("id");
+                    var user = window.localStorage.getItem("user");
+                    if (user === null) {
+                        alert("Você não está logado!");
+                    } else {
+                        $.ajax({
+                            url: "https://projeto-ecommerce.herokuapp.com/api/Enderecos/ExcluirEndereco/" + user + "/" + item.id,
+                            type: "get",
+                            dataType: "json",
+                            success(url) {
+                                alert("Endereço Removido");
+                                var id = url.id;
+                                user = id;
+
+                                window.localStorage.setItem("user", user);
+                            }
+                        });
+                    }
+                });
             });
         }
     });
