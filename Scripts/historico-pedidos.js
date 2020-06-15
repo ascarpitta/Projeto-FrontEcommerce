@@ -27,7 +27,6 @@ function criarCardsProdutos() {
             "<div class='mt-1'>" +
             "Endereço: " +
             "<span>" + item.description + "</span>" +
-            "<button class='btn btn-primary endereco' type='button' style='background: #4F5D75;' id='" + item.id + "'>Alterar</button> </a>" +
             "</div>" +
             "<div class='top1'>" +
             "<div class='open_div1'>Ver produtos</div>" +

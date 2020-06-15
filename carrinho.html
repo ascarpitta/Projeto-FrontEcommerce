@@ -281,10 +281,10 @@
                 <a class="navbar-brand" href="index.html"> <img src="logo.png" alt="logo" height="80" width="80"> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> </button>
 
-                    <div class="container" style="width: 55rem;">
-                        <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
-                        <button type="submit" onclick="busca()">&#128269</button>
-                    </div>
+                <div class="container" style="width: 55rem;">
+                    <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
+                    <button type="submit" onclick="busca()">&#128269</button>
+                </div>
 
                 <div class="card" style="width: 4rem;">
                     <a href="carrinho.html"> <img class="card-img-top" src="carrinho.png" alt="carrinho"> </a>
@@ -308,34 +308,35 @@
     <br />
     <div class="row justify-content-center">
         <h2 style="color: #4F5D75">Carrinho</h2>
-    </div><br />
-        <div id="produtosCarrinho" class="row justify-content-center"></div>
+    </div>
+    <br />
+    <div id="produtosCarrinho" class="row justify-content-center"></div>
 
-        <div class="top">
-            <div class="row justify-content-center">
-                <div class="open_div" onclick="consend()">Defina um endereço</div>
-                <div class="hidden_div" onclick="consend()">
-                    <div class="container">
-                        <div class="row justify-content-center" id="lista_end"></div>
-                    </div>
-                    <form method="get" action="cadastrar-endereco.html">
-                        <button type="submit" class="btn btn-primary" style="background:#4F5D75;">Cadastrar novo endereço</button>
-                    </form>
+    <div class="top">
+        <div class="row justify-content-center">
+            <div class="open_div" onclick="consend()">Defina um endereço</div>
+            <div class="hidden_div" onclick="consend()">
+                <div class="container">
+                    <div class="row justify-content-center" id="lista_end"></div>
                 </div>
+                <form method="get" action="cadastrar-endereco.html">
+                    <button type="submit" class="btn btn-primary" style="background:#4F5D75;">Cadastrar novo endereço</button>
+                </form>
             </div>
-        </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        
-        <div class="top1">
-            <div class="row justify-content-center">
-                <div class="open_div1" onclick="finalizar()">Finalizar pedido</div>
-                <div class="hidden_div1" onclick="finalizar()">
-                    <div class="container">
-                        <div class="row justify-content-center" id="finalizar_pedido"></div>
-                    </div>
+        </div>
+    </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <div class="top1">
+        <div class="row justify-content-center">
+            <div class="open_div1" onclick="finalizar()">Finalizar pedido</div>
+            <div class="hidden_div1" onclick="finalizar()">
+                <div class="container">
+                    <div class="row justify-content-center" id="finalizar_pedido"></div>
                 </div>
             </div>
         </div>
-         <br />
+    </div>
+    <br />
     <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="Scripts/carrinho.js" charset="utf-8"></script>
@@ -350,7 +351,7 @@
             });
         });
         $(document).ready(function () {
-           
+
             $(".hidden_div1").hide();
             $(".open_div1").click(function () {
                 $(this).toggleClass("active").next().slideToggle("slow");

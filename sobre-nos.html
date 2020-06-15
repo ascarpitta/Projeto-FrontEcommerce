@@ -140,10 +140,10 @@
                 <a class="navbar-brand" href="index.html"> <img src="logo.png" alt="logo" height="80" width="80"> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> </button>
 
-                    <div class="container" style="width: 55rem;">
-                        <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
-                        <button type="submit" onclick="busca()">&#128269</button>
-                    </div>
+                <div class="container" style="width: 55rem;">
+                    <input class="form-control mr-sm-2" type="search" id="busca" name="busca" placeholder="O que você procura" style="width: 50rem" aria-label="Search">
+                    <button type="submit" onclick="busca()">&#128269</button>
+                </div>
 
                 <div class="card" style="width: 4rem;">
                     <a href="carrinho.html"> <img class="card-img-top" src="carrinho.png" alt="carrinho"> </a>
@@ -165,62 +165,64 @@
         </nav>
     </header>
     <br>
+    <br>    <div class="row justify-content-center">
+        <h2 style="color: #4F5D75">Sobre nós</h2>
+    </div>
+    <br />
     <br>
-        <h2 class="text-center">Sobre nós</h2>
-        <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div style="width: 45rem;">
+                <p>O Ecommerce Vendas Calebe é um portal especializado em conteúdo para todos os tipos de gostos. A nossa missão é lhe   atender da melhor forma e facilitar suas compras e vendas.</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <img src="mackenzie.png" alt="logo" height="150" width="430">
+        </div>
+    </div>
+    <br>
+    <hr>
+    <footer class="section footer-classic context-dark bg-image" style=" background: #E0AFA0;">
         <div class="container">
-            <div class="row justify-content-center">
-                <div style="width: 45rem;">
-                    <p>O Ecommerce Vendas Calebe é um portal especializado em conteúdo para todos os tipos de gostos. A nossa missão é lhe   atender da melhor forma e facilitar suas compras e vendas.</p>
+            <div class="row row-30">
+                <div class="col-md-4 col-xl-5">
+                    <div class="pr-xl-4">
+                        <a class="brand" href="index.html"><img class="brand-logo-light" src="mackenzie.png" alt="" width="130" height="55"></a>
+                        <p> Somos um ecommerce de compra e venda de utilidades diversas, para atender as necessidades solicitadas.  </p>
+                        <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contatos</h5>
+                    <dl class="contact-list">
+                        <dt>E-mail:</dt>
+                        <dd><a href="mailto:#">vendascalebe@gmail.com</a></dd>
+                    </dl>
+                    <dl class="contact-list">
+                        <dt>Telefones:</dt>
+                        <dd>(11)9876-5432 <span>ou</span> (15)1234-5678</dd>
+                    </dl>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                    <h5>Links</h5>
+                    <ul class="nav-list">
+                        <li><a href="sobre-nos.html">Sobre nós</a></li>
+                        <li><a href="politica-seguranca.html">Politicas de segurança</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <img src="mackenzie.png" alt="logo" height="150" width="430">
-            </div>
-        </div>
-        <br>
-        <hr>
-        <footer class="section footer-classic context-dark bg-image" style=" background: #E0AFA0;">
-            <div class="container">
-                <div class="row row-30">
-                    <div class="col-md-4 col-xl-5">
-                        <div class="pr-xl-4">
-                            <a class="brand" href="index.html"><img class="brand-logo-light" src="mackenzie.png" alt="" width="130" height="55"></a>
-                            <p> Somos um ecommerce de compra e venda de utilidades diversas, para atender as necessidades solicitadas.  </p>
-                            <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>Brasil</span><span>. </span><span>Todos os direitos reservados.</span></p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <h5>Contatos</h5>
-                        <dl class="contact-list">
-                            <dt>E-mail:</dt>
-                            <dd><a href="mailto:#">vendascalebe@gmail.com</a></dd>
-                        </dl>
-                        <dl class="contact-list">
-                            <dt>Telefones:</dt>
-                            <dd>(11)9876-5432 <span>ou</span> (15)1234-5678</dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-4 col-xl-3">
-                        <h5>Links</h5>
-                        <ul class="nav-list">
-                            <li><a href="sobre-nos.html">Sobre nós</a></li>
-                            <li><a href="politica-seguranca.html">Politicas de segurança</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <script>
+    </footer>
+    <script>
 
 
-            function sair() {
-                sessionStorage.clear()
-                localStorage.clear()
-            }
-        </script>
-    </body>
+        function sair() {
+            sessionStorage.clear()
+            localStorage.clear()
+        }
+    </script>
+</body>
 </html>
