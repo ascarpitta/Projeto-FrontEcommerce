@@ -3,7 +3,6 @@ var user = window.localStorage.getItem("user");
 
 cadproduto.addEventListener("submit", function (e) {
     var obj = new FormData(cadproduto);
-    console.debug(obj);
 
     var nome = JSON.stringify(obj.get("nome"));
     var marca = JSON.stringify(obj.get("marca"));
@@ -25,7 +24,7 @@ function cadProduto() {
             "/" + $("#preco").val().replace(/\s/g, "") + "/" + $("#frete").val().replace(/\s/g, "") +
             "/" + $("#quantidade").val().replace(/\s/g, "") + "/" + $("#categoria").val().replace(/\s/g, "") +
             "/" + $("#marca").val().replace(/\s/g, ""),
-        type: "POST",
+        type: "GET",
         dataType: "json",
         success(url) {
             alert("roduto cadastrado com sucesso"); 

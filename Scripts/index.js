@@ -1,4 +1,5 @@
-﻿let urlGlobal;
+﻿var user = window.localStorage.getItem("user");
+let urlGlobal;
 
 function criarCardsProdutos() {
     $("#lista_produtos").empty();

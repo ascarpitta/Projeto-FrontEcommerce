@@ -1,5 +1,5 @@
 ﻿var alterarsenha = document.getElementById("alterarsenha");
-var user;
+var user = window.localStorage.getItem("user");
 
 alterarsenha.addEventListener("submit", function (e) {
     var obj = new FormData(alterarsenha);
@@ -12,11 +12,6 @@ alterarsenha.addEventListener("submit", function (e) {
     e.preventDefault();
     console.debug("Ocorreu um click");
 });
-
-function usuario() {
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-}
 
 function teste() {
     var validar = false;
@@ -38,7 +33,6 @@ function teste() {
     if (validar) {
         alert("Erro ao validar senha");
     }
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/" + user + "/" + $("#passwordAtual").val() + "/" + $("#password").val(),
         crossDomain: true,

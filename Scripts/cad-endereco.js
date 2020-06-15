@@ -21,16 +21,14 @@ cadendereco.addEventListener("submit", function (e) {
 });
 
 function cadastro() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val().replace(/\s/g, "") + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val().replace(/\s/g, "") + "/" + $("#cidade").val().replace(/\s/g, "") + "/" + $("#bairro").val().replace(/\s/g, "") + "/" + $("#rua").val().replace(/\s/g, "") + "/" + $("#numero").val().replace(/\s/g, "") + "/" + $("#complemento").val().replace(/\s/g, ""),
-        type: "post",
+        type: "GET",
         dataType: "json",
         success(url) {
             alert("Endereço cadastrado com sucesso");
             var id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
         }
     });
@@ -44,7 +42,6 @@ function verificar() {
         success(url) {
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
 
             document.querySelector("input[name=complemento]").value = url.complemento;

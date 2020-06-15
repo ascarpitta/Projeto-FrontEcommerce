@@ -2,7 +2,6 @@
 
 cadusuario.addEventListener("submit", function (e) {
     var obj = new FormData(cadusuario);
-    console.debug(obj);
 
     var nome = JSON.stringify(obj.get("nome"));
     var cpf = JSON.stringify(obj.get("cpf"));
@@ -62,7 +61,7 @@ function teste() {
 
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/" + $("#email").val() + "/" + $("#cpf").val() + "/" + $("#nome").val() + "/" + $("#senha2").val(),
-        type: "POST",
+        type: "GET",
         dataType: "json",
         success(url) {
             alert("Cadastro realizado com sucesso");

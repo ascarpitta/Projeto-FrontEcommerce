@@ -1,12 +1,6 @@
-﻿var user;
-
-function usuario() {
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-}
+﻿var user = window.localStorage.getItem("user");
 
 function perfil() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/id/" + user,
         type: "GET",
@@ -14,7 +8,6 @@ function perfil() {
         success(url) {
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
 
             var nome = url.name;
@@ -31,7 +24,6 @@ function perfil() {
 }
 
 function consend() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "GET",
@@ -82,7 +74,6 @@ function consend() {
 }
 
 function pedidos() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/pedidos/BuscarPedidos/" + user,
         type: "GET",
@@ -105,7 +96,6 @@ function pedidos() {
 }
 
 function ativar() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + user,
         type: "get",
@@ -114,14 +104,12 @@ function ativar() {
             alert("Usuário ativo");
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
         }
     });
 }
 
 function desativar() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/" + user,
         type: "get",
@@ -130,7 +118,6 @@ function desativar() {
             alert("Usuário desativado");
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
             sessionStorage.clear();
             localStorage.clear();

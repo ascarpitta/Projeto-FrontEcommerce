@@ -1,6 +1,6 @@
 ﻿var altendereco = document.getElementById("altendereco");
-var endereco;
-var user;
+var endereco = window.localStorage.getItem("endereco");
+var user = window.localStorage.getItem("user");
 
 altendereco.addEventListener("submit", function (e) {
 
@@ -23,15 +23,7 @@ altendereco.addEventListener("submit", function (e) {
     console.debug("Ocorreu um click");
 });
 
-function usuario() {
-    endereco = window.localStorage.getItem("endereco");
-    console.log("endereço fora da função: ", endereco);
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-}
-
 function endereco() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "get",
@@ -60,7 +52,6 @@ function endereco() {
 }
 
 function editar() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/" + user + "/" + $("#end").val().replace(/\s/g, "") + "/" + $("#nomeEnd").val().replace(/\s/g, "") + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val().replace(/\s/g, "") + "/" + $("#cidade").val().replace(/\s/g, "") + "/" + $("#bairro").val().replace(/\s/g, "") + "/" + $("#rua").val().replace(/\s/g, "") + "/" + $("#numero").val().replace(/\s/g, "") + "/" + $("#complemento").val().replace(/\s/g, "") + "/" + $("#obs").val().replace(/\s/g, ""),
         type: "get",
@@ -69,7 +60,6 @@ function editar() {
             alert("Endereço atualizado com sucesso");
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
         }
     });
@@ -83,7 +73,6 @@ function verificar() {
         success(url) {
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
             document.querySelector("input[name=complemento]").value = url.complemento;
             document.querySelector("input[name=bairro]").value = url.bairro;

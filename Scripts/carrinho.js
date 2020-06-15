@@ -2,6 +2,7 @@
 var ende;
 
 function carrinho() {
+    $("#produtosCarrinho").empty();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/userid/" + user,
         type: "GET",
@@ -185,13 +186,48 @@ function finalizar() {
         type: "get",
         dataType: "json",
         success(url) {
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
-            alert("Pedido realizado");
+            var finalizar = "";
+            url.forEach(function (item, i) {
+                finalizar = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
+                    "<img src='qrcode.png' alt='logo' height='400' width='420'>" +
+                    "<br />" +
+                    "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='pagar()'>Pagar</button>" +
+                    "<br />" +
+                    "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='recibo()'>Baixar recibo</button>";
+
+                $("#finalizar_pedido").append(finalizar);
+
+                id = url.id;
+                user = id;
+                window.localStorage.setItem("user", user);
+                alert("Pedido realizado");
+            });
         },
         error(url) {
-            //alert("Erro ao finalizar pedido")
+            alert("Erro ao finalizar pedido")
+        }
+    });
+}
+
+function pagar() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/PagarPedido/" + user + item.pedido,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            alert("Pedido pago com sucesso, baixe seu recibo");
+
+        }
+    });
+}
+
+function recibo() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/ReciboCompra/" + user + item.pedido,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            
         }
     });
 }

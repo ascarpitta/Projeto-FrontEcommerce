@@ -1,4 +1,4 @@
-﻿var user;
+﻿var user = window.localStorage.getItem("user");
 var produto;
 var altproduto = document.querySelector("#altproduto");
 
@@ -22,14 +22,7 @@ altproduto.addEventListener("submit", function (e) {
     console.debug("Ocorreu um click");
 });
 
-function usuario() {
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-    console.log("Produto fora da função: ", produto);
-}
-
 function produto() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e8cfff8d7067e80b084664d",
         type: "get",
@@ -37,7 +30,6 @@ function produto() {
         success(url) {
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
 
             console.log("antes",produto);
@@ -101,7 +93,6 @@ function produto() {
 } 
 
 function altProduto() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/produtos/alterarProduto/" + user + "/" + $("#prod").val() + "/" + $("#nome").val() + "/" + $("#descricao").val() + "/" + $("#preco").val() + "/" + $("#frete").val() + "/" + $("#quantidade").val() + "/" + $("#categoria").val() + "/" + $("#marca").val(),
         type: "get",
@@ -110,7 +101,6 @@ function altProduto() {
             alert("Produto alterado com sucesso");
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
         }
     });

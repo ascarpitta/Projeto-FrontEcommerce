@@ -1,17 +1,15 @@
-﻿var user;
+﻿var user = window.localStorage.getItem("user");
 var desejo1, desejo2, desejo3, desejo4, desejo5;
+
 function usuario() {
     desejo1 = window.localStorage.getItem('desejo1');
     desejo2 = window.localStorage.getItem('desejo2');
     desejo3 = window.localStorage.getItem('desejo3');
     desejo4 = window.localStorage.getItem('desejo4');
     desejo5 = window.localStorage.getItem('desejo5');
-    user = window.localStorage.getItem('user');
-    console.log("id fora da função: ", user)
 }
 
 function desejo() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ListaDesejo/" + user,
         type: "GET",

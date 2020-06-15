@@ -1,3 +1,4 @@
+var user = window.localStorage.getItem("user");
 let urlGlobal;
 
 function criarCardsProdutos() {
