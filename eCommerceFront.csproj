@@ -119,6 +119,7 @@
     <Content Include="enderecos.html" />
     <Content Include="esqueci-senha.html" />
     <Content Include="favicon.ico" />
+    <Content Include="composer.json" />
     <None Include="Properties\PublishProfiles\eCommerceFront.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="index.html" />

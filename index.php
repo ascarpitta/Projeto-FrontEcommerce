@@ -1,1 +1,1 @@
-<?php header( 'Location: eCommerceFront/index.html' ) ;  ?>
+<?php include_once("index.html"); ?>
