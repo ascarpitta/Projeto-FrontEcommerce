@@ -47,7 +47,6 @@ function criarCardsProdutos() {
             "</div>" +
             "<div class='card row justify-content-center' style='width: 20rem;'>" +
             "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Sinalizar recebimento</button> </a>" +
-            "<hr>" +
             "</div>" +
             "</div>" +
             "</div>" +

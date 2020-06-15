@@ -21,7 +21,6 @@ function teste() {
             alert("Login realizado com sucesso");
             var id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
             window.location.href = "index.html";
         },

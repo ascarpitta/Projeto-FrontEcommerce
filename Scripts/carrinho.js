@@ -1,19 +1,12 @@
-﻿var user;
+﻿var user = window.localStorage.getItem("user");
 var ende;
 
-function usuario() {
-    user = window.localStorage.getItem("user");
-    console.log("id fora da função: ", user);
-}
-
 function carrinho() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/userid/" + user,
         type: "GET",
         dataType: "json",
         success(url) {
-            console.info(url);
             var produtoCarrinho = "";
             url.produtos.forEach(function (item, i) {
                 if (i === 0) {
@@ -85,7 +78,6 @@ function carrinho() {
             });
 
             $(".remove").click(function() {
-                usuario();
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/RemoverProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).attr("id").replace("remove", "")),
                     type: "get",
@@ -103,7 +95,6 @@ function carrinho() {
             $(".increase").click(function () {
                 console.info(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).text()));
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) + 1);
-                usuario();
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/AumentarProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
                     type: "get",
@@ -111,7 +102,6 @@ function carrinho() {
                     success(url) {
                         id = url.id;
                         user = id;
-                        usuario();
                         window.localStorage.setItem("user", user);
                         //alert("Produto aumentado com sucesso")
                     },
@@ -123,7 +113,6 @@ function carrinho() {
 
             $(".decrease").click(function () {
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) - 1);
-                usuario();
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/DiminuirProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
                     type: "get",
@@ -131,7 +120,6 @@ function carrinho() {
                     success(url) {
                         id = url.id;
                         user = id;
-                        usuario();
                         window.localStorage.setItem("user", user);
                         //alert("Produto diminuido com sucesso")
                     },
@@ -145,7 +133,6 @@ function carrinho() {
 }
 
 function consend() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "GET",
@@ -166,7 +153,6 @@ function consend() {
                 $("#lista_end").append(consEnd);
                 var id = item.id;
                 ende = id;
-                usuario();
                 console.info("depois", id);
             });
         }
@@ -185,7 +171,6 @@ function consend() {
                 success(url) {
                     id = url.id;
                     user = id;
-                    usuario();
                     window.localStorage.setItem("user", user);
                     alert("Endereço escolhido");
                 }
@@ -195,7 +180,6 @@ function consend() {
 }
     
 function finalizar() {
-    usuario();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user,
         type: "get",
@@ -203,7 +187,6 @@ function finalizar() {
         success(url) {
             id = url.id;
             user = id;
-            usuario();
             window.localStorage.setItem("user", user);
             alert("Pedido realizado");
         },
