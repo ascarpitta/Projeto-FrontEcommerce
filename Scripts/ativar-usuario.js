@@ -1,7 +1,7 @@
 var ativar = document.getElementById("ativar");
 
-senha.addEventListener("submit", function (e) {
-    var obj = new FormData(senha);
+ativar.addEventListener("submit", function (e) {
+    var obj = new FormData(ativar);
 
     var email = JSON.stringify(obj.get("email"));
     var cpf = JSON.stringify(obj.get("cpf"));

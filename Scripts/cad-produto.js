@@ -28,8 +28,7 @@ function cadProduto() {
         dataType: "json",
         success(url) {
             alert("roduto cadastrado com sucesso"); 
-            var id = url.id;
-            var user = id;
+
             window.localStorage.setItem("user", user);
         }
     });

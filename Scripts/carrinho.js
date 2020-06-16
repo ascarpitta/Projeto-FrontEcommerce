@@ -101,8 +101,7 @@ function carrinho() {
                     type: "get",
                     dataType: "json",
                     success(url) {
-                        id = url.id;
-                        user = id;
+
                         window.localStorage.setItem("user", user);
                         //alert("Produto aumentado com sucesso")
                     },
@@ -119,8 +118,7 @@ function carrinho() {
                     type: "get",
                     dataType: "json",
                     success(url) {
-                        id = url.id;
-                        user = id;
+
                         window.localStorage.setItem("user", user);
                         //alert("Produto diminuido com sucesso")
                     },
@@ -170,8 +168,7 @@ function consend() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    id = url.id;
-                    user = id;
+
                     window.localStorage.setItem("user", user);
                     alert("Endereço escolhido");
                 }
@@ -196,9 +193,6 @@ function finalizar() {
                     "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='recibo()'>Baixar recibo</button>";
 
                 $("#finalizar_pedido").append(finalizar);
-
-                id = url.id;
-                user = id;
                 window.localStorage.setItem("user", user);
                 alert("Pedido realizado");
             });

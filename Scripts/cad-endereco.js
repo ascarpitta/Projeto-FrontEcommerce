@@ -40,9 +40,6 @@ function verificar() {
         type: "get",
         dataType: "json",
         success(url) {
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
 
             document.querySelector("input[name=complemento]").value = url.complemento;
             document.querySelector("input[name=bairro]").value = url.bairro;
