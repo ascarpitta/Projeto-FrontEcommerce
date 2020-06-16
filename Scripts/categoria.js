@@ -116,3 +116,23 @@ function criarCardsProdutos() {
         }
     });
 }
+
+function buscar() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cpf/" + $("#categoria").val(),
+        type: "GET",
+        dataType: "json",
+        success(url) {
+            urlGlobal = url;
+            criarCardsProdutos();
+        },
+        error(url) {
+            alert("Não foi possível buscar");
+        }
+    });
+}
+
+function sair() {
+    sessionStorage.clear();
+    localStorage.clear();
+}
