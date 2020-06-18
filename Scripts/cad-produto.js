@@ -34,6 +34,28 @@ function cadProduto() {
     });
 }
 
+function imagem() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + user,
+        type: "get",
+        dataType: "json",
+        success(url) {
+            var finalizar = "";
+            url.forEach(function (item, i) {
+                finalizar =
+                    "<button type='submit' class='btn btn - primary' style='background:#4F5D75;'>Escolher imagem</button>";
+
+                $("#imagem").append(finalizar);
+                window.localStorage.setItem("user", user);
+                alert("Imagem adicionada");
+            });
+        },
+        error(url) {
+            alert("Erro ao adicionar imagem")
+        }
+    });
+}
+
 function sair() {
     sessionStorage.clear();
     localStorage.clear();

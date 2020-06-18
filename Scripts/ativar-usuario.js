@@ -5,7 +5,6 @@ ativar.addEventListener("submit", function (e) {
 
     var email = JSON.stringify(obj.get("email"));
     var cpf = JSON.stringify(obj.get("cpf"));
-    console.info({ email, cpf });
 
     e.preventDefault();
 });
@@ -16,7 +15,7 @@ function ativar() {
         type: "GET",
         dataType: "json",
         success(url) {
-            alert("E-mail enviado com sucesso");
+            alert("Usuário ativo");
         }
     });
 }

@@ -95,20 +95,6 @@ function pedidos() {
     });
 }
 
-function ativar() {
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + user,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            alert("Usuário ativo");
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
-        }
-    });
-}
-
 function desativar() {
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/" + user,

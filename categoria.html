@@ -114,19 +114,28 @@
         <h2 style="color: #4F5D75">Categorias disponíveis</h2>
     </div>
     <br />
-    <div class="row justify-content-center">
-        <div>
-            <select id="categoria" class="form-control" name="categoria" required>
-                <option selected>Roupas</option>
-                <option>Livros</option>
-                <option>jajajajaja</option>
-                <option>hddjdfev</option>
-                <option>sdcvsdvs5</option>
-            </select>
+        <div class="row justify-content-center">
+            <div>
+                <select id="categoria" class="form-control" name="categoria" required>
+                    <option selected>Roupas</option>
+                    <option>smartphone</option>
+                    <option>Acessórios</option>
+                    <option>Bijuteria</option>
+                    <option>Cosméticos</option>
+                    <option>Perfumes</option>
+                    <option>Livros</option>
+                    <option>Eletrônico</option>
+                    <option>Acessórios</option>
+                    <option>Móveis</option>
+                    <option>Decoração</option>
+                    <option>Brinquedos</option>
+                    <option>Escritório</option>
+                    <option>Jogos</option>
+                    <option>Papelaria</option>
+                </select>
+            </div>
+             <button type="button" class="btn btn-primary" style="background:#4F5D75;" onclick="buscar()">Buscar</button>
         </div>
-         <button type="button" class="btn btn-primary" style="background:#4F5D75;" onclick="buscar()">Buscar</button>
-    </div>
-
         <div class="container">
             <div class="row justify-content-center" id="lista_produtos"></div>
         </div>
@@ -137,11 +146,8 @@
         <script type="text/javascript" src="Scripts/Busca.js" charset="utf-8"></script>
         <script>
             $(document).ready(function () {
-                $(".hidden_div").hide();
-                $(".open_div").click(function () {
-                    $(this).toggleClass("active").next().slideToggle("slow");
-                    return false;
-                });
+
+                produto();
             });
         </script>
         <footer class="section footer-classic context-dark bg-image" style="background: #E0AFA0;">
@@ -168,8 +174,8 @@
                     <div class="col-md-4 col-xl-3">
                         <h5>Links</h5>
                         <ul class="nav-list">
-                            <li><a href="sobre-nos.html">Sobre n�s</a></li>
-                            <li><a href="politica-seguranca.html">Politicas de seguran�a</a></li>
+                            <li><a href="sobre-nos.html">Sobre nós</a></li>
+                            <li><a href="politica-seguranca.html">Politicas de segurança</a></li>
                         </ul>
                     </div>
                 </div>

@@ -6,6 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
+        .top1 {
+            position: relative;
+            width: 435px;
+            height: 40px;
+            left: 8%;
+            background-color: #c0c0c0;
+            border: 1px solid #4F5D75;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .open_div1 {
+            cursor: pointer;
+        }
+
+        .hidden_div1 {
+            position: absolute;
+            width: 650px;
+            height: 565px;
+            top: -568px;
+            left: 15%;
+            margin-left: -150px;
+            background-color: #F4F3EE;
+            border: 2px solid #c0c0c0;
+            overflow: hidden;
+            clear: both;
+        }
         .sub:hover {
           width: 100px;
           height: 30px;
@@ -153,12 +180,22 @@
                     <div class="invalid-feedback">
                         Por favor, informe um frete válido.
                     </div>
-                    <br>
-                    <label for="exampleFormControlFile1" class="font-weight-bold">Coloque uma imagem no seu anuncio</label>
-                    <input type="file" class="form-control-file" id="inputImag">
-                    <div class="invalid-feedback">
-                        Por favor, insira uma imagem do seu produto.
+                    <div class="top1">
+                        <div class="row justify-content-center">
+                            <div class="open_div1" onclick="imagem()">Imagem</div>
+                            <div class="hidden_div1" onclick="imagem()">
+                                <div class="container">
+                                    <div class="row justify-content-center" id="imagem"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!--<br>
+    <label for="exampleFormControlFile1" class="font-weight-bold">Coloque uma imagem no seu anuncio</label>
+    <input type="file" class="form-control-file" id="inputImag">
+    <div class="invalid-feedback">
+        Por favor, insira uma imagem do seu produto.
+    </div>-->
                     <br>
                     <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="cadProduto()">Cadastrar Produto</button>
                 </div>
@@ -188,6 +225,24 @@
                     });
                 }, false);
             })();
+        </script>
+        <script>
+            $(document).ready(function () {
+                carrinho();
+                $(".hidden_div").hide();
+                $(".open_div").click(function () {
+                    $(this).toggleClass("active").next().slideToggle("slow");
+                    return false;
+                });
+            });
+            $(document).ready(function () {
+
+                $(".hidden_div1").hide();
+                $(".open_div1").click(function () {
+                    $(this).toggleClass("active").next().slideToggle("slow");
+                    return false;
+                });
+            });
         </script>
     </div>
     <hr>
