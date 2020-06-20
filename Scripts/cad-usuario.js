@@ -7,7 +7,6 @@ cadusuario.addEventListener("submit", function (e) {
     var cpf = JSON.stringify(obj.get("cpf"));
     var email = JSON.stringify(obj.get("email"));
     var password = JSON.stringify(obj.get("password"));
-    console.debug({ nome, cpf, email, password });
 
     e.preventDefault();
 });

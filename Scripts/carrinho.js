@@ -120,10 +120,8 @@ function carrinho() {
                     success(url) {
 
                         window.localStorage.setItem("user", user);
-                        //alert("Produto diminuido com sucesso")
                     },
                     error(url) {
-                        //alert("Erro ao diminuido produtoo")
                     }
                 });
             });
@@ -179,10 +177,11 @@ function consend() {
     
 function finalizar() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user,
+        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user ,
         type: "get",
         dataType: "json",
         success(url) {
+            console.info(url);
             var finalizar = "";
             url.forEach(function (item, i) {
                 finalizar = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
@@ -198,7 +197,8 @@ function finalizar() {
             });
         },
         error(url) {
-            alert("Erro ao finalizar pedido")
+            console.info("aqui",  url);
+            alert("Erro ao finalizar pedido");   
         }
     });
 }

@@ -119,7 +119,7 @@ function produto() {
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
     } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53";
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/" + user;
     }
 
     //Começo do ajax para buscar os produtos

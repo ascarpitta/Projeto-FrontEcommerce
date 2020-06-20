@@ -130,9 +130,20 @@
                         </div>
                     </div>
                     <div>
-                        <label for="inputCateg" class="font-weight-bold">Categoria</label>
-                        <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Livro, roupa ..." required>
-                        <div class="invalid-feedback">
+                        <label for="categoria" class="font-weight-bold">Categoria</label>
+                        <select id="categoria" class="form-control" name="categoria" required>
+                            <option selected>Selecione</option>
+                            <option>Roupas</option>
+                            <option>Acessórios</option>
+                            <option>Cosméticos</option>
+                            <option>Livros</option>
+                            <option>Eletrônicos</option>
+                            <option>Decoração</option>
+                            <option>Móveis</option>
+                            <option>Papelaria</option>
+                            <option>Jogos</option>
+                            <option>Brinquedo</option>
+                        </select> <div class="invalid-feedback">
                             Por favor, informe uma categoria válida.
                         </div>
                         <label for="inputDescricao" class="font-weight-bold">Descrição</label>

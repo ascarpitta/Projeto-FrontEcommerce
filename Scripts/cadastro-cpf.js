@@ -6,7 +6,6 @@ cadcpf.addEventListener("submit", function (e) {
     console.debug(obj);
 
     var cpf = JSON.stringify(obj.get("cpf"));
-    console.debug({ cpf });
 
     e.preventDefault();
 });

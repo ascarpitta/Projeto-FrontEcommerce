@@ -24,6 +24,7 @@ function perfil() {
 }
 
 function consend() {
+    $("#lista_end").empty();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "GET",
