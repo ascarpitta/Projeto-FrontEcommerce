@@ -26,7 +26,8 @@ function cadProduto() {
         dataType: "json",
         success(url) {
             alert("Produto cadastrado com sucesso");
-            window.location.replace("produtos-cadastrados.html");        }
+            window.location.replace("produtos-cadastrados.html");
+        }
     });
 }
 
