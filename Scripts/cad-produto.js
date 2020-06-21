@@ -12,6 +12,7 @@ cadproduto.addEventListener("submit", function (e) {
     var quantidade = JSON.stringify(obj.get("quantidade"));
     var frete = JSON.stringify(obj.get("frete"));
 
+    console.debug({ nome, marca, categoria, descricao, preco, quantidade, frete });
 
     e.preventDefault();
 });
@@ -25,25 +26,27 @@ function cadProduto() {
             "/" + $("#marca").val().replace(/\s/g, ""),
         type: "GET",
         dataType: "json",
-        error(url) {
-            alert("Produto cadastrado com sucesso");
-            window.location.replace("produtos-cadastrados.html");
+        success(url) {
+            alert("roduto cadastrado com sucesso"); 
+
+            window.localStorage.setItem("user", user);
         }
     });
 }
 
 function imagem() {
-    var form = $("#inputImag").val();
+    var form = new FormData();
+    form.append("imagem", fileInput.files[0], "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/")
 
     var settings = {
-        url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + user + "/",
+        url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + cadproduto + "/",
         "method": "GET",
         "timeout": 0,
         "processData": false,
         "mimeType": "multipart/form-data",
         "contentType": false,
         "data": form,
-    };
+    }
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
