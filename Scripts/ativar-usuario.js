@@ -9,7 +9,7 @@ ativar.addEventListener("submit", function (e) {
     e.preventDefault();
 });
 
-function ativar() {
+function ativarUsuario() {
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + $("#email").val() + "/" + $("#cpf").val(),
         type: "GET",

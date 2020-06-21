@@ -12,7 +12,6 @@ cadproduto.addEventListener("submit", function (e) {
     var quantidade = JSON.stringify(obj.get("quantidade"));
     var frete = JSON.stringify(obj.get("frete"));
 
-    console.debug({ nome, marca, categoria, descricao, preco, quantidade, frete });
 
     e.preventDefault();
 });
@@ -26,10 +25,9 @@ function cadProduto() {
             "/" + $("#marca").val().replace(/\s/g, ""),
         type: "GET",
         dataType: "json",
-        success(url) {
-            alert("roduto cadastrado com sucesso"); 
-
-            window.localStorage.setItem("user", user);
+        error(url) {
+            alert("Produto cadastrado com sucesso");
+            window.location.replace("produtos-cadastrados.html");
         }
     });
 }

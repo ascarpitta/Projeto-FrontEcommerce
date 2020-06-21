@@ -3,7 +3,6 @@ let urlGlobal;
 
 function criarCardsProdutos() {
     $("#pedidos").empty();
-
     //Laço que percorrerá todos os produtos carregados pelo backend
     urlGlobal.forEach(function (item, index) {
         //Variavel que armazena os cards dos produtos
@@ -39,13 +38,14 @@ function criarCardsProdutos() {
             "Produto: " +
             "<span>" + item.description + "</span>" +
             "</div>" +
-            "</div>" +
             "<div class='mt-1'>" +
             "R$: " +
             "<span>" + item.description + "</span>" +
             "</div>" +
+            "</div>" +
             "<div class='card row justify-content-center' style='width: 20rem;'>" +
             "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Sinalizar recebimento</button> </a>" +
+            "<button class='btn btn-primary recibo' type='button' style='background: #4F5D75;' id='" + item.id + "'>Recibo do produto</button> </a>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -88,17 +88,13 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("item cancelado");
-                    var id = url.id;
-                    user = id;
-
+                    alert("Produto cancelado");
                     window.localStorage.setItem("user", user);
                 }
             });
         }
     });
 
-    //Eventos para cada produto
     $(".sinalizar").click(function () {
         var user = window.localStorage.getItem("user");
         if (user === null) {
@@ -109,10 +105,24 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("item recebido");
-                    var id = url.id;
-                    user = id;
+                    alert("Produto recebido");
+                    window.localStorage.setItem("user", user);
+                }
+            });
+        }
+    });
 
+    $(".recibo").click(function () {
+        var user = window.localStorage.getItem("user");
+        if (user === null) {
+            alert("Você não está logado!");
+        } else {
+            $.ajax({
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarRecibo" + user + item.pedido + "/" + item.produto,
+                type: "get",
+                dataType: "json",
+                success(url) {
+                    alert("Baixando o recibo");
                     window.localStorage.setItem("user", user);
                 }
             });
@@ -128,7 +138,7 @@ function pedido() {
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
     } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53";
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/pedidos/buscarpedidos/" + user;
     }
 
     //Começo do ajax para buscar os produtos

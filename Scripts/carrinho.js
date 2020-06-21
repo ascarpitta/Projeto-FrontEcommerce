@@ -101,7 +101,6 @@ function carrinho() {
                     type: "get",
                     dataType: "json",
                     success(url) {
-
                         window.localStorage.setItem("user", user);
                         //alert("Produto aumentado com sucesso")
                     },
@@ -118,12 +117,9 @@ function carrinho() {
                     type: "get",
                     dataType: "json",
                     success(url) {
-
                         window.localStorage.setItem("user", user);
-                        //alert("Produto diminuido com sucesso")
                     },
                     error(url) {
-                        //alert("Erro ao diminuido produtoo")
                     }
                 });
             });
@@ -132,6 +128,8 @@ function carrinho() {
 }
 
 function consend() {
+    $("#lista_end").empty();
+
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "GET",
@@ -168,7 +166,6 @@ function consend() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-
                     window.localStorage.setItem("user", user);
                     alert("Endereço escolhido");
                 }
@@ -179,26 +176,24 @@ function consend() {
     
 function finalizar() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user,
+        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user ,
         type: "get",
         dataType: "json",
         success(url) {
-            var finalizar = "";
+            console.info(url);
+            var fina = "";
             url.forEach(function (item, i) {
-                finalizar = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
+                console.info("entrou aqui");
+                fina = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
                     "<img src='qrcode.png' alt='logo' height='400' width='420'>" +
                     "<br />" +
                     "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='pagar()'>Pagar</button>" +
                     "<br />" +
                     "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='recibo()'>Baixar recibo</button>";
-
-                $("#finalizar_pedido").append(finalizar);
+                $("#finalizar_pedido").append(fina);
                 window.localStorage.setItem("user", user);
                 alert("Pedido realizado");
             });
-        },
-        error(url) {
-            alert("Erro ao finalizar pedido")
         }
     });
 }

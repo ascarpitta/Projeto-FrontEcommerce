@@ -21,8 +21,13 @@ cadendereco.addEventListener("submit", function (e) {
 });
 
 function cadastro() {
+    if ($("#complemento").val() == "") {
+        var complemento = "";
+    } else {
+        var complemento = "/" + $("#complemento").val();
+    }
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val().replace(/\s/g, "") + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val().replace(/\s/g, "") + "/" + $("#cidade").val().replace(/\s/g, "") + "/" + $("#bairro").val().replace(/\s/g, "") + "/" + $("#rua").val().replace(/\s/g, "") + "/" + $("#numero").val().replace(/\s/g, "") + "/" + $("#complemento").val().replace(/\s/g, ""),
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf") + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + complemento,
         type: "GET",
         dataType: "json",
         success(url) {
@@ -41,11 +46,11 @@ function verificar() {
         dataType: "json",
         success(url) {
 
-            document.querySelector("input[name=complemento]").value = url.complemento;
-            document.querySelector("input[name=bairro]").value = url.bairro;
-            document.querySelector("input[name=cidade]").value = url.cidade;
-            document.querySelector("input[name=rua]").value = url.rua;
-            document.querySelector("input[name=uf]").value = url.uf;
+            document.querySelector("input[name=complemento]").value = url.complemento.trim();
+            document.querySelector("input[name=bairro]").value = url.bairro.trim();
+            document.querySelector("input[name=cidade]").value = url.cidade.trim();
+            document.querySelector("input[name=rua]").value = url.rua.trim();
+            document.querySelector("input[name=uf]").value = url.uf.trim();
         }
     });
 

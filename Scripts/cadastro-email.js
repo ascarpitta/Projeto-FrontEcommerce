@@ -1,12 +1,10 @@
 ﻿var cademail = document.getElementById("cademail");
+var storageEmail = window.localStorage.getItem("storageEmail");
 
 cademail.addEventListener("submit", function (e) {
 
     var obj = new FormData(cademail);
-    console.debug(obj);
-
     var email = JSON.stringify(obj.get("email"));
-    console.debug({ email });
 
     e.preventDefault();
 });
@@ -21,6 +19,8 @@ function verificaremail() {
         },
         error(url) {
             alert("Email pode prosseguir com sucesso");
+            storageEmail = $("#email").val();
+            window.localStorage.setItem("storageEmail", storageEmail);
         }
     });
 }

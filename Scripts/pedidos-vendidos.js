@@ -1,16 +1,17 @@
 var user = window.localStorage.getItem("user");
+var idPedido;
+var idProduto;
 let urlGlobal;
 
 function criarCardsProdutos() {
     $("#produtos_vendidos").empty();
-
     //Laço que percorrerá todos os produtos carregados pelo backend
     urlGlobal.forEach(function (item, index) {
         //Variavel que armazena os cards dos produtos
         var card = "<div class='card' style='width: 15rem;'>" +
             "<div class='card-body'>" +
             "Nº: " +
-            "<label>" + item.name + "</label>" +
+            "<label>" + item.id + "</label>" +
             "</div>" +
             "<div>" +
             "<div class='top'>" +
@@ -18,15 +19,15 @@ function criarCardsProdutos() {
             "<div class='hidden_div'>" +
             "<div class='mt-1 font-weight-bold'>" +
             "Data: " +
-            "<span>" + item.name + "</span>" +
+            "<span>" + item.dataPedidoRealizadoCompra + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
             "Valor final: " +
-            "<span>" + item.description + "</span>" +
+            "<span>" + item.vlTotalCompra + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
             "Endereço: " +
-            "<span>" + item.description + "</span>" +
+            "<span>" + item.nomeEnderecoCompra + "</span>" +
             "</div>" +
             "<div class='top1'>" +
             "<div class='open_div1'>Ver produtos</div>" +
@@ -36,17 +37,17 @@ function criarCardsProdutos() {
             "<span class='delete-btn cancelar'>X</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Produto: " +
-            "<span>" + item.description + "</span>" +
-            "</div>" +
+            "Produto " +
+            "<span>" + item.nomeProduto + "</span>" +            
             "</div>" +
             "<div class='mt-1'>" +
-            "R$: " +
-            "<span>" + item.description + "</span>" +
+            "Quantidade " +
+            "<span>" + item.quandidade + "</span>" +
+            "</div>" +
             "</div>" +
             "<div class='card row justify-content-center' style='width: 20rem;'>" +
             "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Pedido em transporte</button> </a>" +
-            
+            "<button class='btn btn-primary recibo' type='button' style='background: #4F5D75;' id='" + item.id + "'>Recibo do produto</button> </a>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -58,7 +59,9 @@ function criarCardsProdutos() {
             "<div style='width: 2rem;'>" +
             "<div class='card-body'></div>" +
             "</div>";
-
+        idProduto = item.idProdutoCompra;
+        idPedido = item.id;
+        
         //Incluindo card na div principal
         $("#produtos_vendidos").append(card);
     });
@@ -87,13 +90,11 @@ function criarCardsProdutos() {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/" + user + "/" + idproduto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/CancelarItemPedidoVenda/" + user + "/" + idProduto,
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("Usuário ativo");
-                    var id = url.id;
-                    user = id;
+                    alert("Produto cancelado");
 
                     window.localStorage.setItem("user", user);
                 }
@@ -109,23 +110,19 @@ function criarCardsProdutos() {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + idproduto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/pedido/ItemEmTransportePedidoVenda/" + user + idProduto,
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("Usuário desativado");
-                    var id = url.id;
-                    user = id;
+                    alert("Produto em transporte");
 
                     window.localStorage.setItem("user", user);
-                    sessionStorage.clear();
-                    localStorage.clear();
                 }
             });
         }
     });
 
-    $(".desativar").click(function () {
+    $(".recibo").click(function () {
         var idProduto = $(this).attr("id");
         var user = window.localStorage.getItem("user");
 
@@ -133,17 +130,11 @@ function criarCardsProdutos() {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + idproduto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarReciboVenda/" + user + "/" + idPedido + "/" + idProduto,
                 type: "get",
                 dataType: "json",
-                success(url) {
-                    alert("Usuário desativado");
-                    var id = url.id;
-                    user = id;
-
-                    window.localStorage.setItem("user", user);
-                    sessionStorage.clear();
-                    localStorage.clear();
+                error(url) {
+                    window.open("https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarReciboVenda/" + user + "/" + idPedido + "/" + idProduto)
                 }
             });
         }
@@ -158,7 +149,7 @@ function produto() {
         //colocar show dos botões de ordenação aqui
         window.localStorage.setItem("Nome_Busca", "");
     } else {
-        endpoint = "https://projeto-ecommerce.herokuapp.com/api/produtos/usuario/5e558e5b6df7c12c90fcee53/";
+        endpoint = "https://projeto-ecommerce.herokuapp.com/api/pedidos/ExibirPedidosVenda/" + user;
     }
 
     //Começo do ajax para buscar os produtos

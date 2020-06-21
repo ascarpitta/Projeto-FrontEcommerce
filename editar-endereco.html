@@ -91,23 +91,11 @@
         <form class="needs-validation" novalidate id="altendereco">
             <div class="container" style="background: #E0AFA0">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Escolha um endereço</label>
+                    <label for="prod" class="font-weight-bold">Escolha um endereço</label>
                     <select class="form-control" id="end">
-                        <option id="end1"></option>
-                        <option id="end2"></option>
-                        <option id="end3"></option>
-                        <option id="end4"></option>
-                        <option id="end5"></option>
-                        <option id="end6"></option>
-                        <option id="end7"></option>
-                        <option id="end8"></option>
-                        <option id="end9"></option>
-                        <option id="end10"></option>
-                        <option id="end11"></option>
-                        <option id="end12"></option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="endereco()">Buscar endereços</button>
+                <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="ender()">Buscar endereços</button>
                 <div style="width: 40rem;">
                     <div class="form-row justify-content-center">
                         <div class="col-md-7 mb-2">
@@ -159,14 +147,14 @@
                             </div>
                             <div class="col-md-4 mb-2">
                                 <label for="complemento">Complemento</label>
-                                <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento" required>
+                                <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento" >
                                 <div class="invalid-feedback">
                                     Por favor, informe um Complemento válida.
                                 </div>
                             </div>
                             <div class="col-md-11 mb-2">
                                 <label for="obs">Observações</label>
-                                <input type="text" class="form-control" name="obs" id="obs" placeholder="Observações" required>
+                                <input type="text" class="form-control" name="obs" id="obs" placeholder="Observações" >
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="editar()">Salvar novo endereço</button>
