@@ -46,7 +46,6 @@ function verificar() {
         dataType: "json",
         success(url) {
 
-            document.querySelector("input[name=complemento]").value = url.complemento.trim();
             document.querySelector("input[name=bairro]").value = url.bairro.trim();
             document.querySelector("input[name=cidade]").value = url.cidade.trim();
             document.querySelector("input[name=rua]").value = url.rua.trim();
