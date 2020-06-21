@@ -114,6 +114,7 @@ function criarCardsProdutos() {
                 dataType: "json",
                 success(url) {
                     console.log(url);
+                    alert("Produto adicionado ao carrinho")
                 }
             });
         }
