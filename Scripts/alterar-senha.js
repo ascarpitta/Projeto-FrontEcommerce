@@ -3,11 +3,9 @@ var user = window.localStorage.getItem("user");
 
 alterarsenha.addEventListener("submit", function (e) {
     var obj = new FormData(alterarsenha);
-    console.debug(obj);
 
     var password = JSON.stringify(obj.get("password"));
     var senha2 = JSON.stringify(obj.get("senha2"));
-    console.debug({ password, senha2 });
 
     e.preventDefault();
     console.debug("Ocorreu um click");

@@ -1,4 +1,6 @@
 ﻿var cadusuario = document.getElementById("cadusuario");
+var storageCpf = window.localStorage.getItem("storageCpf");
+var storageEmail = window.localStorage.getItem("storageEmail");
 
 cadusuario.addEventListener("submit", function (e) {
     var obj = new FormData(cadusuario);
@@ -12,16 +14,8 @@ cadusuario.addEventListener("submit", function (e) {
 });
 
 function preencher() {
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/viacep/" + $("#cep").val(),
-        type: "get",
-        dataType: "json",
-        success(url) {
-            document.querySelector("input[name=complemento]").value = storageCpf;
-            document.querySelector("input[name=bairro]").value = storageEmail;
-        }
-    });
-
+      document.querySelector("input[name=cpf]").value = storageCpf;
+      document.querySelector("input[name=email]").value = storageEmail;
 }
 
 function teste() {
@@ -64,6 +58,12 @@ function teste() {
         alert("As senhas não coincidem, por favor verifique");
         return false;
     }
+    //if (condicoes.value == null || condicoes.value === "") {
+    //    validar = true;
+    //    alert("Concorde com os termos para continuar");
+    //    return false;
+    //}
+
     if (validar) {
         alert("Erro ao realizar cadastrado");
     }
@@ -77,6 +77,7 @@ function teste() {
         dataType: "json",
         success(url) {
             alert("Cadastro realizado com sucesso");
+            window.location.replace("perfil-usuario.html");
         }
     });
 }
