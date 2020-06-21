@@ -33,7 +33,7 @@ function cadProduto() {
 
 function imagem() {
     var form = new FormData();
-    form.append("imagem", fileInput.files[0], "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/")
+    form.append("imagem", fileInput.files[0], "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/");
 
     var settings = {
         url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + cadproduto + "/",
@@ -43,9 +43,8 @@ function imagem() {
         "mimeType": "multipart/form-data",
         "contentType": false,
         "data": form,
-    }
+    };
     $.ajax(settings).done(function (response) {
-        console.log(response);
     });
 }
 

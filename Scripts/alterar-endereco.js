@@ -4,7 +4,6 @@ var user = window.localStorage.getItem("user");
 altendereco.addEventListener("submit", function (e) {
 
     var obj = new FormData(altendereco);
-    console.debug(obj);
     var end = JSON.stringify(obj.get("end"));
     var nomeEnd = JSON.stringify(obj.get("nomeEnd"));
     var uf = JSON.stringify(obj.get("uf"));

@@ -94,7 +94,6 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    console.log(url);
                 }
             });
         }
@@ -112,7 +111,6 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    console.log(url);
                     alert("Produto adicionado ao carrinho");
                 }
             });

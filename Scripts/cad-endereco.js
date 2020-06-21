@@ -18,13 +18,8 @@ cadendereco.addEventListener("submit", function (e) {
 });
 
 function cadastro() {
-    if ($("#complemento").val() == "") {
-        var complemento = "";
-    } else {
-        var complemento = "/" + $("#complemento").val();
-    }
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf") + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + complemento,
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf") + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + $("#complemento").val(),
         type: "GET",
         dataType: "json",
         error(url) {
