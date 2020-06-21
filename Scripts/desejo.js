@@ -42,9 +42,9 @@ function criarCardsProdutos() {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: 'https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/' + user + '/' + desejo,
-                type: 'get',
-                dataType: 'json',
+                url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + desejo,
+                type: "get",
+                dataType: "json",
                 error: function (url) {
                     produto();
                 }
@@ -59,9 +59,9 @@ function criarCardsProdutos() {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: 'https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/' + user + '/' + desejo,
-                type: 'get',
-                dataType: 'json',
+                url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/addProduto/" + user + "/" + desejo,
+                type: "get",
+                dataType: "json",
                 success: function (url) {
 
                 }
@@ -164,6 +164,6 @@ function produto() {
 //}
 
 function sair() {
-    sessionStorage.clear()
-    localStorage.clear()
+    sessionStorage.clear();
+    localStorage.clear();
 }
