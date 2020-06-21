@@ -1,5 +1,4 @@
 ﻿var altendereco = document.getElementById("altendereco");
-var endereco = window.localStorage.getItem("endereco");
 var user = window.localStorage.getItem("user");
 
 altendereco.addEventListener("submit", function (e) {
@@ -18,10 +17,9 @@ altendereco.addEventListener("submit", function (e) {
     var complemento = JSON.stringify(obj.get("obs"));
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
-function endereco(){
+function ender(){
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/" + user,
         type: "get",
@@ -45,8 +43,6 @@ function editar() {
         dataType: "json",
         success(url) {
             alert("Endereço atualizado com sucesso");
-            id = url.id;
-            user = id;
             window.localStorage.setItem("user", user);
         }
     });
@@ -58,9 +54,6 @@ function verificar() {
         type: "get",
         dataType: "json",
         success(url) {
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
             document.querySelector("input[name=complemento]").value = url.complemento.trim();
             document.querySelector("input[name=bairro]").value = url.bairro.trim();
             document.querySelector("input[name=cidade]").value = url.cidade.trim();

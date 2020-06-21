@@ -11,6 +11,19 @@ cadusuario.addEventListener("submit", function (e) {
     e.preventDefault();
 });
 
+function preencher() {
+    $.ajax({
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/viacep/" + $("#cep").val(),
+        type: "get",
+        dataType: "json",
+        success(url) {
+            document.querySelector("input[name=complemento]").value = storageCpf;
+            document.querySelector("input[name=bairro]").value = storageEmail;
+        }
+    });
+
+}
+
 function teste() {
     var validar = false;
     var nome = document.querySelector("#nome");
@@ -24,7 +37,7 @@ function teste() {
         alert("Por favor, indique o seu nome.");
         return false;
     }
-    if (cpf.value === "" || cpf.value === null || cpf.value < 11) {
+    if (cpf.value === "" || cpf.value === null || cpf.value < 6) {
         validar = true;
         alert("Por favor, indique um cpf válido.");
         return false;

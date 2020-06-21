@@ -34,7 +34,7 @@ function teste() {
         alert("Erro ao validar senha");
     }
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/" + user + "/" + $("#passwordAtual").val() + "/" + $("#password").val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/alterarSenha/" + user + "/" + $("#passwordAtual").val() + "/" + $("#password").val(),
         crossDomain: true,
         type: "get",
         dataType: "json",

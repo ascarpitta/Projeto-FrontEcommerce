@@ -3,11 +3,9 @@ var user = window.localStorage.getItem("user");
 
 formulario.addEventListener("submit", function (e) {
     var obj = new FormData(formulario);
-    console.debug(obj);
 
     var email = JSON.stringify(obj.get("email"));
     var password = JSON.stringify(obj.get("password"));
-    console.info({ email, password });
 
     e.preventDefault();
 });
