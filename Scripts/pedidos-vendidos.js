@@ -134,7 +134,7 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 error(url) {
-                    window.open("https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarReciboVenda/" + user + "/" + idPedido + "/" + idProduto)
+                    window.open("https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarReciboVenda/" + user + "/" + idPedido + "/" + idProduto);
                 }
             });
         }

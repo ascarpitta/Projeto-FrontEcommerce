@@ -101,13 +101,14 @@ function desativar() {
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/desativar/" + user,
         type: "get",
         dataType: "json",
-        success(url) {
+        error(url) {
             alert("Usuário desativado");
             id = url.id;
             user = id;
             window.localStorage.setItem("user", user);
             sessionStorage.clear();
             localStorage.clear();
+            window.location.replace("index.html");
         }
     });
 }

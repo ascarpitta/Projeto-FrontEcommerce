@@ -14,8 +14,9 @@ function ativarUsuario() {
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + $("#email").val() + "/" + $("#cpf").val(),
         type: "GET",
         dataType: "json",
-        success(url) {
+        error(url) {
             alert("Usuário ativo");
+            window.location.replace("login-usuario.html");
         }
     });
 }
