@@ -33,7 +33,7 @@ function cadProduto() {
 }
 
 function imagem() {
-    var form = $("#inputImag").val()
+    var form = $("#inputImag").val();
 
     var settings = {
         url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + user + "/",
@@ -43,7 +43,7 @@ function imagem() {
         "mimeType": "multipart/form-data",
         "contentType": false,
         "data": form,
-    }
+    };
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
