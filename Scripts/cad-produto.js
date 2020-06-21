@@ -25,7 +25,7 @@ function cadProduto() {
             "/" + $("#marca").val().replace(/\s/g, ""),
         type: "GET",
         dataType: "json",
-        error(url) {
+        success(url) {
             alert("Produto cadastrado com sucesso");
             window.location.replace("produtos-cadastrados.html");
         }
