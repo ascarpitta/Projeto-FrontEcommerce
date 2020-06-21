@@ -102,10 +102,8 @@ function carrinho() {
                     dataType: "json",
                     success(url) {
                         window.localStorage.setItem("user", user);
-                        //alert("Produto aumentado com sucesso")
                     },
                     error(url) {
-                        //alert("Erro ao aumentar produtoo")
                     }
                 });
             });

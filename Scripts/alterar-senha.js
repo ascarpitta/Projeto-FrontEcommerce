@@ -41,6 +41,7 @@ function teste() {
         },
         error(url) {
             alert("Senha alterada com sucesso");
+            window.location.replace("perfil-usuario.html");
         }
     });
 }

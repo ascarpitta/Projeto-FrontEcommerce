@@ -158,7 +158,7 @@ function pedido() {
 
 function andamento() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GetExibirAndamentoVenda/" + user,
+        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GetExibirAndamentoCompra/" + user,
         type: "get",
         dataType: "json",
         success(url) {
