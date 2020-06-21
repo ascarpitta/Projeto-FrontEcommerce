@@ -4,7 +4,6 @@ var user = window.localStorage.getItem("user");
 cadendereco.addEventListener("submit", function (e) {
 
     var obj = new FormData(cadendereco);
-    console.debug(obj);
     var nomeEnd = JSON.stringify(obj.get("nomeEnd"));
     var uf = JSON.stringify(obj.get("uf"));
     var cidade = JSON.stringify(obj.get("cidade"));
@@ -14,8 +13,6 @@ cadendereco.addEventListener("submit", function (e) {
     var numero = JSON.stringify(obj.get("numero"));
     var complemento = JSON.stringify(obj.get("complemento"));
     var obs = JSON.stringify(obj.get("obs"));
-
-    console.debug({ nomeEnd, uf, cidade, cep, bairro, rua, numero, complemento, obs });
 
     e.preventDefault();
 });
@@ -30,11 +27,8 @@ function cadastro() {
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf") + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + complemento,
         type: "GET",
         dataType: "json",
-        success(url) {
+        error(url) {
             alert("Endereço cadastrado com sucesso");
-            var id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
         }
     });
 }
@@ -45,14 +39,12 @@ function verificar() {
         type: "get",
         dataType: "json",
         success(url) {
-
             document.querySelector("input[name=bairro]").value = url.bairro.trim();
             document.querySelector("input[name=cidade]").value = url.cidade.trim();
             document.querySelector("input[name=rua]").value = url.rua.trim();
             document.querySelector("input[name=uf]").value = url.uf.trim();
         }
     });
-
 }
 
 function sair() {
