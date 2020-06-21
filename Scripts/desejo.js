@@ -63,7 +63,7 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success: function (url) {
-
+                    alert("Produto adicionado ao carrinho")
                 }
             });
         }

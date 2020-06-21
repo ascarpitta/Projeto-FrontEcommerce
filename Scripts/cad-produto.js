@@ -12,25 +12,21 @@ cadproduto.addEventListener("submit", function (e) {
     var quantidade = JSON.stringify(obj.get("quantidade"));
     var frete = JSON.stringify(obj.get("frete"));
 
-    console.debug({ nome, marca, categoria, descricao, preco, quantidade, frete });
-
     e.preventDefault();
 });
 
 function cadProduto() {
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/produtos/CadastroProduto/" + user + "/" +
-            $("#nome").val().replace(/\s/g, "") + "/" + $("#descricao").val().replace(/\s/g, "") +
-            "/" + $("#preco").val().replace(/\s/g, "") + "/" + $("#frete").val().replace(/\s/g, "") +
-            "/" + $("#quantidade").val().replace(/\s/g, "") + "/" + $("#categoria").val().replace(/\s/g, "") +
-            "/" + $("#marca").val().replace(/\s/g, ""),
+            $("#nome").val() + "/" + $("#descricao").val() +
+            "/" + $("#preco").val() + "/" + $("#frete").val() +
+            "/" + $("#quantidade").val() + "/" + $("#categoria").val() +
+            "/" + $("#marca").val(),
         type: "GET",
         dataType: "json",
         success(url) {
-            alert("roduto cadastrado com sucesso"); 
-
-            window.localStorage.setItem("user", user);
-        }
+            alert("Produto cadastrado com sucesso");
+            window.location.replace("produtos-cadastrados.html");        }
     });
 }
 
