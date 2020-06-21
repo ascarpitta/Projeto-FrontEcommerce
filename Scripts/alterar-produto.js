@@ -5,7 +5,6 @@ var altproduto = document.querySelector("#altproduto");
 altproduto.addEventListener("submit", function (e) {
 
     var obj = new FormData(altproduto);
-    console.debug(obj);
 
     var prod = JSON.stringify(obj.get("prod"));
     var nome = JSON.stringify(obj.get("nome"));
@@ -17,7 +16,6 @@ altproduto.addEventListener("submit", function (e) {
     var frete = JSON.stringify(obj.get("frete"));
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function produto() {

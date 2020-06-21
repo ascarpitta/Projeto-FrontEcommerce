@@ -94,7 +94,6 @@ function carrinho() {
             });
 
             $(".increase").click(function () {
-                console.info(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).text()));
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) + 1);
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/AumentarProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
@@ -133,7 +132,6 @@ function consend() {
         type: "GET",
         dataType: "json",
         success(url) {
-            console.log(url);
             var consEnd = "";
             url.forEach(function (item, i) {
                 consEnd = "<div class='mt-1'> Nome: " +
@@ -148,7 +146,6 @@ function consend() {
                 $("#lista_end").append(consEnd);
                 var id = item.id;
                 ende = id;
-                console.info("depois", id);
             });
         }
     });
@@ -178,10 +175,8 @@ function finalizar() {
         type: "get",
         dataType: "json",
         success(url) {
-            console.info(url);
             var fina = "";
             url.forEach(function (item, i) {
-                console.info("entrou aqui");
                 fina = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
                     "<img src='qrcode.png' alt='logo' height='400' width='420'>" +
                     "<br />" +

@@ -8,7 +8,6 @@ alterarsenha.addEventListener("submit", function (e) {
     var senha2 = JSON.stringify(obj.get("senha2"));
 
     e.preventDefault();
-    console.debug("Ocorreu um click");
 });
 
 function teste() {
