@@ -37,10 +37,10 @@ function teste() {
         type: "get",
         dataType: "json",
         success(url) {
-            alert("Senha alterada com sucesso");
+            alert("Não foi possível alterar a senha");
         },
         error(url) {
-            alert("Não foi possível alterar a senha");
+            alert("Senha alterada com sucesso");
         }
     });
 }
