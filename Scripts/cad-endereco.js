@@ -29,6 +29,7 @@ function cadastro() {
         dataType: "json",
         error(url) {
             alert("Endereço cadastrado com sucesso");
+            window.location.replace("perfil-usuario.html");
         }
     });
 }
