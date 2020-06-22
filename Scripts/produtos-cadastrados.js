@@ -75,12 +75,8 @@ function criarCardsProdutos() {
                 url: "https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/" + user + "/" + idproduto,
                 type: "get",
                 dataType: "json",
-                success(url) {
-                    alert("Usuário ativado! Faça login para voltar a comprar.");
-                    var id = url.id;
-                    user = id;
-
-                    window.localStorage.setItem("user", user);
+                error(url) {
+                    alert("Produto ativo!");
                 }
             });
         }
@@ -97,14 +93,8 @@ function criarCardsProdutos() {
                 url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + idproduto,
                 type: "get",
                 dataType: "json",
-                success(url) {
-                    alert("Usuário desativado! Para mais informações consulte seu email.");
-                    var id = url.id;
-                    user = id;
-
-                    window.localStorage.setItem("user", user);
-                    sessionStorage.clear();
-                    localStorage.clear();
+                error(url) {
+                    alert("Produto desativado!");
                 }
             });
         }

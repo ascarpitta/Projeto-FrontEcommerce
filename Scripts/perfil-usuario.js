@@ -102,7 +102,7 @@ function desativar() {
         type: "get",
         dataType: "json",
         error(url) {
-            alert("Usuário desativado");
+            alert("Usuário desativado! Para mais informações consulte seu email.");
             id = url.id;
             user = id;
             window.localStorage.setItem("user", user);
