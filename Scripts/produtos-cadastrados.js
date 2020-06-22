@@ -49,9 +49,6 @@ function criarCardsProdutos() {
             "<button class='btn btn-primary desativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Desativar </a>" +
             "</div>" +
             "<div class='card row justify-content-center'>" +
-            "<form method='post' action='alterar-produto.html' style='width: 20rem;'>" +
-            "<button class='btn btn-primary ' type='submit' style='width: 20rem; background: #4F5D75;'>Editar</button>" +
-            "</form>" +
             "</div>" +
             "</div>" +
             "</div>" +
