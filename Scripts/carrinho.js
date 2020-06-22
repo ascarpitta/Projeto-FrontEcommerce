@@ -38,7 +38,7 @@ function carrinho() {
                         "</div>" +
                         "<div class='total-price'>" +
                         "R$" +
-                        "<span id='preco'>" + (item.preco * item.quantidade) + "</span>" +
+                        "<span id='preco'>" + (item.preco * item.quantidade).toFixed(2) + "</span>" +
                         "</div>" +
                         "</div>";
                     window.localStorage.setItem("produto", item.idProduto);
@@ -70,7 +70,7 @@ function carrinho() {
                         "</div>" +
                         "<div class='total-price'>" +
                         "R$" +
-                        "<span id='preco" + (i + 1).toString() + "'>" + (item.preco * item.quantidade) + "</span>" +
+                        "<span id='preco" + (i + 1).toString() + "'>" + (item.preco * item.quantidade).toFixed(2) + "</span>" +
                         "</div>" +
                         "</div>";
                     window.localStorage.setItem("produto" + (i + 1).toString(), item.idProduto);
@@ -95,7 +95,12 @@ function carrinho() {
             });
 
             $(".increase").click(function () {
-                $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) + 1);
+                var qntdProduto = parseInt($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val());
+                var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, '')) / qntdProduto;
+
+                $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(qntdProduto + 1);
+                $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html(precoProduto * (qntdProduto + 1));
+
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/AumentarProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
                     type: "get",
@@ -110,7 +115,12 @@ function carrinho() {
             });
 
             $(".decrease").click(function () {
-                $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(Number($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val()) - 1);
+                var qntdProduto = parseInt($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val());
+                var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, '')) / qntdProduto;
+
+                $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(qntdProduto - 1);
+                $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html(precoProduto * (qntdProduto - 1));
+
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/DiminuirProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
                     type: "get",
@@ -161,7 +171,6 @@ function consend() {
                         type: "get",
                         dataType: "json",
                         success(url) {
-
                             window.localStorage.setItem("user", user);
                             alert("Endereço escolhido");
                         }
@@ -170,8 +179,6 @@ function consend() {
             });
         }
     });
-
-
 }
     
 function finalizar() {
