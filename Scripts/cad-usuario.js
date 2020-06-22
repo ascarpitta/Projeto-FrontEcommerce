@@ -76,6 +76,7 @@ function teste() {
         type: "GET",
         dataType: "json",
         success(url) {
+            window.location.href = "perfil-usuario.html";
             alert("Cadastro realizado com sucesso");
             window.location.href = "perfil-usuario.html";
         }
