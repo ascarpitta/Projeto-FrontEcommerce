@@ -19,7 +19,7 @@ cadendereco.addEventListener("submit", function (e) {
 
 function cadastro() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf") + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + $("#complemento").val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val() + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + $("#complemento").val(),
         type: "GET",
         dataType: "json",
         error(url) {

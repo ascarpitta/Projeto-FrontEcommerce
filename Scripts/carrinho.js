@@ -1,6 +1,7 @@
 ﻿var user = window.localStorage.getItem("user");
 var idPedido = window.localStorage.getItem("idPedido");
 var ende;
+$("#pagar").hide();
 
 function carrinho() {
     $("#produtosCarrinho").empty();
@@ -10,6 +11,7 @@ function carrinho() {
         dataType: "json",
         success(url) {
             var produtoCarrinho = "";
+            var valorTotal = 0;
             url.produtos.forEach(function (item, i) {
                 if (i === 0) {
                     produtoCarrinho = "<div class='item'>" +
@@ -39,9 +41,10 @@ function carrinho() {
                         "</div>" +
                         "<div class='total-price'>" +
                         "R$" +
-                        "<span id='preco'>" + (item.preco * item.quantidade).toFixed(2) + "</span>" +
+                        "<span id='preco'>" + ((item.preco + item.frete) * item.quantidade).toFixed(2) + "</span>" +
                         "</div>" +
                         "</div>";
+                    valorTotal += ((item.preco + item.frete) * item.quantidade).toFixed(2);
                     window.localStorage.setItem("produto", item.idProduto);
                 } else {
                     produtoCarrinho = "<div class='item'>" +
@@ -71,11 +74,13 @@ function carrinho() {
                         "</div>" +
                         "<div class='total-price'>" +
                         "R$" +
-                        "<span id='preco" + (i + 1).toString() + "'>" + (item.preco * item.quantidade).toFixed(2) + "</span>" +
+                        "<span id='preco" + (i + 1).toString() + "'>" + ((item.preco + item.frete) * item.quantidade).toFixed(2) + "</span>" +
                         "</div>" +
                         "</div>";
+                    valorTotal += ((item.preco + item.frete) * item.quantidade).toFixed(2);
                     window.localStorage.setItem("produto" + (i + 1).toString(), item.idProduto);
                 }
+                $("#valorTotal").text("Valor Total: R$ " + parseFloat(valorTotal).toFixed(2));
                 $("#produtosCarrinho").append(produtoCarrinho);
             });
 
@@ -100,17 +105,20 @@ function carrinho() {
                 var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, '')) / qntdProduto;
 
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(qntdProduto + 1);
-                $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html(precoProduto * (qntdProduto + 1));
+                $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html((precoProduto * (qntdProduto + 1)).toFixed(2));
+
+                var objectClick = $(this);
 
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/AumentarProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
                     type: "get",
                     dataType: "json",
                     success(url) {
-                        window.localStorage.setItem("user", user);
-                    },
-                    error(url) {
-
+                        carrinho();
+                        if (qntdProduto + 1 > url) {
+                            $("#htop" + objectClick.parent().attr("id").replace("quantity", "")).val(qntdProduto);
+                            $("#preco" + objectClick.parent().attr("id").replace("quantity", "")).html((precoProduto * (qntdProduto)).toFixed(2));
+                        }
                     }
                 });
             });
@@ -120,16 +128,14 @@ function carrinho() {
                 var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, '')) / qntdProduto;
 
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(qntdProduto - 1);
-                $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html(precoProduto * (qntdProduto - 1));
+                $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html((precoProduto * (qntdProduto - 1)).toFixed(2));
 
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/DiminuirProduto/" + user + "/" + window.localStorage.getItem("produto" + $(this).parent().attr("id").replace("quantity", "")),
                     type: "get",
                     dataType: "json",
-                    success(url) {
-                        window.localStorage.setItem("user", user);
-                    },
                     error(url) {
+                        carrinho();
                     }
                 });
             });
@@ -146,6 +152,7 @@ function consend() {
         success(url) {
             var consEnd = "";
             url.forEach(function (item, i) {
+                console.info(item);
                 consEnd = "<div class='mt-1'> Nome: " +
                     "<span id='consulta' >" + item.nomeEndereco + "</span> - CEP" +
                     "<span id='consulta1'>" + item.cep + "</span> -" +
@@ -187,21 +194,22 @@ function finalizar() {
         url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user ,
         type: "get",
         dataType: "json",
-        error(url) {
+        success(url) {
+            $("#pagar").show();
             console.info(url);
-            var fina = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
-                "<br />" +
-                "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='pagar()'>Pagar</button>";
-            $("#finalizar_pedido").append(fina);
             idPedido = url.id;
-                alert("Pedido realizado");
+            alert("Pedido realizado");
+            $(".open_div1").click();
+        },
+        error() {
+            alert("Erro no carrinho");
         }
     });
 }
 
 function pagar() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/PagarPedido/" + user + idPedido,
+        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/PagarPedido/" + user + "/" + idPedido,
         type: "get",
         dataType: "json",
         success(url) {

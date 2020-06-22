@@ -9,45 +9,49 @@ function criarCardsProdutos() {
         var card = "<div class='card' style='width: 15rem;'>" +
             "<div class='card-body'>" +
             "Nº: " +
-            "<label>" + item.name + "</label>" +
+            "<label>" + item.numPedido + "</label>" +
             "</div>" +
             "<div>" +
             "<div class='top'>" +
             "<div class='open_div'>Ver detalhes</div>" +
-            "<div class='hidden_div'>" +
+            "<div class='hidden_div' style='width: 500px; z-index:1000'>" +
             "<div class='mt-1 font-weight-bold'>" +
-            "Data: "+
-            "<span>" + item.name + "</span>" +
+            "Data: " +
+            "<span>" + new Date(item.dataPedidoRealizado).getDate() + "/" + (parseInt(new Date(item.dataPedidoRealizado).getMonth()) + 1) + "/" + new Date(item.dataPedidoRealizado).getFullYear() + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
             "Valor final: " +
-            "<span>" + item.description + "</span>" +
+            "<span>" + item.vlFinal.toFixed(2) + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
             "Endereço: " +
-            "<span>" + item.description + "</span>" +
+            "<span>" + item.rua + ", " + item.numero + "</span>" +
             "</div>" +
             "<div class='top1'>" +
             "<div class='open_div1'>Ver produtos</div>" +
-            "<div class='hidden_div1'>" +
-            "<div class='item'>" +
-            "<div class='buttons'>" +
-            "<span class='delete-btn cancelar'>X</span>" +
-            "</div>" +
-            "<div class='mt-1'>" +
-            "Produto: " +
-            "<span>" + item.description + "</span>" +
-            "</div>" +
-            "<div class='mt-1'>" +
-            "R$: " +
-            "<span>" + item.description + "</span>" +
-            "</div>" +
-            "</div>" +
-            "<div class='card row justify-content-center' style='width: 20rem;'>" +
-            "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Sinalizar recebimento</button> </a>" +
-            "<button class='btn btn-primary recibo' type='button' style='background: #4F5D75;' id='" + item.id + "'>Recibo do produto</button> </a>" +
-            "</div>" +
-            "</div>" +
+            "<div class='hidden_div1' style='width: 490px;'>";
+        item.produtos.forEach(function (produto, index) {
+
+            card += "<div class='item'>" +
+                "<div class='buttons'>" +
+                "<span class='delete-btn cancelar' id='" + produto.idProduto + "_" + item.id + "'>X</span>" +
+                "</div>" +
+                "<div class='mt-1'>" +
+                "Produto: " +
+                "<span>" + produto.nameProduto + "</span>" +
+                "</div>" +
+                "<div class='mt-1 ml-2'>" +
+                "R$ " +
+                "<span>" + parseFloat(produto.preco).toFixed(2) + "</span>" +
+                "</div>" +
+                "</div>" +
+                "<div class='card row justify-content-center' style='width: 20rem;'>" +
+                "<button class='btn btn-primary sinalizar' type='button' style='background: #4F5D75;' id='" + produto.idProduto + "_" + item.id + "'>Sinalizar recebimento</button> </a>" +
+                "<button class='btn btn-primary recibo' type='button' style='background: #4F5D75;' id='" + produto.idProduto + "_" + item.id + "'>Recibo do produto</button> </a>" +
+                "</div>";
+        });
+            
+        card += "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -83,8 +87,10 @@ function criarCardsProdutos() {
         if (user === null) {
             alert("Você não está logado!");
         } else {
+            var idpedido = $(this).attr("id").split("_")[1];
+            var idproduto = $(this).attr("id").split("_")[0];
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/CancelarItemPedido/" + user + item.pedido + "/" + item.produto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/CancelarItemPedido/" + user + "/" + idpedido + "/" + idproduto,
                 type: "get",
                 dataType: "json",
                 success(url) {
@@ -100,8 +106,10 @@ function criarCardsProdutos() {
         if (user === null) {
             alert("Você não está logado!");
         } else {
+            var idpedido = $(this).attr("id").split("_")[1];
+            var idproduto = $(this).attr("id").split("_")[0];
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/ReceberItemPedido/" + user + item.pedido + "/" + item.produto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/ReceberItemPedido/" + user + "/" + idpedido + "/" + idproduto,
                 type: "get",
                 dataType: "json",
                 success(url) {
@@ -117,15 +125,18 @@ function criarCardsProdutos() {
         if (user === null) {
             alert("Você não está logado!");
         } else {
-            $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarRecibo" + user + item.pedido + "/" + item.produto,
-                type: "get",
-                dataType: "json",
-                success(url) {
-                    alert("Baixando o recibo");
-                    window.localStorage.setItem("user", user);
-                }
-            });
+            var idpedido = $(this).attr("id").split("_")[1];
+            var idproduto = $(this).attr("id").split("_")[0];
+            window.open("https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarRecibo/" + user + "/" + idpedido + "/" + idproduto);
+            //$.ajax({
+            //    url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarRecibo/" + user + "/" + idpedido + "/" + idproduto,
+            //    type: "get",
+            //    dataType: "json",
+            //    success(url) {
+            //        alert("Baixando o recibo");
+            //        window.localStorage.setItem("user", user);
+            //    }
+            //});
         }
     });
 }
@@ -164,7 +175,6 @@ function andamento() {
         success(url) {
             urlGlobal = url;
             criarCardsProdutos();
-            alert("foi");
         }
     });
 }
