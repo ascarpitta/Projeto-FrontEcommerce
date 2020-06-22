@@ -13,7 +13,6 @@ altendereco.addEventListener("submit", function (e) {
     var rua = JSON.stringify(obj.get("rua"));
     var numero = JSON.stringify(obj.get("numero"));
     var complemento = JSON.stringify(obj.get("complemento"));
-    var complemento = JSON.stringify(obj.get("obs"));
 
     e.preventDefault();
 });
@@ -27,6 +26,14 @@ function ender(){
             url.forEach(function (item, index) {
                 var card = "<option value='" + item.id + "'>" + item.nomeEndereco + "</option>";
                 $("#end").append(card);
+                document.querySelector("input[name=nomeEnd]").value = item.nomeEndereco;
+                document.querySelector("input[name=uf]").value = item.uf;
+                document.querySelector("input[name=cidade]").value = item.cidade;
+                document.querySelector("input[name=cep]").value = item.cep;
+                document.querySelector("input[name=bairro]").value = item.bairro;
+                document.querySelector("input[name=rua]").value = item.rua;
+                document.querySelector("input[name=numero]").value = item.numero;
+                document.querySelector("input[name=complemento]").value = item.complemento;
             });
         }
     });
