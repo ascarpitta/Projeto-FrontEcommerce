@@ -1,5 +1,6 @@
 ﻿var cadproduto = document.getElementById("cadproduto");
 var user = window.localStorage.getItem("user");
+var form;
 
 cadproduto.addEventListener("submit", function (e) {
     var obj = new FormData(cadproduto);
@@ -24,32 +25,43 @@ function cadProduto() {
             "/" + $("#marca").val(),
         type: "GET",
         dataType: "json",
+        success(dados) {
+            $.ajax({
+                url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
+                method: "POST",
+                data: form,
+                processData: false,
+                contentType: false,
+                success(dados) {
+                    alert("Produto cadastrado com sucesso!");
+                },
+                error() {
+                    alert("Erro ao cadastrar a Imagem do produto!");
+                }
+            });
+        },
         error(url) {
-            if (url.status === 200) {
-                alert("Produto cadastrado com sucesso");
-                window.location.replace("produtos-cadastrados.html");
-            } else {
-                alert("Erro ao cadastrar produto");
-            }
+            alert("Erro ao cadastrar produto");
         }
     });
 }
+$('#inputImag').change(function (e) {
+    form = new FormData();
+    form.append('fileUpload', e.target.files[0]);
+});
 
 function imagem() {
-    var form = new FormData();
-    form.append("imagem", fileInput.files[0], "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/");
-
-    var settings = {
-        url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + cadproduto + "/",
-        "method": "GET",
-        "timeout": 0,
-        "processData": false,
-        "mimeType": "multipart/form-data",
-        "contentType": false,
-        "data": form,
-    };
-    $.ajax(settings).done(function (response) {
-    });
+    //var settings = {
+    //    url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + cadproduto + "/",
+    //    "method": "GET",
+    //    "timeout": 0,
+    //    "processData": false,
+    //    "mimeType": "multipart/form-data",
+    //    "contentType": false,
+    //    "data": form,
+    //};
+    //$.ajax(settings).done(function (response) {
+    //});
 }
 
 function sair() {
