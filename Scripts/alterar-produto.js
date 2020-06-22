@@ -33,8 +33,10 @@ function produto() {
                 if (item.id == $("#produtos > option:selected").val()) {
                     document.querySelector("input[name=nome]").value = item.name;
                     document.querySelector("input[name=marca]").value = item.marca;
+                    document.querySelector("input[name=categoria]"). = item.category;
                     document.querySelector("input[name=descricao]").value = item.description;
                     document.querySelector("input[name=preco]").value = item.price;
+                    document.querySelector("input[name=quantidade]").value = item.quantity;
                     document.querySelector("input[name=frete]").value = item.frete;
                 }
             });
@@ -47,8 +49,10 @@ $("#produtos ").change(function () {
         if (item.id == $("#produtos > option:selected").val()) {
             document.querySelector("input[name=nome]").value = item.name;
             document.querySelector("input[name=marca]").value = item.marca;
+            document.querySelector("input[name=categoria]").value = item.category;
             document.querySelector("input[name=descricao]").value = item.description;
             document.querySelector("input[name=preco]").value = item.price;
+            document.querySelector("input[name=quantidade]").value = item.quantity;
             document.querySelector("input[name=frete]").value = item.frete;
         }
     });
@@ -60,13 +64,30 @@ function altProduto() {
         type: "get",
         dataType: "json",
         success(url) {
-            alert("Produto alterado com sucesso");
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
+            $.ajax({
+                url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
+                method: "POST",
+                data: form,
+                processData: false,
+                contentType: false,
+                success(dados) {
+                    alert("Produto atualizado com sucesso!");
+                },
+                error() {
+                    alert("Erro ao atualizar a imagem do produto!");
+                }
+            });
+        },
+        error(url) {
+            alert("Erro ao cadastrar produto");
         }
     });
 }
+
+$("#inputImag").change(function (e) {
+    form = new FormData();
+    form.append("fileUpload", e.target.files[0]);
+});
 
 function sair() {
     sessionStorage.clear();

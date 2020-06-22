@@ -60,7 +60,7 @@ $("#end ").change(function () {
 
 function editar() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/" + user + "/" + $("#end > option:selected").val() + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val() + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + "/" + $("#complemento").val().replace(/\s/g, "") + "/" + $("#obs").val().replace(/\s/g, ""),
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/" + user + "/" + $("#end > option:selected").val() + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val() + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + "/" + $("#complemento").val().replace(/\s/g, ""),
         type: "get",
         dataType: "json",
         success(url) {
