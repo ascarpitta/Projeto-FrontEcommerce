@@ -40,14 +40,23 @@ function criarCardsProdutos() {
             "Marca: " +
             "<span>" + item.marca + "</span>" +
             "</div>" +
-            "<div class='mt-1'>" +
-            "Status: " +
-            "<span>" + item.ativo + "</span>" +
-            "</div>" +
-            "<div class='card row justify-content-center' style='width: 20rem;'>" +
-            "<button class='btn btn-primary ativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Ativar</button> </a>" +
-            "<button class='btn btn-primary desativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Desativar </a>" +
-            "</div>" +
+            "<div class='mt-1'>";
+
+        if (!item.ativo) {
+            card += "Status: " +
+                "<span>Inativo</span>" +
+                "</div>" +
+                "<div class='card row justify-content-center' style='width: 20rem;'>" +
+                "<button class='btn btn-primary ativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Ativar</button> </a>";
+        } else {
+            card += "Status: " +
+                "<span>Ativo</span>" +
+                "</div>" +
+                "<div class='card row justify-content-center' style='width: 20rem;'>" +
+                "<button class='btn btn-primary desativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Desativar </a>";
+        }
+
+        card += "</div>" +
             "<div class='card row justify-content-center'>" +
             "</div>" +
             "</div>" +
@@ -82,7 +91,7 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 error(url) {
-                    alert("Produto ativo!");
+                    produto();
                 }
             });
         }
@@ -100,7 +109,7 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 error(url) {
-                    alert("Produto desativado!");
+                    produto();
                 }
             });
         }
