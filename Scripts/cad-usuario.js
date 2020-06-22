@@ -58,7 +58,7 @@ function teste() {
         alert("As senhas não coincidem, por favor verifique");
         return false;
     }
-    if (condicoes.value == null || condicoes.value === "" || condicoes.value === false) {
+    if (condicoes.value == null || condicoes.value === "") {
         validar = true;
         alert("Concorde com os termos para continuar");
         return false;
