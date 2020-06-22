@@ -14,6 +14,13 @@ cadusuario.addEventListener("submit", function (e) {
 });
 
 function preencher() {
+    if (storageCpf.length >= 2) {
+        $("input[name=cpf]").prop("disabled", true);
+    }
+
+    if (storageEmail.length >= 2) {
+        $("input[name=email]").prop("disabled", true);
+    }
       document.querySelector("input[name=cpf]").value = storageCpf;
       document.querySelector("input[name=email]").value = storageEmail;
 }
