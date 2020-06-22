@@ -45,24 +45,10 @@ function cadProduto() {
         }
     });
 }
-$('#inputImag').change(function (e) {
+$("#inputImag").change(function (e) {
     form = new FormData();
-    form.append('fileUpload', e.target.files[0]);
+    form.append("fileUpload", e.target.files[0]);
 });
-
-function imagem() {
-    //var settings = {
-    //    url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + cadproduto + "/",
-    //    "method": "GET",
-    //    "timeout": 0,
-    //    "processData": false,
-    //    "mimeType": "multipart/form-data",
-    //    "contentType": false,
-    //    "data": form,
-    //};
-    //$.ajax(settings).done(function (response) {
-    //});
-}
 
 function sair() {
     sessionStorage.clear();
