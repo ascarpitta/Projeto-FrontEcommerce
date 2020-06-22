@@ -24,9 +24,6 @@ function ender(){
         type: "get",
         dataType: "json",
         success(url) {
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
             url.forEach(function (item, index) {
                 var card = "<option value='" + item.id + "'>" + item.nomeEndereco + "</option>";
                 $("#end").append(card);
