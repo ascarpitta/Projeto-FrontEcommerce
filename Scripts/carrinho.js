@@ -86,9 +86,10 @@ function carrinho() {
                     success(url) {
                         window.localStorage.setItem("user", user);
                         alert("Produto removido com sucesso");
+                        carrinho();
                     },
                     error(url) {
-                        //alert("Erro ao remover produtoo")
+                        
                     }
                 });
             });
@@ -103,6 +104,7 @@ function carrinho() {
                         window.localStorage.setItem("user", user);
                     },
                     error(url) {
+
                     }
                 });
             });
@@ -146,26 +148,30 @@ function consend() {
                 var id = item.id;
                 ende = id;
             });
-        }
-    });
 
-    $(".escolherEnd").click(function () {
-        var idProduto = $(this).attr("id");
-        var user = window.localStorage.getItem("user");
-        if (user === null) {
-            alert("Você não está logado!");
-        } else {
-            $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/" + user + "/" + ende,
-                type: "get",
-                dataType: "json",
-                success(url) {
-                    window.localStorage.setItem("user", user);
-                    alert("Endereço escolhido");
+            $(".escolherEnd").click(function () {
+                console.log("escolherEnd");
+                var idProduto = $(this).attr("id");
+                var user = window.localStorage.getItem("user");
+                if (user === null) {
+                    alert("Você não está logado!");
+                } else {
+                    $.ajax({
+                        url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/addendereco/" + user + "/" + ende,
+                        type: "get",
+                        dataType: "json",
+                        success(url) {
+
+                            window.localStorage.setItem("user", user);
+                            alert("Endereço escolhido");
+                        }
+                    });
                 }
             });
         }
     });
+
+
 }
     
 function finalizar() {

@@ -24,9 +24,14 @@ function cadProduto() {
             "/" + $("#marca").val(),
         type: "GET",
         dataType: "json",
-        success(url) {
-            alert("Produto cadastrado com sucesso");
-            window.location.replace("produtos-cadastrados.html");
+        error(url) {
+            if (url.status === 200) {
+                console.info(url);
+                alert("Produto cadastrado com sucesso");
+                window.location.replace("produtos-cadastrados.html");
+            } else {
+                alert("Erro ao cadastrar produto");
+            }
         }
     });
 }

@@ -25,6 +25,7 @@ function teste() {
     var password = document.querySelector("#password");
     var senha2 = document.querySelector("#senha2");
     var email = document.querySelector("#email");
+    var condicoes = document.querySelector("#condicoes");
 
     if (nome.value === "" || nome.value === null || nome.lenght < 3) {
         validar = true;
@@ -58,7 +59,7 @@ function teste() {
         alert("As senhas não coincidem, por favor verifique");
         return false;
     }
-    if (condicoes.value == null || condicoes.value === "") {
+    if (!condicoes.checked) {
         validar = true;
         alert("Concorde com os termos para continuar");
         return false;
@@ -67,17 +68,14 @@ function teste() {
     if (validar) {
         alert("Erro ao realizar cadastrado");
     }
-    else {
-        alert("Cadastro realizado com sucesso");
-    }
 
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/" + $("#email").val() + "/" + $("#cpf").val() + "/" + $("#nome").val() + "/" + $("#senha2").val(),
         type: "GET",
         dataType: "json",
-        success(url) {
-            window.location.href = "perfil-usuario.html";
-            alert("Cadastro realizado com sucesso");
+        error(url) {
+            
+            alert("Cadastro realizado");
             window.location.href = "perfil-usuario.html";
         }
     });
