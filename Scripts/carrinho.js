@@ -102,7 +102,7 @@ function carrinho() {
 
             $(".increase").click(function () {
                 var qntdProduto = parseInt($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val());
-                var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, '')) / qntdProduto;
+                var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, "")) / qntdProduto;
 
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(qntdProduto + 1);
                 $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html((precoProduto * (qntdProduto + 1)).toFixed(2));
@@ -152,7 +152,6 @@ function consend() {
         success(url) {
             var consEnd = "";
             url.forEach(function (item, i) {
-                console.info(item);
                 consEnd = "<div class='mt-1'> Nome: " +
                     "<span id='consulta' >" + item.nomeEndereco + "</span> - CEP" +
                     "<span id='consulta1'>" + item.cep + "</span> -" +
@@ -168,7 +167,6 @@ function consend() {
             });
 
             $(".escolherEnd").click(function () {
-                console.log("escolherEnd");
                 var idProduto = $(this).attr("id");
                 var user = window.localStorage.getItem("user");
                 if (user === null) {
@@ -196,7 +194,6 @@ function finalizar() {
         dataType: "json",
         success(url) {
             $("#pagar").show();
-            console.info(url);
             idPedido = url.id;
             alert("Pedido realizado");
             $(".open_div1").click();
