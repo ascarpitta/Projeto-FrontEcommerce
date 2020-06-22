@@ -1,5 +1,6 @@
 ﻿var user = window.localStorage.getItem("user");
 var produto;
+let urlGlobal;
 var altproduto = document.querySelector("#altproduto");
 
 altproduto.addEventListener("submit", function (e) {
@@ -25,20 +26,33 @@ function produto() {
         type: "get",
         dataType: "json",
         success(url) {
-
+            urlGlobal = url;
             url.forEach(function (item, index) {
                 var card = "<option value='" + item.id + "'>" + item.name + "</option>";
                 $("#produtos").append(card);
-                document.querySelector("input[name=nome]").value = item.name;
-                document.querySelector("input[name=marca]").value = item.marca;
-                document.querySelector("input[name=descricao]").value = item.description;
-                document.querySelector("input[name=preco]").value = item.price;
-                document.querySelector("input[name=frete]").value = item.frete;
-
+                if (item.id == $("#produtos > option:selected").val()) {
+                    document.querySelector("input[name=nome]").value = item.name;
+                    document.querySelector("input[name=marca]").value = item.marca;
+                    document.querySelector("input[name=descricao]").value = item.description;
+                    document.querySelector("input[name=preco]").value = item.price;
+                    document.querySelector("input[name=frete]").value = item.frete;
+                }
             });
         }
     });
 } 
+
+$("#produtos ").change(function () {
+    urlGlobal.forEach(function (item, index) {
+        if (item.id == $("#produtos > option:selected").val()) {
+            document.querySelector("input[name=nome]").value = item.name;
+            document.querySelector("input[name=marca]").value = item.marca;
+            document.querySelector("input[name=descricao]").value = item.description;
+            document.querySelector("input[name=preco]").value = item.price;
+            document.querySelector("input[name=frete]").value = item.frete;
+        }
+    });
+})
 
 function altProduto() {
     $.ajax({

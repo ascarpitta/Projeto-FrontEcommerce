@@ -1,5 +1,6 @@
 ﻿var altendereco = document.getElementById("altendereco");
 var user = window.localStorage.getItem("user");
+let urlGlobal;
 
 altendereco.addEventListener("submit", function (e) {
 
@@ -23,21 +24,39 @@ function ender(){
         type: "get",
         dataType: "json",
         success(url) {
+            urlGlobal = url;
             url.forEach(function (item, index) {
                 var card = "<option value='" + item.id + "'>" + item.nomeEndereco + "</option>";
                 $("#end").append(card);
-                document.querySelector("input[name=nomeEnd]").value = item.nomeEndereco;
-                document.querySelector("input[name=uf]").value = item.uf;
-                document.querySelector("input[name=cidade]").value = item.cidade;
-                document.querySelector("input[name=cep]").value = item.cep;
-                document.querySelector("input[name=bairro]").value = item.bairro;
-                document.querySelector("input[name=rua]").value = item.rua;
-                document.querySelector("input[name=numero]").value = item.numero;
-                document.querySelector("input[name=complemento]").value = item.complemento;
+                if (item.id == $("#end > option:selected").val()) {
+                    document.querySelector("input[name=nomeEnd]").value = item.nomeEndereco;
+                    document.querySelector("input[name=uf]").value = item.uf;
+                    document.querySelector("input[name=cidade]").value = item.cidade;
+                    document.querySelector("input[name=cep]").value = item.cep;
+                    document.querySelector("input[name=bairro]").value = item.bairro;
+                    document.querySelector("input[name=rua]").value = item.rua;
+                    document.querySelector("input[name=numero]").value = item.numero;
+                    document.querySelector("input[name=complemento]").value = item.complemento;
+                }
             });
         }
     });
 }
+
+$("#end ").change(function () {
+    urlGlobal.forEach(function (item, index) {
+        if (item.id == $("#end > option:selected").val()) {
+            document.querySelector("input[name=nomeEnd]").value = item.nomeEndereco;
+            document.querySelector("input[name=uf]").value = item.uf;
+            document.querySelector("input[name=cidade]").value = item.cidade;
+            document.querySelector("input[name=cep]").value = item.cep;
+            document.querySelector("input[name=bairro]").value = item.bairro;
+            document.querySelector("input[name=rua]").value = item.rua;
+            document.querySelector("input[name=numero]").value = item.numero;
+            document.querySelector("input[name=complemento]").value = item.complemento;
+        }
+    });
+})
 
 function editar() {
     $.ajax({
