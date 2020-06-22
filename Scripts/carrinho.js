@@ -1,4 +1,5 @@
 ﻿var user = window.localStorage.getItem("user");
+var idPedido = window.localStorage.getItem("idPedido");
 var ende;
 
 function carrinho() {
@@ -186,42 +187,25 @@ function finalizar() {
         url: "https://projeto-ecommerce.herokuapp.com/api/carrinho/finalizarCarrinho/" + user ,
         type: "get",
         dataType: "json",
-        success(url) {
-            var fina = "";
-            url.forEach(function (item, i) {
-                fina = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
-                    "<img src='qrcode.png' alt='logo' height='400' width='420'>" +
-                    "<br />" +
-                    "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='pagar()'>Pagar</button>" +
-                    "<br />" +
-                    "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='recibo()'>Baixar recibo</button>";
-                $("#finalizar_pedido").append(fina);
-                window.localStorage.setItem("user", user);
+        error(url) {
+            console.info(url);
+            var fina = "<h2 style='color: #4F5D75'>Esse é o seu QRCode para pagamento:</h2>" +
+                "<br />" +
+                "<button type='submit' class='btn btn - primary' style='background:#4F5D75;' onclick='pagar()'>Pagar</button>";
+            $("#finalizar_pedido").append(fina);
+            idPedido = url.id;
                 alert("Pedido realizado");
-            });
         }
     });
 }
 
 function pagar() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/PagarPedido/" + user + item.pedido,
+        url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/PagarPedido/" + user + idPedido,
         type: "get",
         dataType: "json",
         success(url) {
-            alert("Pedido pago com sucesso, baixe seu recibo");
-
-        }
-    });
-}
-
-function recibo() {
-    $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/ReciboCompra/" + user + item.pedido,
-        type: "get",
-        dataType: "json",
-        success(url) {
-            
+            alert("Pedido pago com sucesso, visualize o recibo em seus pedidos");
         }
     });
 }
