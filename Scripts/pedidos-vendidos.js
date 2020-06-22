@@ -10,23 +10,23 @@ function criarCardsProdutos() {
         //Variavel que armazena os cards dos produtos
         var card = "<div class='card' style='width: 15rem;'>" +
             "<div class='card-body'>" +
-            "Nº: " +
-            "<label>" + item.id + "</label>" +
+            "N&deg;: " +
+            "<label>" + item.numPedido + "</label>" +
             "</div>" +
             "<div>" +
             "<div class='top'>" +
             "<div class='open_div'>Ver detalhes</div>" +
-            "<div class='hidden_div'>" +
+            "<div class='hidden_div' style='width: 500px; z-index:1000'>" +
             "<div class='mt-1 font-weight-bold'>" +
             "Data: " +
-            "<span>" + item.dataPedidoRealizadoCompra + "</span>" +
+            "<span>" + new Date(item.dataPedidoRealizadoCompra).getDate() + "/" + (parseInt(new Date(item.dataPedidoRealizadoCompra).getMonth()) + 1) + "/" + new Date(item.dataPedidoRealizadoCompra).getFullYear() + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
             "Valor final: " +
-            "<span>" + item.vlTotalCompra + "</span>" +
+            "<span>" + parseFloat(item.vlTotalCompra).toFixed(2) + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Endereço: " +
+            "Endere&ccedil;o: " +
             "<span>" + item.nomeEnderecoCompra + "</span>" +
             "</div>" +
             "<div class='top1'>" +

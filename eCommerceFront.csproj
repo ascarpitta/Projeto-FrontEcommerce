@@ -116,19 +116,30 @@
     <Content Include="carrinho.png" />
     <Content Include="desejo.html" />
     <Content Include="editar-endereco.html" />
-    <Content Include="enderecos.html" />
     <Content Include="esqueci-senha.html" />
     <Content Include="favicon.ico" />
+    <Content Include="Scripts\ativar-usuario.js" />
+    <Content Include="Scripts\categoria.js" />
+    <Content Include="Scripts\pedidos-vendidos.js" />
+    <Content Include="x.svg" />
     <None Include="Properties\PublishProfiles\eCommerceFront.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="finalcompra.html" />
     <Content Include="index.html" />
+    <Content Include="index.php" />
+    <Content Include="lateral-menu.png" />
     <Content Include="login-usuario.html" />
     <Content Include="logo.png" />
     <Content Include="historico-pedidos.html" />
     <Content Include="mackenzie.png" />
+    <Content Include="minus.svg" />
+    <Content Include="pedidos-vendidos.html" />
     <Content Include="perfil-usuario.html" />
+    <Content Include="plus.svg" />
     <Content Include="politica-seguranca.html" />
     <Content Include="produtos-cadastrados.html" />
+    <Content Include="qrcode.png" />
+    <Content Include="resumocompra.html" />
     <Content Include="Scripts\alterar-endereco.js" />
     <Content Include="Scripts\alterar-produto.js" />
     <Content Include="Scripts\alterar-senha.js" />
@@ -153,6 +164,8 @@
     <Content Include="Scripts\perfil-usuario.js" />
     <Content Include="Scripts\produtos-cadastrados.js" />
     <Content Include="sobre-nos.html" />
+    <Content Include="twitter-heart.png" />
+    <Content Include="usuario.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
