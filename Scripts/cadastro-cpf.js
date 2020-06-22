@@ -1,5 +1,6 @@
 ﻿var cadcpf = document.getElementById("cadcpf");
 var storageCpf = window.localStorage.getItem("storageCpf");
+$("#prox").prop("disabled", true);
 
 cadcpf.addEventListener("submit", function (e) {
 
@@ -16,12 +17,13 @@ function verificarcpf() {
         dataType: "json",
         success(url) {
             alert("Cpf já cadastrado");
-
+            $("#prox").prop("disabled", true);
         },
         error(url) {
             alert("Cpf pode prosseguir");
             storageCpf = $("#cpf").val();
             window.localStorage.setItem("storageCpf", storageCpf);
+            $("#prox").prop("disabled", false);
         }
     });
 }

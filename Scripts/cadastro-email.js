@@ -1,5 +1,6 @@
 ﻿var cademail = document.getElementById("cademail");
 var storageEmail = window.localStorage.getItem("storageEmail");
+$("#prox").prop("disabled", true);
 
 cademail.addEventListener("submit", function (e) {
 
@@ -16,11 +17,13 @@ function verificaremail() {
         dataType: "json",
         success(url) {
             alert("E-mail já cadastrado");
+            $("#prox").prop("disabled", true);
         },
         error(url) {
             alert("Email pode prosseguir com sucesso");
             storageEmail = $("#email").val();
             window.localStorage.setItem("storageEmail", storageEmail);
+            $("#prox").prop("disabled", false);
         }
     });
 }
