@@ -41,7 +41,6 @@
         }
     </style>
 </head>
-
 <body style="background: #F4F3EE;">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -95,36 +94,35 @@
                     <select class="form-control" id="end">
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="ender()">Buscar endereços</button>
                 <div style="width: 40rem;">
                     <div class="form-row justify-content-center">
                         <div class="col-md-7 mb-2">
-                            <label for="nomeEnd">Nome do endereço</label>
+                            <label for="nomeEnd" class="font-weight-bold">Nome do endereço</label>
                             <input type="text" class="form-control" name="nomeEnd" id="nomeEnd" placeholder="Nome" required>
                         </div>
                         <div class="col-md-4 mb-2">
-                            <label for="cep">CEP</label>
+                            <label for="cep" class="font-weight-bold">CEP</label>
                             <input type="number" class="form-control" name="cep" id="cep" placeholder="CEP" required>
                             <div class="invalid-feedback">
                                 Por favor, informe um CEP válido.
                             </div>
                         </div>
                         <div class="col-md-4 mb-2">
-                            <label for="uf">Estado</label>
+                            <label for="uf" class="font-weight-bold">Estado</label>
                             <input type="text" class="form-control" name="uf" id="uf" placeholder="Estado" required>
                             <div class="invalid-feedback">
                                 Por favor, informe um Estado válido.
                             </div>
                         </div>
                         <div class="col-md-4 mb-2">
-                            <label for="cidade">Cidade</label>
+                            <label for="cidade" class="font-weight-bold">Cidade</label>
                             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" required>
                             <div class="invalid-feedback">
                                 Por favor, informe uma cidade válida.
                             </div>
                         </div>
                         <div class="col-md-3 mb-2">
-                            <label for="bairro">Bairro</label>
+                            <label for="bairro" class="font-weight-bold">Bairro</label>
                             <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" required>
                             <div class="invalid-feedback">
                                 Por favor, informe um Bairro válido.
@@ -132,29 +130,29 @@
                         </div>
                         <div class="form-row justify-content-center">
                             <div class="col-md-5 mb-2">
-                                <label for="rua">Rua</label>
+                                <label for="rua" class="font-weight-bold">Rua</label>
                                 <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" required>
                                 <div class="invalid-feedback">
                                     Por favor, informe uma Rua válida.
                                 </div>
                             </div>
                             <div class="col-md-2 mb-2">
-                                <label for="numero">Nº</label>
+                                <label for="numero" class="font-weight-bold">Nº</label>
                                 <input type="number" class="form-control" name="numero" id="numero" placeholder="Nº" required>
                                 <div class="invalid-feedback">
                                     Por favor, informe um Numero válida.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-2">
-                                <label for="complemento">Complemento</label>
-                                <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento" >
+                                <label for="complemento" class="font-weight-bold">Complemento</label>
+                                <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento">
                                 <div class="invalid-feedback">
                                     Por favor, informe um Complemento válida.
                                 </div>
                             </div>
                             <div class="col-md-11 mb-2">
-                                <label for="obs">Observações</label>
-                                <input type="text" class="form-control" name="obs" id="obs" placeholder="Observações" >
+                                <label for="obs" class="font-weight-bold">Observações</label>
+                                <input type="text" class="form-control" name="obs" id="obs" placeholder="Observações">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="editar()">Salvar novo endereço</button>
@@ -168,6 +166,11 @@
     <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="Scripts/alterar-endereco.js" charset="utf-8"></script>
     <script type="text/javascript" src="Scripts/busca.js" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            ender();
+        });
+    </script>
     <script>
         // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
         (function () {
