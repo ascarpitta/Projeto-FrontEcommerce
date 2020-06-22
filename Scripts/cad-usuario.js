@@ -77,7 +77,7 @@ function teste() {
         dataType: "json",
         success(url) {
             alert("Cadastro realizado com sucesso");
-            window.location.replace("perfil-usuario.html");
+            window.location.href = "perfil-usuario.html";
         }
     });
 }
