@@ -15,7 +15,7 @@ function ativarUsuario() {
         type: "GET",
         dataType: "json",
         error(url) {
-            alert("Usuário ativo");
+            alert("Usuário ativado! Faça login para voltar a comprar.");
             window.location.replace("login-usuario.html");
         }
     });

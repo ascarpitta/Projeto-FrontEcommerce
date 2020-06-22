@@ -1,4 +1,5 @@
 ﻿var user = window.localStorage.getItem("user");
+var idProdVar = window.localStorage.getItem("idProdVar");
 let urlGlobal;
 
 function criarCardsProdutos() {
@@ -24,20 +25,24 @@ function criarCardsProdutos() {
             "<span>" + item.name + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "R$" +
+            "R$: " +
             "<span>" + item.price + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Descrição:" +
+            "Descrição: " +
             "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Categoria:" +
+            "Categoria: " +
             "<span>" + item.category + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Marca:" +
+            "Marca: " +
             "<span>" + item.marca + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
+            "Status: " +
+            "<span>" + item.ativo + "</span>" +
             "</div>" +
             "<div class='card row justify-content-center' style='width: 20rem;'>" +
             "<button class='btn btn-primary ativar' type='button' style='background: #4F5D75;' id='" + item.id + "'>Ativar</button> </a>" +
@@ -70,45 +75,35 @@ function criarCardsProdutos() {
 
     //Eventos para cada produto
     $(".ativar").click(function () {
-        var idProduto = $(this).attr("id");
+        var idProdVar = $(this).attr("id");
         var user = window.localStorage.getItem("user");
         if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/" + user + "/" + idproduto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/ativarProduto/" + user + "/" + idProdVar,
                 type: "get",
                 dataType: "json",
-                success(url) {
-                    alert("Usuário ativado! Faça login para voltar a comprar.");
-                    var id = url.id;
-                    user = id;
-
-                    window.localStorage.setItem("user", user);
+                error(url) {
+                    alert("Produto ativo!");
                 }
             });
         }
     });
 
     $(".desativar").click(function () {
-        var idProduto = $(this).attr("id");
+        var idProdVar = $(this).attr("id");
         var user = window.localStorage.getItem("user");
 
         if (user === null) {
             alert("Você não está logado!");
         } else {
             $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + idproduto,
+                url: "https://projeto-ecommerce.herokuapp.com/api/produtos/inativarproduto/" + user + "/" + idProdVar,
                 type: "get",
                 dataType: "json",
-                success(url) {
-                    alert("Usuário desativado! Para mais informações consulte seu email.");
-                    var id = url.id;
-                    user = id;
-
-                    window.localStorage.setItem("user", user);
-                    sessionStorage.clear();
-                    localStorage.clear();
+                error(url) {
+                    alert("Produto desativado!");
                 }
             });
         }

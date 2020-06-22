@@ -95,7 +95,6 @@
                         <select class="form-control" id="produtos">
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="background: #4F5D75;" onclick="produto()">Buscar produtos</button>
                     <div>
                         <label for="inputName" class="font-weight-bold">Nome do produto</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
@@ -109,9 +108,20 @@
                         </div>
                     </div>
                     <div>
-                        <label for="inputCateg" class="font-weight-bold">Categoria</label>
-                        <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Livro, roupa ..." required>
-
+                        <label for="categoria" class="font-weight-bold">Categoria</label>
+                        <select class="form-control" name="categoria" id="categoria" required>
+                            <option selected>Selecione</option>
+                            <option>Roupas</option>
+                            <option>Acessórios</option>
+                            <option>Cosméticos</option>
+                            <option>Livros</option>
+                            <option>Eletrônicos</option>
+                            <option>Decoração</option>
+                            <option>Móveis</option>
+                            <option>Papelaria</option>
+                            <option>Jogos</option>
+                            <option>Brinquedo</option>
+                        </select>
                         <div class="invalid-feedback">
                             Por favor, informe uma categoria válida.
                         </div>
@@ -175,16 +185,20 @@
         <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js" charset="utf-8"></script>
         <script type="text/javascript" src="Scripts/alterar-produto.js"></script>
         <script type="text/javascript" src="Scripts/busca.js"></script>
-
         <script>
-            // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
-            (function () {
-                'use strict';
-                window.addEventListener('load', function () {
-                    // Pega todos os formulários e aplica estilos de validação personalizados.
-                    var forms = document.getElementsByClassName('needs-validation');
-                    // Faz um loop nos formularios e evita o envio
-                    var validation = Array.prototype.filter.call(forms, function (form) {
+            $(document).ready(function () {
+                produto();
+            });
+        </script>
+                <script>
+                    // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
+                    (function () {
+                        'use strict';
+                        window.addEventListener('load', function () {
+                            // Pega todos os formulários e aplica estilos de validação personalizados.
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Faz um loop nos formularios e evita o envio
+                            var validation = Array.prototype.filter.call(forms, function (form) {
                         form.addEventListener('submit', function (event) {
                             if (form.checkValidity() === false) {
                                 event.preventDefault();
@@ -192,9 +206,9 @@
                             }
                             form.classList.add('was-validated');
                         }, false);
-                    });
-                }, false);
-            })();</script>
+                            });
+                        }, false);
+                    })();</script>
     </div>
     <hr>
     <footer class="section footer-classic context-dark bg-image" style=" background: #E0AFA0;">

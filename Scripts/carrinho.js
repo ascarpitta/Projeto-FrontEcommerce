@@ -125,7 +125,7 @@ function carrinho() {
 
             $(".decrease").click(function () {
                 var qntdProduto = parseInt($("#htop" + $(this).parent().attr("id").replace("quantity", "")).val());
-                var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, '')) / qntdProduto;
+                var precoProduto = parseFloat($("#preco" + $(this).parent().attr("id").replace("quantity", "")).text().replace(/^\D+/g, "")) / qntdProduto;
 
                 $("#htop" + $(this).parent().attr("id").replace("quantity", "")).val(qntdProduto - 1);
                 $("#preco" + $(this).parent().attr("id").replace("quantity", "")).html((precoProduto * (qntdProduto - 1)).toFixed(2));

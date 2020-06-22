@@ -25,12 +25,16 @@ function produto() {
         type: "get",
         dataType: "json",
         success(url) {
-            id = url.id;
-            user = id;
-            window.localStorage.setItem("user", user);
+
             url.forEach(function (item, index) {
-                var card = "<option value='"+ item.id +"'>" + item.name + "</option>";
+                var card = "<option value='" + item.id + "'>" + item.name + "</option>";
                 $("#produtos").append(card);
+                document.querySelector("input[name=nome]").value = item.name;
+                document.querySelector("input[name=marca]").value = item.marca;
+                document.querySelector("input[name=descricao]").value = item.description;
+                document.querySelector("input[name=preco]").value = item.price;
+                document.querySelector("input[name=frete]").value = item.frete;
+
             });
         }
     });
