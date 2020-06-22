@@ -76,7 +76,7 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("Usuário ativo");
+                    alert("Usuário ativado! Faça login para voltar a comprar.");
                     var id = url.id;
                     user = id;
 
@@ -98,7 +98,7 @@ function criarCardsProdutos() {
                 type: "get",
                 dataType: "json",
                 success(url) {
-                    alert("Usuário desativado");
+                    alert("Usuário desativado! Para mais informações consulte seu email.");
                     var id = url.id;
                     user = id;
 
