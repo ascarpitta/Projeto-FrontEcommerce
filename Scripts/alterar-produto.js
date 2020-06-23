@@ -73,7 +73,7 @@ function altProduto() {
                     data: form,
                     processData: false,
                     contentType: false,
-                    error(url) {
+                    sucess(url) {
                         if (url.status == 200) {
                             alert("Produto atualizar com sucesso!");
                             window.location.href = "produtos-cadastrados.html";
