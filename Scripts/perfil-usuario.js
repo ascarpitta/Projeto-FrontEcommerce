@@ -83,12 +83,9 @@ function pedidos() {
         success(url) {
             var consEnd = "";
             url.forEach(function (item, i) {
-                consEnd = "<div class='mt-1'>Nome:" +
-                    "<span id='consulta'>" + item.nomeEndereco + "</span> - CEP" +
-                    "<span id='consulta1'>" + item.cep + "</span> -" +
-                    "<span id='consulta2'>" + item.rua + "</span> nº" +
-                    "<span id='consulta3'>" + item.numero + "</span> -" +
-                    "<span id='consulta4'>" + item.uf + "</span>" +
+                consEnd = "<div class='mt-1'>Nº Pedido: " +
+                    "<span id='consulta'>" + item.numPedido + "</span> - Valor Final: " +
+                    "<span id='consulta1'>R$ " + parseFloat(item.vlTotal).toFixed(2) + "</span> -" +
                     "</div>" +
                     "<hr />";
                 $("#lista_pedidos").append(consEnd);

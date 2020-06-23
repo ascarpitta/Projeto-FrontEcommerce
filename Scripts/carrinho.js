@@ -215,6 +215,7 @@ function pagar() {
         dataType: "json",
         success(url) {
             alert("Pedido pago com sucesso, visualize o recibo em seus pedidos");
+            window.location.href = "historico-pedidos.html";
         }
     });
 }
