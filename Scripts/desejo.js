@@ -34,6 +34,10 @@ function criarCardsProdutos() {
     //Laço que percorrerá todos os produtos carregados pelo backend
     urlGlobal.forEach(function (item, index) {
         //Variavel que armazena os cards dos produtos
+        var imagem = item.url_imagem;
+        if (imagem == null) {
+            imagem = "mackenzie.png";
+        }
         var card = "<div class='card' style='width: 15rem;'>" +
             "<img class='card-img-top' src='" + imagem + "' alt='Card image cap'>" +
             "<div class='card-body' id='desejo'>" +
