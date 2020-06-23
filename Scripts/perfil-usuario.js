@@ -61,9 +61,6 @@ function consend() {
                             dataType: "json",
                             success(url) {
                                 alert("Endereço Removido");
-                                var id = url.id;
-                                user = id;
-
                                 window.localStorage.setItem("user", user);
                             }
                         });
