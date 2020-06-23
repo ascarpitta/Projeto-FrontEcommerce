@@ -32,10 +32,8 @@ function produto() {
                 if (item.id == $("#produtos > option:selected").val()) {
                     document.querySelector("input[name=nome]").value = item.name;
                     document.querySelector("input[name=marca]").value = item.marca;
-                    //document.querySelector("input[name=categoria]") = item.category;
                     document.querySelector("input[name=descricao]").value = item.description;
                     document.querySelector("input[name=preco]").value = item.price;
-                    //document.querySelector("input[name=quantidade]").value = item.quantity;
                     document.querySelector("input[name=frete]").value = item.frete;
                 }
             });
@@ -48,10 +46,8 @@ $("#produtos ").change(function () {
         if (item.id == $("#produtos > option:selected").val()) {
             document.querySelector("input[name=nome]").value = item.name;
             document.querySelector("input[name=marca]").value = item.marca;
-            //document.querySelector("input[name=categoria]").value = item.category;
             document.querySelector("input[name=descricao]").value = item.description;
             document.querySelector("input[name=preco]").value = item.price;
-            //document.querySelector("input[name=quantidade]").value = item.quantity;
             document.querySelector("input[name=frete]").value = item.frete;
         }
     });

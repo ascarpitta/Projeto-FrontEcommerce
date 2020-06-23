@@ -2,6 +2,7 @@
 var idPedido = window.localStorage.getItem("idPedido");
 var ende;
 $("#pagar").hide();
+var nomeEnde;
 
 function carrinho() {
     $("#produtosCarrinho").empty();
@@ -153,7 +154,7 @@ function consend() {
             var consEnd = "";
             url.forEach(function (item, i) {
                 consEnd = "<div class='mt-1'> Nome: " +
-                    "<span id='consulta' >" + item.nomeEndereco + "</span> - CEP" +
+                    "<span id='consulta' value='"+item.id+"'>" + item.nomeEndereco + "</span> - CEP" +
                     "<span id='consulta1'>" + item.cep + "</span> -" +
                     "<span id='consulta2'>" + item.rua + "</span> nº" +
                     "<span id='consulta3'>" + item.numero + "</span> -" +
@@ -164,6 +165,9 @@ function consend() {
                 $("#lista_end").append(consEnd);
                 var id = item.id;
                 ende = id;
+                var nome = item.nomeEndereco;
+                nomeEnde = nome;
+               
             });
 
             $(".escolherEnd").click(function () {
@@ -178,7 +182,7 @@ function consend() {
                         dataType: "json",
                         success(url) {
                             window.localStorage.setItem("user", user);
-                            alert("Endereço escolhido");
+                            alert("Endereço " + nomeEnde + " escolhido");
                         }
                     });
                 }
