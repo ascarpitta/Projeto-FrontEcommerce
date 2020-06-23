@@ -75,6 +75,7 @@ function altProduto() {
                     error(url) {
                         if (url.status == 200) {
                             alert("Produto atualizar com sucesso!");
+                            window.location.href = "produtos-cadastrados.html";
                         } else {
                             alert("Erro ao atualizar a imagem do produto!");
                         }

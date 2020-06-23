@@ -26,8 +26,13 @@ function criarCardsProdutos() {
             "<div class='mt-1'>" +
             "Endereço: " +
             "<span>" + item.rua + ", " + item.numero + "</span>" +
-            "</div>" +
-            "<div class='top1'>" +
+            "</div>";
+        if (!item.statusPagamento) {
+            card += "<div class='top1'>" +
+                "<div class='pagar' id='" + item.id + "'>Pagar</div>" +
+                "</div>";
+        }
+            card += "<div class='top1'>" +
             "<div class='open_div1'>Ver produtos</div>" +
             "<div class='hidden_div1' style='width: 490px;'>";
         item.produtos.forEach(function (produto, index) {
@@ -82,6 +87,18 @@ function criarCardsProdutos() {
         return false;
     });
     //Eventos para cada produto
+    $(".pagar").click(function () {
+        $.ajax({
+            url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/PagarPedido/" + user + "/" + $(this).attr("id"),
+            type: "get",
+            dataType: "json",
+            success(url) {
+                alert("Pedido pago com sucesso, visualize o recibo em seus pedidos");
+                pedido();
+            }
+        });
+    });
+
     $(".cancelar").click(function () {
         var user = window.localStorage.getItem("user");
         if (user === null) {
@@ -128,15 +145,6 @@ function criarCardsProdutos() {
             var idpedido = $(this).attr("id").split("_")[1];
             var idproduto = $(this).attr("id").split("_")[0];
             window.open("https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarRecibo/" + user + "/" + idpedido + "/" + idproduto);
-            //$.ajax({
-            //    url: "https://projeto-ecommerce.herokuapp.com/api/Pedidos/GerarRecibo/" + user + "/" + idpedido + "/" + idproduto,
-            //    type: "get",
-            //    dataType: "json",
-            //    success(url) {
-            //        alert("Baixando o recibo");
-            //        window.localStorage.setItem("user", user);
-            //    }
-            //});
         }
     });
 }
