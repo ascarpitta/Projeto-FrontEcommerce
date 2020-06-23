@@ -75,6 +75,7 @@ function consend() {
 }
 
 function pedidos() {
+    $("#lista_pedidos").empty();
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/pedidos/BuscarPedidos/" + user,
         type: "GET",
