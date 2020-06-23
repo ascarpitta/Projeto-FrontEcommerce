@@ -175,7 +175,6 @@ function andamento() {
         success(url) {
             urlGlobal = url;
             criarCardsProdutos();
-            alert("foi");
         }
     });
 }

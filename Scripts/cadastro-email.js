@@ -20,7 +20,7 @@ function verificaremail() {
             $("#prox").prop("disabled", true);
         },
         error(url) {
-            alert("Email pode prosseguir com sucesso");
+            alert("Email pode prosseguir");
             storageEmail = $("#email").val();
             window.localStorage.setItem("storageEmail", storageEmail);
             $("#prox").prop("disabled", false);

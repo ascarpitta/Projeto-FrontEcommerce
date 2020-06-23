@@ -79,7 +79,8 @@ function criarCardsProdutos() {
                 url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/AddListaDesejo/" + user + "/" + idProduto,
                 type: "get",
                 dataType: "json",
-                success(url) {
+                error(url) {
+                    alert("Produto adicionado na lista de desejos");
                 }
             });
         }
@@ -96,7 +97,8 @@ function criarCardsProdutos() {
                 url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/RemoverListaDesejo/" + user + "/" + idProduto,
                 type: "get",
                 dataType: "json",
-                success(url) {
+                error(url) {
+                    alert("Produto removido da lista de desejos");
                 }
             });
         }

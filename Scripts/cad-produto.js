@@ -38,7 +38,7 @@ function cadProduto() {
                         window.location.href = "produtos-cadastrados.html";
                     },
                     error() {
-                        alert("Erro ao cadastrar a Imagem do produto!");
+                        alert("Erro ao cadastrar a imagem do produto!");
                     }
                 });
             }

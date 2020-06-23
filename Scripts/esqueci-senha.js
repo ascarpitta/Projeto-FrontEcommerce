@@ -15,7 +15,7 @@ function teste() {
         type: "GET",
         dataType: "json",
         error(url) {
-            alert("E-mail enviado com sucesso");
+            alert("E-mail para recuperação enviado com sucesso");
             window.location.replace("login-usuario.html");
         }
     });

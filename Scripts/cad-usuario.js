@@ -81,7 +81,6 @@ function teste() {
         type: "GET",
         dataType: "json",
         error(url) {
-            
             alert("Cadastro realizado");
             window.location.href = "login-usuario.html";
         }
