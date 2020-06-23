@@ -17,6 +17,14 @@ cadendereco.addEventListener("submit", function (e) {
     e.preventDefault();
 });
 
+$("#numero").keyup(function (e) {
+    $(this).val($(this).val().replace(/\D/g, ""));
+});
+
+$("#cep").keyup(function (e) {
+    $(this).val($(this).val().replace(/\D/g, ""));
+});
+
 function cadastro() {
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/CadastroEndereco/" + user + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val() + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + $("#complemento").val(),
