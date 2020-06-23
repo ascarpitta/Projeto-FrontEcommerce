@@ -71,7 +71,7 @@ function editar() {
         dataType: "json",
         error(url) {
             alert("Endereço atualizado com sucesso");
-            ender();
+            window.location.href = "perfil-usuario.html";
         }
     });
 }
