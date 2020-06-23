@@ -24,19 +24,19 @@ function criarCardsProdutos() {
             "<span>" + item.name + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "R$" +
+            "R$: " +
             "<span>" + item.price + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Descrição:" +
+            "Descrição: " +
             "<span>" + item.description + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Categoria:" +
+            "Categoria: " +
             "<span>" + item.category + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
-            "Marca:" +
+            "Marca: " +
             "<span>" + item.marca + "</span>" +
             "</div>" +
             "<div class='card row justify-content-center' style='width: 5rem;'>" +
