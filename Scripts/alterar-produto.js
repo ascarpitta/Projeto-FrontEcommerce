@@ -65,20 +65,22 @@ function altProduto() {
         type: "get",
         dataType: "json",
         success(dados) {
-            $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
-                method: "POST",
-                data: form,
-                processData: false,
-                contentType: false,
-                error(url) {
-                    if (url.status == 200) {
-                        alert("Produto atualizar com sucesso!");
-                    } else {
-                        alert("Erro ao atualizar a imagem do produto!");
+            if (form != undefined) {
+                $.ajax({
+                    url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
+                    method: "POST",
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    error(url) {
+                        if (url.status == 200) {
+                            alert("Produto atualizar com sucesso!");
+                        } else {
+                            alert("Erro ao atualizar a imagem do produto!");
+                        }
                     }
-                }
-            });
+                });
+            }
         },
         error(url) {
             alert("Erro ao atualizar produto");
