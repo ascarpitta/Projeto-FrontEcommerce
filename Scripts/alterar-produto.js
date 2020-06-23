@@ -2,6 +2,7 @@
 var produto;
 let urlGlobal;
 var altproduto = document.querySelector("#altproduto");
+var form;
 
 altproduto.addEventListener("submit", function (e) {
 
