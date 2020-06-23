@@ -26,19 +26,22 @@ function cadProduto() {
         type: "GET",
         dataType: "json",
         success(dados) {
-            $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
-                method: "POST",
-                data: form,
-                processData: false,
-                contentType: false,
-                success(dados) {
-                    alert("Produto cadastrado com sucesso!");
-                },
-                error() {
-                    alert("Erro ao cadastrar a Imagem do produto!");
-                }
-            });
+            if (form != undefined) {
+                $.ajax({
+                    url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
+                    method: "POST",
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    success(dados) {
+                        alert("Produto cadastrado com sucesso!");
+                        window.location.href = "produtos-cadastrados.html";
+                    },
+                    error() {
+                        alert("Erro ao cadastrar a Imagem do produto!");
+                    }
+                });
+            }
         },
         error(url) {
             alert("Erro ao cadastrar produto");

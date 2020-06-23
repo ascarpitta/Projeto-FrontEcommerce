@@ -14,6 +14,10 @@ function carrinho() {
             var produtoCarrinho = "";
             var valorTotal = 0;
             url.produtos.forEach(function (item, i) {
+                var imagem = item.url_imagem;
+                if (imagem == null) {
+                    imagem = "mackenzie.png";
+                }
                 if (i === 0) {
                     produtoCarrinho = "<div class='item'>" +
                         "<div class='buttons'>" +
@@ -23,7 +27,7 @@ function carrinho() {
                         "<div class='card-body'></div>" +
                         "</div>" +
                         "<div class='image'>" +
-                        "<img src='mackenzie.png' alt='logo' height='80' width='170' />" +
+                        "<img src='" + imagem + "' alt='logo' height='80' width='170' />" +
                         "</div>" +
                         "<div style='width: 5rem;'>" +
                         "<div class='card-body'></div>" +
@@ -56,7 +60,7 @@ function carrinho() {
                         "<div class='card-body'></div>" +
                         "</div>" +
                         "<div class='image'>" +
-                        "<img src='mackenzie.png' alt='logo' height='80' width='170' />" +
+                        "<img src='" + imagem + "' alt='logo' height='80' width='170' />" +
                         "</div>" +
                         "<div style='width: 5rem;'>" +
                         "<div class='card-body'></div>" +
@@ -201,6 +205,7 @@ function finalizar() {
             idPedido = url.id;
             alert("Pedido realizado");
             $(".open_div1").click();
+            $("#finalizar").hide();
         },
         error() {
             alert("Erro no carrinho");
@@ -215,6 +220,7 @@ function pagar() {
         dataType: "json",
         success(url) {
             alert("Pedido pago com sucesso, visualize o recibo em seus pedidos");
+            window.location.href = "historico-pedidos.html";
         }
     });
 }

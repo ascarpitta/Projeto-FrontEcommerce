@@ -32,8 +32,10 @@ function produto() {
                 if (item.id == $("#produtos > option:selected").val()) {
                     document.querySelector("input[name=nome]").value = item.name;
                     document.querySelector("input[name=marca]").value = item.marca;
+                    $("#categoria").val(item.category);
                     document.querySelector("input[name=descricao]").value = item.description;
                     document.querySelector("input[name=preco]").value = item.price;
+                    $("#quantidade").val(item.quantity);
                     document.querySelector("input[name=frete]").value = item.frete;
                 }
             });
@@ -41,13 +43,15 @@ function produto() {
     });
 } 
 
-$("#produtos ").change(function () {
+$("#produtos").change(function () {
     urlGlobal.forEach(function (item, index) {
         if (item.id == $("#produtos > option:selected").val()) {
             document.querySelector("input[name=nome]").value = item.name;
             document.querySelector("input[name=marca]").value = item.marca;
+            $("#categoria").val(item.category);
             document.querySelector("input[name=descricao]").value = item.description;
             document.querySelector("input[name=preco]").value = item.price;
+            $("#quantidade").val(item.quantity);
             document.querySelector("input[name=frete]").value = item.frete;
         }
     });
@@ -57,23 +61,27 @@ function altProduto() {
     $.ajax({
         url: "https://projeto-ecommerce.herokuapp.com/api/produtos/alterarProduto/" + user + "/" + $("#produtos > option:selected").val() + "/"
             + $("#nome").val() + "/" + $("#descricao").val() + "/" + $("#preco").val() + "/" + $("#frete").val() + "/"
-            + $("#quantidade").val() + "/" + $("#categoria").val() + "/" + $("#marca").val(),
+            + $("#quantidade > option:selected").val() + "/" + $("#categoria > option:selected").val() + "/" + $("#marca").val(),
         type: "get",
         dataType: "json",
         success(dados) {
-            $.ajax({
-                url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
-                method: "POST",
-                data: form,
-                processData: false,
-                contentType: false,
-                success(dados) {
-                    alert("Produto atualizar com sucesso!");
-                },
-                error() {
-                    alert("Erro ao atualizar a imagem do produto!");
-                }
-            });
+            if (form != undefined) {
+                $.ajax({
+                    url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
+                    method: "POST",
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    error(url) {
+                        if (url.status == 200) {
+                            alert("Produto atualizar com sucesso!");
+                            window.location.href = "produtos-cadastrados.html";
+                        } else {
+                            alert("Erro ao atualizar a imagem do produto!");
+                        }
+                    }
+                });
+            }
         },
         error(url) {
             alert("Erro ao atualizar produto");
