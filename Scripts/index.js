@@ -36,6 +36,10 @@ function criarCardsProdutos() {
             "<span>" + item.category + "</span>" +
             "</div>" +
             "<div class='mt-1'>" +
+            "Quantidade disponível: " +
+            "<span>" + item.quantity + "</span>" +
+            "</div>" +
+            "<div class='mt-1'>" +
             "Marca: " +
             "<span>" + item.marca + "</span>" +
             "</div>" +
