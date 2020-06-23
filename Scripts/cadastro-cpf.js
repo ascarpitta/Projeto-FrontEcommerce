@@ -12,7 +12,7 @@ cadcpf.addEventListener("submit", function (e) {
 
 function verificarcpf() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cpf/" + $("#cpf").val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cpf/" + $("#cpf").val().replace( /\D/g, ""),
         type: "GET",
         dataType: "json",
         success(url) {
@@ -21,7 +21,7 @@ function verificarcpf() {
         },
         error(url) {
             alert("Cpf pode prosseguir");
-            storageCpf = $("#cpf").val();
+            storageCpf = $("#cpf").val().replace( /\D/g, "");
             window.localStorage.setItem("storageCpf", storageCpf);
             $("#prox").prop("disabled", false);
         }

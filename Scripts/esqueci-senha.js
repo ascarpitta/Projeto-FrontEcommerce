@@ -11,7 +11,7 @@ senha.addEventListener("submit", function (e) {
 
 function teste() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/recuperacao/" + $("#email").val() + "/" + $("#cpf").val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/recuperacao/" + $("#email").val() + "/" + $("#cpf").val().replace( /\D/g, ""),
         type: "GET",
         dataType: "json",
         error(url) {

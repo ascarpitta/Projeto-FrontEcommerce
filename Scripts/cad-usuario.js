@@ -77,7 +77,7 @@ function teste() {
     }
 
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/" + $("#email").val() + "/" + $("#cpf").val() + "/" + $("#nome").val() + "/" + $("#senha2").val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/cadastroUsuario/" + $("#email").val() + "/" + $("#cpf").val().replace( /\D/g, "") + "/" + $("#nome").val() + "/" + $("#senha2").val(),
         type: "GET",
         dataType: "json",
         error(url) {

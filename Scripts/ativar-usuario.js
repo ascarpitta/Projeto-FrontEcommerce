@@ -11,7 +11,7 @@ ativar.addEventListener("submit", function (e) {
 
 function ativarUsuario() {
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + $("#email").val() + "/" + $("#cpf").val(),
+        url: "https://projeto-ecommerce.herokuapp.com/api/usuarios/ativar/" + $("#email").val() + "/" + $("#cpf").val().replace( /\D/g, ""),
         type: "GET",
         dataType: "json",
         error(url) {
