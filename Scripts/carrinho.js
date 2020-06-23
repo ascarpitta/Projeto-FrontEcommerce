@@ -49,7 +49,7 @@ function carrinho() {
                         "<span id='preco'>" + ((item.preco + item.frete) * item.quantidade).toFixed(2) + "</span>" +
                         "</div>" +
                         "</div>";
-                    valorTotal += ((item.preco + item.frete) * item.quantidade).toFixed(2);
+                    valorTotal += ((item.preco + item.frete) * item.quantidade);
                     window.localStorage.setItem("produto", item.idProduto);
                 } else {
                     produtoCarrinho = "<div class='item'>" +
@@ -82,7 +82,7 @@ function carrinho() {
                         "<span id='preco" + (i + 1).toString() + "'>" + ((item.preco + item.frete) * item.quantidade).toFixed(2) + "</span>" +
                         "</div>" +
                         "</div>";
-                    valorTotal += ((item.preco + item.frete) * item.quantidade).toFixed(2);
+                    valorTotal += ((item.preco + item.frete) * item.quantidade);
                     window.localStorage.setItem("produto" + (i + 1).toString(), item.idProduto);
                 }
                 $("#valorTotal").text("Valor Total: R$ " + parseFloat(valorTotal).toFixed(2));
