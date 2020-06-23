@@ -51,9 +51,8 @@ function criarCardsProdutos() {
             "</div>";
 
         //Incluindo card na div principal
-        if (index <= 7) {
-        $("#lista_produtos").append(card);
-        
+        if (user != item.user) {
+            $("#lista_produtos").append(card);
         }
     });
 
