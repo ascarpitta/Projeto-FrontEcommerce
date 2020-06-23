@@ -201,6 +201,7 @@ function finalizar() {
             idPedido = url.id;
             alert("Pedido realizado");
             $(".open_div1").click();
+            $("#finalizar").hide();
         },
         error() {
             alert("Erro no carrinho");
