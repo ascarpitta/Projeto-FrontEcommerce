@@ -34,6 +34,7 @@ function cadProduto() {
                 contentType: false,
                 success(dados) {
                     alert("Produto cadastrado com sucesso!");
+                    window.location.href = "produtos-cadastrados.html";
                 },
                 error() {
                     alert("Erro ao cadastrar a Imagem do produto!");
