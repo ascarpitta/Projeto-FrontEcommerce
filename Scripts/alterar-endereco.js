@@ -59,13 +59,19 @@ $("#end ").change(function () {
 })
 
 function editar() {
+    var complemento = "";
+
+    if ($("#complemento").val().replace(/\s/g, "") != "") {
+        complemento = "/" + $("#complemento").val().replace(/\s/g, "");
+    }
+
     $.ajax({
-        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/" + user + "/" + $("#end > option:selected").val() + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val() + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + "/" + $("#complemento").val().replace(/\s/g, ""),
+        url: "https://projeto-ecommerce.herokuapp.com/api/enderecos/alterarendereco/" + $("#end > option:selected").val() + "/" + $("#nomeEnd").val() + "/" + $("#cep").val().replace(/\s/g, "") + "/" + $("#uf").val() + "/" + $("#cidade").val() + "/" + $("#bairro").val() + "/" + $("#rua").val() + "/" + $("#numero").val() + complemento,
         type: "get",
         dataType: "json",
-        success(url) {
+        error(url) {
             alert("Endereço atualizado com sucesso");
-            window.localStorage.setItem("user", user);
+            ender();
         }
     });
 }
@@ -76,7 +82,6 @@ function verificar() {
         type: "get",
         dataType: "json",
         success(url) {
-            document.querySelector("input[name=complemento]").value = url.complemento.trim();
             document.querySelector("input[name=bairro]").value = url.bairro.trim();
             document.querySelector("input[name=cidade]").value = url.cidade.trim();
             document.querySelector("input[name=rua]").value = url.rua.trim();
