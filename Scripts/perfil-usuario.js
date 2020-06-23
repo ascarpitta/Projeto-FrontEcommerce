@@ -56,7 +56,7 @@ function consend() {
                         alert("Você não está logado!");
                     } else {
                         $.ajax({
-                            url: "https://projeto-ecommerce.herokuapp.com/api/Enderecos/ExcluirEndereco/" + user + "/" + item.id,
+                            url: "https://projeto-ecommerce.herokuapp.com/api/Enderecos/ExcluirEndereco/" + user + "/" + idProduto,
                             type: "get",
                             dataType: "json",
                             success(url) {
