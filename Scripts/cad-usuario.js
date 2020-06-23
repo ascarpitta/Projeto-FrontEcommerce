@@ -83,7 +83,7 @@ function teste() {
         error(url) {
             
             alert("Cadastro realizado");
-            window.location.href = "perfil-usuario.html";
+            window.location.href = "login-usuario.html";
         }
     });
 }

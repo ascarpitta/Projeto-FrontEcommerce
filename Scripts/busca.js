@@ -1,9 +1,11 @@
 ﻿$(document).ready(function () {
     var user = window.localStorage.getItem("user");
-    if (user.length > 0) {
+    if (user != null) {
         $("#btn-entrar").hide();
+        $("#btn-cadastro").hide();
     } else {
         $("#btn-sair").hide();
+        $("#btn-perfil").hide();
     }
 });
 
