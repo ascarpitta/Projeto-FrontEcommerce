@@ -6,7 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
+        .top1 {
+            position: relative;
+            width: 435px;
+            height: 40px;
+            left: 18%;
+            background-color: #c0c0c0;
+            border: 1px solid #4F5D75;
+            text-align: center;
+            line-height: 40px;
+        }
 
+        .open_div1 {
+            cursor: pointer;
+        }
+
+        .hidden_div1 {
+            position: absolute;
+            width: 650px;
+            height: 125px;
+            top: -127px;
+            left: 7%;
+            margin-left: -150px;
+            background-color: #F4F3EE;
+            border: 2px solid #c0c0c0;
+            overflow: hidden;
+            clear: both;
+        }
         .sub:hover {
           width: 100px;
           height: 30px;
@@ -186,16 +212,33 @@
                 </div>
             </div>
         </form>
+    </div>
         <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery-3.5.1.min.js" charset="utf-8"></script>
         <script type="text/javascript" src="Scripts/alterar-produto.js"></script>
         <script type="text/javascript" src="Scripts/busca.js"></script>
         <script>
+           $(document).ready(function () {
+              $(".hidden_div").hide();
+              $(".open_div").click(function () {
+              $(this).toggleClass("active").next().slideToggle("slow");
+                     return false;
+              });
+           });
+           $(document).ready(function () {
+
+              $(".hidden_div1").hide();
+              $(".open_div1").click(function () {
+              $(this).toggleClass("active").next().slideToggle("slow");
+                      return false;
+              });
+           });
+
             $(document).ready(function () {
                 produto();
             });
         </script>
-                <script>
+        <script>
                     // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
                     (function () {
                         'use strict';
@@ -213,8 +256,8 @@
                         }, false);
                             });
                         }, false);
-                    })();</script>
-    </div>
+                    })();
+                </script>
     <hr>
     <footer class="section footer-classic context-dark bg-image" style=" background: #E0AFA0;">
         <div class="container">
