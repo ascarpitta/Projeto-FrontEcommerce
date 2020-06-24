@@ -34,7 +34,7 @@ function consend() {
             url.forEach(function (item, i) {
                 consEnd = "<div class='item'> " +
                     "<div class='buttons'>" +
-                    "<span class='delete-btn cancelar'>X</span>" +
+                    "<span id='" + item.id + "' class='delete-btn cancelar'>X</span>" +
                     "</div>" +
                     "</div>" +
                     "<div class='mt-1'> Nome: " +
@@ -44,28 +44,27 @@ function consend() {
                     "<span id='consulta3'>" + item.numero + "</span> -" +
                     "<span id='consulta4'>" + item.uf + "</span>" +
                     "</div>" +
-                    
                     "<hr />";
                 $("#lista_end").append(consEnd);
 
                 //Eventos para cada produto
-                $(".cancelar").click(function () {
-                    var idProduto = $(this).attr("id");
-                    var user = window.localStorage.getItem("user");
-                    if (user === null) {
-                        alert("Você não está logado!");
-                    } else {
-                        $.ajax({
-                            url: "https://projeto-ecommerce.herokuapp.com/api/Enderecos/ExcluirEndereco/" + user + "/" + idProduto,
-                            type: "get",
-                            dataType: "json",
-                            success(url) {
-                                alert("Endereço Removido");
-                                window.localStorage.setItem("user", user);
-                            }
-                        });
-                    }
-                });
+            });
+            $(".cancelar").click(function () {
+                var idEndereco = $(this).attr("id");
+                var user = window.localStorage.getItem("user");
+                if (user === null) {
+                    alert("Você não está logado!");
+                } else {
+                    $.ajax({
+                        url: "https://projeto-ecommerce.herokuapp.com/api/Enderecos/ExcluirEndereco/" + user + "/" + idEndereco,
+                        type: "get",
+                        dataType: "json",
+                        success(url) {
+                            alert("Endereço Removido");
+                            window.localStorage.setItem("user", user);
+                        }
+                    });
+                }
             });
         }
     });

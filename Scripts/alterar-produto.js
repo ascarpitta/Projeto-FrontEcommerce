@@ -66,7 +66,7 @@ function altProduto() {
             + $("#quantidade > option:selected").val() + "/" + $("#categoria > option:selected").val() + "/" + $("#marca").val(),
         type: "get",
         dataType: "json",
-        error(dados) {
+        success(dados) {
             if (form != undefined) {
                 $.ajax({
                     url: "https://projeto-ecommerce.herokuapp.com/api/Produtos/Imagem/Armazenar/" + dados.id,
@@ -74,16 +74,16 @@ function altProduto() {
                     data: form,
                     processData: false,
                     contentType: false,
-                    error(url) {
-                        if (url.status == 200) {
-                            alert("Produto atualizado com sucesso!");
-                            window.location.href = "produtos-cadastrados.html";
-                        } else {
-                            alert("Erro ao atualizar a imagem do produto!");
-                        }
+                    success(url) {
                         alert("Produto atualizado com sucesso!");
+                        window.location.href = "produtos-cadastrados.html";
+                    },
+                    error(url) {
+                        alert("Erro ao atualizar a imagem do produto!");
                     }
                 });
+            } else {
+                alert("Produto atualizado com sucesso!");
             }
         },
         error(url) {
