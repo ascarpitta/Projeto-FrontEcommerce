@@ -4,6 +4,7 @@ let urlGlobal;
 var altproduto = document.querySelector("#altproduto");
 var form;
 
+
 altproduto.addEventListener("submit", function (e) {
 
     var obj = new FormData(altproduto);
@@ -73,15 +74,16 @@ function altProduto() {
                     data: form,
                     processData: false,
                     contentType: false,
-                    sucess(url) {
-                        if (url.status == 200) {
-                            alert("Produto atualizar com sucesso!");
-                            window.location.href = "produtos-cadastrados.html";
-                        } else {
-                            alert("Erro ao atualizar a imagem do produto!");
-                        }
+                    success(url) {
+                        alert("Produto atualizado com sucesso!");
+                        window.location.href = "produtos-cadastrados.html";
+                    },
+                    error(url) {
+                        alert("Erro ao atualizar a imagem do produto!");
                     }
                 });
+            } else {
+                alert("Produto atualizado com sucesso!");
             }
         },
         error(url) {
